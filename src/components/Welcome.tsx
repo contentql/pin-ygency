@@ -10,18 +10,10 @@ import { trpc } from '@/trpc/client'
 
 const WelcomePage = () => {
   const router = useRouter()
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false)
-  const [showLoadingModal, setShowLoadingModal] = useState(false)
-
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
-
   const { mutate: runSeedMutation, isPending: isSeedLoading } =
     trpc.seed.runSeed.useMutation({
-      onMutate: () => {
-        setShow(true)
-      },
       onSuccess: () => {
         setShow(false)
         window.location.reload()
@@ -37,7 +29,6 @@ const WelcomePage = () => {
   }
 
   const handleConfirmLoad = () => {
-    setShowConfirmationModal(false)
     handleSeedData()
   }
 
@@ -93,7 +84,7 @@ const WelcomePage = () => {
               <Button
                 variant='primary'
                 disabled={isSeedLoading}
-                onClick={handleClose}>
+                onClick={handleConfirmLoad}>
                 Yes, Load Data
               </Button>
             </Modal.Footer>
