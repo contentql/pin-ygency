@@ -1,0 +1,1104 @@
+[
+  {
+    "result": {
+      "data": {
+        "id": "66f4cabf4a658163fbb15c78",
+        "title": "Home",
+        "layout": [
+          {
+            "title": "Empowering Digital Transformation",
+            "description": "Harness the power of Analytica, your in-browser tool for streamlined development processes. Make the most of your coding time and bring your projects to life faster.",
+            "clients": [
+              {
+                "image": {
+                  "id": "66f4f0e0f4de03750e264afd",
+                  "filename": "member8.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 15872,
+                  "width": 332,
+                  "height": 380,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": 400,
+                      "height": 300,
+                      "mimeType": "image/jpeg",
+                      "filesize": 13237,
+                      "filename": "member8-400x300.jpg",
+                      "url": "/api/media/file/member8-400x300.jpg"
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 1129,
+                      "mimeType": "image/jpeg",
+                      "filesize": 76481,
+                      "filename": "member8-986x1129.jpg",
+                      "url": "/api/media/file/member8-986x1129.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1683,
+                      "mimeType": "image/jpeg",
+                      "filesize": 129697,
+                      "filename": "member8-1470x1683.jpg",
+                      "url": "/api/media/file/member8-1470x1683.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T05:28:00.013Z",
+                  "updatedAt": "2024-09-26T05:28:00.013Z",
+                  "url": "/api/media/file/member8.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4f0ad5ce9bb1a3c1e7ed6"
+              },
+              {
+                "image": {
+                  "id": "66f4f0dff4de03750e264aef",
+                  "filename": "member6.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 14063,
+                  "width": 332,
+                  "height": 380,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": 400,
+                      "height": 300,
+                      "mimeType": "image/jpeg",
+                      "filesize": 12439,
+                      "filename": "member6-400x300.jpg",
+                      "url": "/api/media/file/member6-400x300.jpg"
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 1129,
+                      "mimeType": "image/jpeg",
+                      "filesize": 66085,
+                      "filename": "member6-986x1129.jpg",
+                      "url": "/api/media/file/member6-986x1129.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1683,
+                      "mimeType": "image/jpeg",
+                      "filesize": 115026,
+                      "filename": "member6-1470x1683.jpg",
+                      "url": "/api/media/file/member6-1470x1683.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T05:27:59.582Z",
+                  "updatedAt": "2024-09-26T05:27:59.582Z",
+                  "url": "/api/media/file/member6.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4f0d25ce9bb1a3c1e7ed7"
+              }
+            ],
+            "hero_image": {
+              "id": "66f4cc6a4a658163fbb15e4d",
+              "filename": "hero-two.jpg",
+              "mimeType": "image/jpeg",
+              "filesize": 44283,
+              "width": 650,
+              "height": 351,
+              "sizes": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/jpeg",
+                  "filesize": 27216,
+                  "filename": "hero-two-400x300.jpg",
+                  "url": "/api/media/file/hero-two-400x300.jpg"
+                },
+                "blogImageSize2": {
+                  "width": 986,
+                  "height": 532,
+                  "mimeType": "image/jpeg",
+                  "filesize": 75331,
+                  "filename": "hero-two-986x532.jpg",
+                  "url": "/api/media/file/hero-two-986x532.jpg"
+                },
+                "blogImageSize3": {
+                  "width": 1470,
+                  "height": 794,
+                  "mimeType": "image/jpeg",
+                  "filesize": 129157,
+                  "filename": "hero-two-1470x794.jpg",
+                  "url": "/api/media/file/hero-two-1470x794.jpg"
+                }
+              },
+              "createdAt": "2024-09-26T02:52:26.739Z",
+              "updatedAt": "2024-09-26T02:52:26.739Z",
+              "url": "/api/media/file/hero-two.jpg",
+              "thumbnailURL": null
+            },
+            "badge_title": "Explore more",
+            "id": "66f4cc1fa5fee806380f9097",
+            "blockType": "Hero"
+          },
+          {
+            "title": "Innovative Web Development Solutions",
+            "banner_image": {
+              "id": "66f4ca004a658163fbb15c3a",
+              "filename": "add-banner.png",
+              "mimeType": "image/png",
+              "filesize": 61383,
+              "width": 274,
+              "height": 325,
+              "sizes": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/png",
+                  "filesize": 184752,
+                  "filename": "add-banner-400x300.png",
+                  "url": "/api/media/file/add-banner-400x300.png"
+                },
+                "blogImageSize2": {
+                  "width": 986,
+                  "height": 1170,
+                  "mimeType": "image/png",
+                  "filesize": 1540369,
+                  "filename": "add-banner-986x1170.png",
+                  "url": "/api/media/file/add-banner-986x1170.png"
+                },
+                "blogImageSize3": {
+                  "width": 1470,
+                  "height": 1744,
+                  "mimeType": "image/png",
+                  "filesize": 3175544,
+                  "filename": "add-banner-1470x1744.png",
+                  "url": "/api/media/file/add-banner-1470x1744.png"
+                }
+              },
+              "createdAt": "2024-09-26T02:42:08.708Z",
+              "updatedAt": "2024-09-26T02:42:08.708Z",
+              "url": "/api/media/file/add-banner.png",
+              "thumbnailURL": null
+            },
+            "project_completion_count": "150+",
+            "completion_status": "Project Complete",
+            "description": "Quis autem vel eum reprehe voluptate velit esse quam",
+            "clients": [
+              {
+                "image": {
+                  "id": "66f4ca9d4a658163fbb15c53",
+                  "filename": "author1.png",
+                  "mimeType": "image/png",
+                  "filesize": 2880,
+                  "width": 50,
+                  "height": 53,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 1045,
+                      "mimeType": "image/png",
+                      "filesize": 494263,
+                      "filename": "author1-986x1045.png",
+                      "url": "/api/media/file/author1-986x1045.png"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1558,
+                      "mimeType": "image/png",
+                      "filesize": 934278,
+                      "filename": "author1-1470x1558.png",
+                      "url": "/api/media/file/author1-1470x1558.png"
+                    }
+                  },
+                  "createdAt": "2024-09-26T02:44:45.565Z",
+                  "updatedAt": "2024-09-26T02:44:45.565Z",
+                  "url": "/api/media/file/author1.png",
+                  "thumbnailURL": null
+                },
+                "id": "66f4cabfe7201a063899d222"
+              },
+              {
+                "image": {
+                  "id": "66f4caae4a658163fbb15c68",
+                  "filename": "author4.png",
+                  "mimeType": "image/png",
+                  "filesize": 2886,
+                  "width": 50,
+                  "height": 53,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 1045,
+                      "mimeType": "image/png",
+                      "filesize": 1008910,
+                      "filename": "author4-986x1045.png",
+                      "url": "/api/media/file/author4-986x1045.png"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1558,
+                      "mimeType": "image/png",
+                      "filesize": 1850912,
+                      "filename": "author4-1470x1558.png",
+                      "url": "/api/media/file/author4-1470x1558.png"
+                    }
+                  },
+                  "createdAt": "2024-09-26T02:45:02.802Z",
+                  "updatedAt": "2024-09-26T02:45:02.802Z",
+                  "url": "/api/media/file/author4.png",
+                  "thumbnailURL": null
+                },
+                "id": "66f4cabfe7201a063899d223"
+              }
+            ],
+            "client_description": "We denounce indignatione dislike mende charms",
+            "id": "66f4cabfe7201a063899d21d",
+            "blockType": "Advertise"
+          },
+          {
+            "title": "Here Are Numerous Topics That Will Enhance Your Skills",
+            "skills": [
+              {
+                "skill_image": {
+                  "id": "66f4cdda4a658163fbb15f61",
+                  "filename": "skill1.png",
+                  "mimeType": "image/png",
+                  "filesize": 2227,
+                  "width": 44,
+                  "height": 35,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 784,
+                      "mimeType": "image/png",
+                      "filesize": 368394,
+                      "filename": "skill1-986x784.png",
+                      "url": "/api/media/file/skill1-986x784.png"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1169,
+                      "mimeType": "image/png",
+                      "filesize": 711216,
+                      "filename": "skill1-1470x1169.png",
+                      "url": "/api/media/file/skill1-1470x1169.png"
+                    }
+                  },
+                  "createdAt": "2024-09-26T02:58:34.646Z",
+                  "updatedAt": "2024-09-26T02:58:34.646Z",
+                  "url": "/api/media/file/skill1.png",
+                  "thumbnailURL": null
+                },
+                "skill_title": "Bootstrap",
+                "id": "66f4cdb56583340638f63a63"
+              },
+              {
+                "skill_image": {
+                  "id": "66f4cdd84a658163fbb15f56",
+                  "filename": "skill2.png",
+                  "mimeType": "image/png",
+                  "filesize": 837,
+                  "width": 35,
+                  "height": 35,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 986,
+                      "mimeType": "image/png",
+                      "filesize": 465710,
+                      "filename": "skill2-986x986.png",
+                      "url": "/api/media/file/skill2-986x986.png"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1470,
+                      "mimeType": "image/png",
+                      "filesize": 854885,
+                      "filename": "skill2-1470x1470.png",
+                      "url": "/api/media/file/skill2-1470x1470.png"
+                    }
+                  },
+                  "createdAt": "2024-09-26T02:58:32.928Z",
+                  "updatedAt": "2024-09-26T02:58:32.928Z",
+                  "url": "/api/media/file/skill2.png",
+                  "thumbnailURL": null
+                },
+                "skill_title": "HTML",
+                "id": "66f4cdcd6583340638f63a64"
+              },
+              {
+                "skill_image": {
+                  "id": "66f4cdf94a658163fbb15f7d",
+                  "filename": "skill4.png",
+                  "mimeType": "image/png",
+                  "filesize": 420,
+                  "width": 35,
+                  "height": 35,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 986,
+                      "mimeType": "image/png",
+                      "filesize": 225472,
+                      "filename": "skill4-986x986.png",
+                      "url": "/api/media/file/skill4-986x986.png"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1470,
+                      "mimeType": "image/png",
+                      "filesize": 447196,
+                      "filename": "skill4-1470x1470.png",
+                      "url": "/api/media/file/skill4-1470x1470.png"
+                    }
+                  },
+                  "createdAt": "2024-09-26T02:59:05.223Z",
+                  "updatedAt": "2024-09-26T02:59:05.223Z",
+                  "url": "/api/media/file/skill4.png",
+                  "thumbnailURL": null
+                },
+                "skill_title": "javascript",
+                "id": "66f4cdee6583340638f63a65"
+              },
+              {
+                "skill_image": {
+                  "id": "66f4ce054a658163fbb15f91",
+                  "filename": "skill5.png",
+                  "mimeType": "image/png",
+                  "filesize": 1500,
+                  "width": 35,
+                  "height": 35,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 986,
+                      "mimeType": "image/png",
+                      "filesize": 831367,
+                      "filename": "skill5-986x986.png",
+                      "url": "/api/media/file/skill5-986x986.png"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1470,
+                      "mimeType": "image/png",
+                      "filesize": 1687197,
+                      "filename": "skill5-1470x1470.png",
+                      "url": "/api/media/file/skill5-1470x1470.png"
+                    }
+                  },
+                  "createdAt": "2024-09-26T02:59:17.986Z",
+                  "updatedAt": "2024-09-26T02:59:17.986Z",
+                  "url": "/api/media/file/skill5.png",
+                  "thumbnailURL": null
+                },
+                "skill_title": "React ",
+                "id": "66f4cdfc6583340638f63a66"
+              }
+            ],
+            "id": "66f4cda16583340638f63a62",
+            "blockType": "Skills"
+          },
+          {
+            "badge_title": "About Company",
+            "title": "We’re Award-Winning Web Development Agency",
+            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptat emey accusantium doloremque laudantium totam aperiam eaque quabillo inventore veritatisey quasi architecto beatae dictasunt\n\n",
+            "percentages": [
+              {
+                "percentage": 20,
+                "title": "Clients Satisfactions",
+                "id": "66f4cabfe7201a063899d21f"
+              },
+              {
+                "percentage": 20,
+                "title": "Success Rating",
+                "id": "66f4cabfe7201a063899d220"
+              },
+              {
+                "percentage": 20,
+                "title": "Project Complete",
+                "id": "66f4cabfe7201a063899d221"
+              }
+            ],
+            "about_image": {
+              "id": "66f4c86d4a658163fbb15c16",
+              "filename": "about-image-shape.png",
+              "mimeType": "image/png",
+              "filesize": 95381,
+              "width": 429,
+              "height": 534,
+              "sizes": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/png",
+                  "filesize": 229820,
+                  "filename": "about-image-shape-400x300.png",
+                  "url": "/api/media/file/about-image-shape-400x300.png"
+                },
+                "blogImageSize2": {
+                  "width": 986,
+                  "height": 1227,
+                  "mimeType": "image/png",
+                  "filesize": 1408869,
+                  "filename": "about-image-shape-986x1227.png",
+                  "url": "/api/media/file/about-image-shape-986x1227.png"
+                },
+                "blogImageSize3": {
+                  "width": 1470,
+                  "height": 1830,
+                  "mimeType": "image/png",
+                  "filesize": 2973473,
+                  "filename": "about-image-shape-1470x1830.png",
+                  "url": "/api/media/file/about-image-shape-1470x1830.png"
+                }
+              },
+              "createdAt": "2024-09-26T02:35:25.149Z",
+              "updatedAt": "2024-09-26T02:35:25.149Z",
+              "url": "/api/media/file/about-image-shape.png",
+              "thumbnailURL": null
+            },
+            "id": "66f4cabfe7201a063899d21c",
+            "blockType": "About"
+          },
+          {
+            "badge_title": "Popular Services",
+            "title": "We Provide Amazing Web Design Solutions",
+            "services": [
+              {
+                "service_icon": "flaticon-development",
+                "title": "Web Development",
+                "image": {
+                  "id": "66f4d78b4a658163fbb160ea",
+                  "filename": "service1.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 6043,
+                  "width": 280,
+                  "height": 116,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 408,
+                      "mimeType": "image/jpeg",
+                      "filesize": 28614,
+                      "filename": "service1-986x408.jpg",
+                      "url": "/api/media/file/service1-986x408.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 609,
+                      "mimeType": "image/jpeg",
+                      "filesize": 48663,
+                      "filename": "service1-1470x609.jpg",
+                      "url": "/api/media/file/service1-1470x609.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:39:55.042Z",
+                  "updatedAt": "2024-09-26T03:39:55.042Z",
+                  "url": "/api/media/file/service1.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4d7623e69d0063831c1c9"
+              },
+              {
+                "service_icon": "flaticon-mobile-development",
+                "title": "Mobile Application",
+                "image": {
+                  "id": "66f4d7a44a658163fbb16103",
+                  "filename": "service2.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 6263,
+                  "width": 280,
+                  "height": 116,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 408,
+                      "mimeType": "image/jpeg",
+                      "filesize": 28047,
+                      "filename": "service2-986x408.jpg",
+                      "url": "/api/media/file/service2-986x408.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 609,
+                      "mimeType": "image/jpeg",
+                      "filesize": 47296,
+                      "filename": "service2-1470x609.jpg",
+                      "url": "/api/media/file/service2-1470x609.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:40:20.751Z",
+                  "updatedAt": "2024-09-26T03:40:20.751Z",
+                  "url": "/api/media/file/service2.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4d78e3e69d0063831c1ca"
+              },
+              {
+                "service_icon": "flaticon-brainstorming",
+                "title": "Team Agumentation",
+                "image": {
+                  "id": "66f4d7bc4a658163fbb1611c",
+                  "filename": "service3.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 8494,
+                  "width": 280,
+                  "height": 116,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 408,
+                      "mimeType": "image/jpeg",
+                      "filesize": 41324,
+                      "filename": "service3-986x408.jpg",
+                      "url": "/api/media/file/service3-986x408.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 609,
+                      "mimeType": "image/jpeg",
+                      "filesize": 70053,
+                      "filename": "service3-1470x609.jpg",
+                      "url": "/api/media/file/service3-1470x609.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:40:44.217Z",
+                  "updatedAt": "2024-09-26T03:40:44.217Z",
+                  "url": "/api/media/file/service3.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4d7a73e69d0063831c1cb"
+              },
+              {
+                "service_icon": "flaticon-abstract",
+                "title": "Design & Branding",
+                "image": {
+                  "id": "66f4d7dc4a658163fbb16136",
+                  "filename": "service4.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 7389,
+                  "width": 280,
+                  "height": 116,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 408,
+                      "mimeType": "image/jpeg",
+                      "filesize": 37913,
+                      "filename": "service4-986x408.jpg",
+                      "url": "/api/media/file/service4-986x408.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 609,
+                      "mimeType": "image/jpeg",
+                      "filesize": 64024,
+                      "filename": "service4-1470x609.jpg",
+                      "url": "/api/media/file/service4-1470x609.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:41:16.169Z",
+                  "updatedAt": "2024-09-26T03:41:16.169Z",
+                  "url": "/api/media/file/service4.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4d7c03e69d0063831c1cc"
+              },
+              {
+                "service_icon": "flaticon-ux",
+                "title": "React Js Development",
+                "image": {
+                  "id": "66f4d7f34a658163fbb1614f",
+                  "filename": "service5.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 5587,
+                  "width": 280,
+                  "height": 116,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 408,
+                      "mimeType": "image/jpeg",
+                      "filesize": 25686,
+                      "filename": "service5-986x408.jpg",
+                      "url": "/api/media/file/service5-986x408.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 609,
+                      "mimeType": "image/jpeg",
+                      "filesize": 44340,
+                      "filename": "service5-1470x609.jpg",
+                      "url": "/api/media/file/service5-1470x609.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:41:39.191Z",
+                  "updatedAt": "2024-09-26T03:41:39.191Z",
+                  "url": "/api/media/file/service5.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4d7df3e69d0063831c1cd"
+              }
+            ],
+            "id": "66f4d7503e69d0063831c1c8",
+            "blockType": "Service"
+          },
+          {
+            "headlines": [
+              {
+                "title": "Web Development",
+                "id": "66f4d9781a86d406385e097c"
+              },
+              {
+                "title": "SEO Optimization",
+                "id": "66f4d9801a86d406385e097d"
+              },
+              {
+                "title": "Graphics",
+                "id": "66f4d9841a86d406385e097e"
+              },
+              {
+                "title": "Product Design",
+                "id": "66f4d98c1a86d406385e097f"
+              }
+            ],
+            "id": "66f4d96a1a86d406385e097b",
+            "blockType": "Headline"
+          },
+          {
+            "badge_title": "Recent Works Gallery",
+            "title": "Let’s Look Our Recent Project Gallery",
+            "recent_works": [
+              {
+                "title": "Business Task Management Dashboard Design",
+                "image": {
+                  "id": "66f4daeb4a658163fbb1650c",
+                  "filename": "project-timeline-two1.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 9761,
+                  "width": 298,
+                  "height": 224,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 741,
+                      "mimeType": "image/jpeg",
+                      "filesize": 44178,
+                      "filename": "project-timeline-two1-986x741.jpg",
+                      "url": "/api/media/file/project-timeline-two1-986x741.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1105,
+                      "mimeType": "image/jpeg",
+                      "filesize": 75902,
+                      "filename": "project-timeline-two1-1470x1105.jpg",
+                      "url": "/api/media/file/project-timeline-two1-1470x1105.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:54:19.895Z",
+                  "updatedAt": "2024-09-26T03:54:19.895Z",
+                  "url": "/api/media/file/project-timeline-two1.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4dac5054afa0638e25f6f"
+              },
+              {
+                "title": "Mobile Application Design & Development",
+                "image": {
+                  "id": "66f4daeb4a658163fbb1650c",
+                  "filename": "project-timeline-two1.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 9761,
+                  "width": 298,
+                  "height": 224,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 741,
+                      "mimeType": "image/jpeg",
+                      "filesize": 44178,
+                      "filename": "project-timeline-two1-986x741.jpg",
+                      "url": "/api/media/file/project-timeline-two1-986x741.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1105,
+                      "mimeType": "image/jpeg",
+                      "filesize": 75902,
+                      "filename": "project-timeline-two1-1470x1105.jpg",
+                      "url": "/api/media/file/project-timeline-two1-1470x1105.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:54:19.895Z",
+                  "updatedAt": "2024-09-26T03:54:19.895Z",
+                  "url": "/api/media/file/project-timeline-two1.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4dafeb150263ef2ed90d7"
+              },
+              {
+                "title": "PSD, Figma & XD to HTML Design & Development",
+                "image": {
+                  "id": "66f4daeb4a658163fbb1650c",
+                  "filename": "project-timeline-two1.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 9761,
+                  "width": 298,
+                  "height": 224,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 741,
+                      "mimeType": "image/jpeg",
+                      "filesize": 44178,
+                      "filename": "project-timeline-two1-986x741.jpg",
+                      "url": "/api/media/file/project-timeline-two1-986x741.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1105,
+                      "mimeType": "image/jpeg",
+                      "filesize": 75902,
+                      "filename": "project-timeline-two1-1470x1105.jpg",
+                      "url": "/api/media/file/project-timeline-two1-1470x1105.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:54:19.895Z",
+                  "updatedAt": "2024-09-26T03:54:19.895Z",
+                  "url": "/api/media/file/project-timeline-two1.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4dafcb150263ef2ed90d1"
+              },
+              {
+                "title": "Business Development and Marketing Strategy",
+                "image": {
+                  "id": "66f4daeb4a658163fbb1650c",
+                  "filename": "project-timeline-two1.jpg",
+                  "mimeType": "image/jpeg",
+                  "filesize": 9761,
+                  "width": 298,
+                  "height": 224,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 741,
+                      "mimeType": "image/jpeg",
+                      "filesize": 44178,
+                      "filename": "project-timeline-two1-986x741.jpg",
+                      "url": "/api/media/file/project-timeline-two1-986x741.jpg"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1105,
+                      "mimeType": "image/jpeg",
+                      "filesize": 75902,
+                      "filename": "project-timeline-two1-1470x1105.jpg",
+                      "url": "/api/media/file/project-timeline-two1-1470x1105.jpg"
+                    }
+                  },
+                  "createdAt": "2024-09-26T03:54:19.895Z",
+                  "updatedAt": "2024-09-26T03:54:19.895Z",
+                  "url": "/api/media/file/project-timeline-two1.jpg",
+                  "thumbnailURL": null
+                },
+                "id": "66f4daf8b150263ef2ed90cb"
+              }
+            ],
+            "id": "66f4dabc054afa0638e25f6e",
+            "blockType": "RecentWork"
+          },
+          {
+            "headlines": [
+              {
+                "title": "Web Development",
+                "id": "66f4db616342b60638544a63"
+              },
+              {
+                "title": "SEO Optimization",
+                "id": "66f4db6b6342b60638544a64"
+              },
+              {
+                "title": "Graphics",
+                "id": "66f4db796342b60638544a65"
+              },
+              {
+                "title": "Product Design",
+                "id": "66f4db816342b60638544a66"
+              }
+            ],
+            "id": "66f4db5d6342b60638544a62",
+            "blockType": "Headline"
+          },
+          {
+            "image": {
+              "id": "66f4e3f126de1393a7acecfb",
+              "filename": "testimonials-four-1.png",
+              "mimeType": "image/png",
+              "filesize": 85028,
+              "width": 429,
+              "height": 534,
+              "sizes": {
+                "thumbnail": {
+                  "width": 400,
+                  "height": 300,
+                  "mimeType": "image/png",
+                  "filesize": 196435,
+                  "filename": "testimonials-four-1-400x300.png",
+                  "url": "/api/media/file/testimonials-four-1-400x300.png"
+                },
+                "blogImageSize2": {
+                  "width": 986,
+                  "height": 1227,
+                  "mimeType": "image/png",
+                  "filesize": 1171415,
+                  "filename": "testimonials-four-1-986x1227.png",
+                  "url": "/api/media/file/testimonials-four-1-986x1227.png"
+                },
+                "blogImageSize3": {
+                  "width": 1470,
+                  "height": 1830,
+                  "mimeType": "image/png",
+                  "filesize": 2390955,
+                  "filename": "testimonials-four-1-1470x1830.png",
+                  "url": "/api/media/file/testimonials-four-1-1470x1830.png"
+                }
+              },
+              "createdAt": "2024-09-26T04:32:49.619Z",
+              "updatedAt": "2024-09-26T04:32:49.619Z",
+              "url": "/api/media/file/testimonials-four-1.png",
+              "thumbnailURL": null
+            },
+            "testimonials": [
+              {
+                "reviewer_name": "James N.Jhonson",
+                "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos repudiandae dolor quae in rem, deleniti blanditiis similique nisi optio saepe facere vero sint. Ab consectetur perferendis officia quam ducimus! Pariatur!",
+                "reviewer_image": {
+                  "id": "66f4caae4a658163fbb15c68",
+                  "filename": "author4.png",
+                  "mimeType": "image/png",
+                  "filesize": 2886,
+                  "width": 50,
+                  "height": 53,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 1045,
+                      "mimeType": "image/png",
+                      "filesize": 1008910,
+                      "filename": "author4-986x1045.png",
+                      "url": "/api/media/file/author4-986x1045.png"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1558,
+                      "mimeType": "image/png",
+                      "filesize": 1850912,
+                      "filename": "author4-1470x1558.png",
+                      "url": "/api/media/file/author4-1470x1558.png"
+                    }
+                  },
+                  "createdAt": "2024-09-26T02:45:02.802Z",
+                  "updatedAt": "2024-09-26T02:45:02.802Z",
+                  "url": "/api/media/file/author4.png",
+                  "thumbnailURL": null
+                },
+                "reviewer_role": "CEO & Founder",
+                "rating": 4,
+                "id": "66f4e4142614911530881895"
+              },
+              {
+                "reviewer_name": "James N.Jhonson",
+                "review": "Lorem ipsum dolor sit amet consec",
+                "reviewer_image": {
+                  "id": "66f4caae4a658163fbb15c68",
+                  "filename": "author4.png",
+                  "mimeType": "image/png",
+                  "filesize": 2886,
+                  "width": 50,
+                  "height": 53,
+                  "sizes": {
+                    "thumbnail": {
+                      "width": null,
+                      "height": null,
+                      "mimeType": null,
+                      "filesize": null,
+                      "filename": null,
+                      "url": null
+                    },
+                    "blogImageSize2": {
+                      "width": 986,
+                      "height": 1045,
+                      "mimeType": "image/png",
+                      "filesize": 1008910,
+                      "filename": "author4-986x1045.png",
+                      "url": "/api/media/file/author4-986x1045.png"
+                    },
+                    "blogImageSize3": {
+                      "width": 1470,
+                      "height": 1558,
+                      "mimeType": "image/png",
+                      "filesize": 1850912,
+                      "filename": "author4-1470x1558.png",
+                      "url": "/api/media/file/author4-1470x1558.png"
+                    }
+                  },
+                  "createdAt": "2024-09-26T02:45:02.802Z",
+                  "updatedAt": "2024-09-26T02:45:02.802Z",
+                  "url": "/api/media/file/author4.png",
+                  "thumbnailURL": null
+                },
+                "reviewer_role": "CEO & Founder",
+                "rating": 1,
+                "id": "66f4e446aa14610f2f8a237b"
+              }
+            ],
+            "id": "66f4e2a42614911530881894",
+            "blockType": "Testimonial"
+          }
+        ],
+        "isHome": true,
+        "isDynamic": false,
+        "slugMode": "generate",
+        "slug": "home-page",
+        "pathMode": "generate",
+        "path": "/",
+        "breadcrumbs": [
+          {
+            "doc": "66f4cabf4a658163fbb15c78",
+            "url": "/",
+            "label": "Home",
+            "id": "66f4f0eb5ce9bb1a3c1e7ed8"
+          }
+        ],
+        "meta": {},
+        "_status": "published",
+        "createdAt": "2024-09-26T02:45:19.448Z",
+        "updatedAt": "2024-09-26T05:28:11.940Z"
+      }
+    }
+  }
+]
