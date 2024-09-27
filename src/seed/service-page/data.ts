@@ -9,7 +9,7 @@ export type ServiceImageType = {
 }
 
 export const ServicePageData: ServicePageDataType = {
-  title: 'Service',
+  title: 'Services',
   isHome: false,
   _status: 'published',
   layout: [

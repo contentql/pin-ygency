@@ -12,6 +12,7 @@ import { seedBlogsPage } from '@/seed/blogs-page'
 import { seedHomePage } from '@/seed/home-page'
 import { seedPricingPage } from '@/seed/pricing-page'
 import { seedServicePage } from '@/seed/service-page'
+import { seedSiteSettingsGlobal } from '@/seed/site-settings'
 import { seedTagDetailsPage } from '@/seed/tag-details-page'
 import { seedTags } from '@/seed/tags'
 import { seedTagsPage } from '@/seed/tags-page'
@@ -39,6 +40,7 @@ export const seedRouter = router({
       await seedBlogDetailsPage()
       await seedTagDetailsPage()
       await seedAuthorDetailsPage()
+      await seedSiteSettingsGlobal()
 
       return { success: true }
     } catch (error: any) {

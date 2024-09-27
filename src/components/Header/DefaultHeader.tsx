@@ -34,6 +34,8 @@ const DefaultHeader = ({
   let logoDetails = {
     url: '',
     alt: '',
+    height: 0,
+    width: 0,
   }
 
   const navLinks = menuLinks?.length ? generateMenuLinks(menuLinks) : []
@@ -42,11 +44,15 @@ const DefaultHeader = ({
     logoDetails = {
       url: logo?.imageUrl,
       alt: `${headerData.general?.title} logo`,
+      height: logo?.height!,
+      width: logo?.width!,
     }
   } else if (Object.keys(logo).length && typeof logo?.imageUrl !== 'string') {
     logoDetails = {
       url: logo.imageUrl?.url!,
       alt: logo.imageUrl?.alt || `${headerData.general?.title} logo`,
+      height: logo?.height!,
+      width: logo?.width!,
     }
   }
 
@@ -68,8 +74,8 @@ const DefaultHeader = ({
                     <Image
                       src={logoDetails.url}
                       alt={logoDetails.alt}
-                      width={24}
-                      height={24}
+                      width={logoDetails?.width ? logoDetails?.width : 24}
+                      height={logoDetails?.height ? logoDetails?.height : 24}
                     />
                   )}
                 </Link>

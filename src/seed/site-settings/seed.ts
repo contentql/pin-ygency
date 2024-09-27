@@ -2,164 +2,92 @@ import { collectionSlug } from '@contentql/core'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 
+import { fullLogo, logo, siteSettingsData, siteSettingsDataType } from './data'
+
 const payload = await getPayloadHMR({ config: configPromise })
 
-export const seedSiteSettings = async () => {
+const seed = async () => {
   try {
-    const result = await payload.updateGlobal({
-      slug: collectionSlug['site-settings'],
-      data: {
-        general: {
-          title: 'ContentQL Theme Template',
-          description: 'Create your theme by using the our template',
-          keywords: ['ContentQL', 'Payload CMS', 'NextJS'],
-          // ! add favicon, og-image-url
-          faviconUrl: '',
-          ogImageUrl: '',
-        },
-        navbar: {
-          logo: {
-            imageUrl: '',
-            description: 'ContentQL Logo',
-            height: 24,
-            width: 24,
-          },
-          menuLinks: [
-            {
-              group: true,
-              menuLink: {
-                type: 'custom',
-                newTab: true,
-                label: '',
-              },
-              menuLinkGroup: {
-                groupTitle: 'Learn',
-
-                groupLinks: [
-                  {
-                    type: 'custom',
-                    newTab: true,
-                    label: 'Youtube',
-                    url: 'https://youtube.com',
-                  },
-                  {
-                    type: 'custom',
-                    newTab: true,
-                    label: 'Twitter',
-                    url: 'https://twitter.com',
-                  },
-                  {
-                    type: 'reference',
-                    label: 'About',
-                    // ! add page-id here
-                    page: {
-                      relationTo: 'pages',
-                      value: '66ebd1b66b06e5c5dffd2c7b',
-                    },
-                  },
-                ],
-              },
-            },
-
-            {
-              group: false,
-
-              menuLink: {
-                type: 'reference',
-                label: 'Home',
-
-                // ! add page-id here
-                page: {
-                  relationTo: 'pages',
-                  value: '66ebd1b66b06e5c5dffd2c7b',
-                },
-              },
-
-              menuLinkGroup: {
-                groupLinks: [],
-              },
-              id: '66ecd872fe8998361b64212c',
-            },
-          ],
-        },
-        footer: {
-          logo: {
-            height: 24,
-            width: 24,
-            description: 'Content Creations made Simple',
-            // ! add image data here
-            imageUrl: '',
-          },
-          copyright: '© 2024 all rights reserved',
-          footerLinks: [
-            {
-              group: true,
-              menuLink: {
-                type: 'custom',
-                newTab: true,
-                label: '',
-              },
-              menuLinkGroup: {
-                groupTitle: 'Learn',
-
-                groupLinks: [
-                  {
-                    type: 'custom',
-                    newTab: true,
-                    label: 'Youtube',
-                    url: 'https://youtube.com',
-                  },
-                  {
-                    type: 'custom',
-                    newTab: true,
-                    label: 'Twitter',
-                    url: 'https://twitter.com',
-                  },
-                  {
-                    type: 'reference',
-                    label: 'About',
-                    // ! add page-id here
-                    page: {
-                      relationTo: 'pages',
-                      value: '66ebd1b66b06e5c5dffd2c7b',
-                    },
-                  },
-                ],
-              },
-            },
-
-            {
-              group: false,
-
-              menuLink: {
-                type: 'reference',
-                label: 'Home',
-
-                // ! add page-id here
-                page: {
-                  relationTo: 'pages',
-                  value: '66ebd1b66b06e5c5dffd2c7b',
-                },
-              },
-
-              menuLinkGroup: {
-                groupLinks: [],
-              },
-              id: '66ecd872fe8998361b64212c',
-            },
-          ],
-          socialLinks: [
-            {
-              platform: 'youtube',
-              value: 'https://youtube.com',
-            },
-            {
-              platform: 'github',
-              value: 'https://github.com/contentql',
-            },
-          ],
+    const { docs: pages, totalDocs: totalPages } = await payload.find({
+      collection: collectionSlug['pages'],
+      where: {
+        slug: {
+          in: ['about', 'services', 'blogs', 'tags', 'authors', 'pricing'],
         },
       },
+    })
+
+    console.log('total docs', { totalPages, pages })
+
+    const fullLogoImageSeedResult = await payload.create({
+      collection: 'media',
+      data: { alt: fullLogo?.alt },
+      filePath: fullLogo?.filePath,
+    })
+
+    const logoImageSeedResult = await payload.create({
+      collection: 'media',
+      data: { alt: logo?.alt },
+      filePath: logo?.filePath,
+    })
+
+    const formattedSiteSettingsData: siteSettingsDataType = {
+      ...siteSettingsData,
+      general: {
+        ...siteSettingsData?.general,
+        faviconUrl: logoImageSeedResult?.id,
+        ogImageUrl: logoImageSeedResult?.id,
+      },
+      navbar: {
+        ...siteSettingsData?.navbar,
+        logo: {
+          ...siteSettingsData?.navbar?.logo,
+          imageUrl: fullLogoImageSeedResult?.id,
+        },
+        menuLinks: siteSettingsData?.navbar?.menuLinks?.map((link, index) => {
+          return {
+            ...link,
+
+            menuLink: {
+              ...link?.menuLink,
+              label: pages?.at(index)?.title || 'Default Title',
+              page: {
+                relationTo: 'pages',
+                value: pages?.at(index)?.id as string,
+              },
+            },
+          }
+        }),
+      },
+      footer: {
+        ...siteSettingsData?.footer,
+        logo: {
+          ...siteSettingsData?.navbar?.logo,
+          imageUrl: fullLogoImageSeedResult?.id,
+        },
+        footerLinks: siteSettingsData?.footer?.footerLinks?.map(
+          (link, index) => {
+            return {
+              ...link,
+              menuLink: {
+                ...link?.menuLink,
+                label: pages?.at(index)?.title || 'Default Title',
+                page: {
+                  relationTo: 'pages',
+                  value: pages?.at(index)?.id as string,
+                },
+              },
+            }
+          },
+        ),
+      },
+    }
+
+    console.log('complete data', formattedSiteSettingsData)
+
+    const result = await payload.updateGlobal({
+      slug: collectionSlug['site-settings'],
+      data: formattedSiteSettingsData,
     })
 
     return result
@@ -167,3 +95,4 @@ export const seedSiteSettings = async () => {
     throw error
   }
 }
+export default seed
