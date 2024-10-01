@@ -73,6 +73,23 @@ const SignInForm: React.FC = () => {
           <div className='cross-icon'>
             <span className='fa fa-times' />
           </div>
+          <div>
+            {isSignInSuccess ? (
+              <p style={{ color: 'green', fontSize: '18px' }}>
+                {' '}
+                Successfully logged in! Redirecting...
+              </p>
+            ) : isSignInError ? (
+              <p
+                style={{
+                  color: 'red',
+                  fontSize: '18px',
+                  fontWeight: 'normal',
+                }}>
+                Invalid email or password
+              </p>
+            ) : null}
+          </div>
           <div className='title'>
             <h4>Sign In</h4>
           </div>
@@ -88,7 +105,16 @@ const SignInForm: React.FC = () => {
                   placeholder='Email Address'
                   required
                 />
-                {errors?.email && <p>{errors.email.message}</p>}
+                {errors?.email && (
+                  <p
+                    style={{
+                      color: 'red',
+                      fontSize: '14px',
+                      textAlign: 'left',
+                    }}>
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
               <div className='form-group'>
                 <input
@@ -99,7 +125,16 @@ const SignInForm: React.FC = () => {
                   placeholder='password'
                   required
                 />
-                {errors?.password && <p>{errors.password.message}</p>}
+                {errors?.password && (
+                  <p
+                    style={{
+                      color: 'red',
+                      fontSize: '14px',
+                      textAlign: 'left',
+                    }}>
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
               <div className='form-group'>
                 <button
