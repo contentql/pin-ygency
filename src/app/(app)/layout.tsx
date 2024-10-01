@@ -1,7 +1,7 @@
 import { env } from '@env'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { Toaster } from 'sonner'
+import { Toaster } from 'react-hot-toast'
 
 import '@/app/(app)/globals.css'
 import Provider from '@/trpc/Provider'
@@ -110,13 +110,13 @@ export default async function RootLayout({
           <link rel='stylesheet' href='assets/css/slick.min.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
           <link rel='stylesheet' href='assets/css/style.css' />
+          {/* eslint-disable-next-line @next/next/no-css-tags */}
+          <link rel='stylesheet' href='assets/css/custom.css' />
         </head>
       </head>
       <body className={`${inter.className}`}>
         <Provider>{children}</Provider>
-
-        {/* Sonnar toast library */}
-        <Toaster richColors />
+        <Toaster position='bottom-right' />
       </body>
     </html>
   )

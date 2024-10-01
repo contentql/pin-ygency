@@ -82,3 +82,8 @@
   margin-right: 0 !important;
   padding: 15px !important;
 } */
+
+.sooner-toast {
+  background-color: #4a90e2; /* Light blue background */
+  color: #ffffff; /* White text */
+}
