@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import { generateMenuLinks } from '@/utils/generateMenuLinks'
 import { sidebarClick, sidebarSignUpClick, stickyNav } from '@/utils/nav'
 
+import UserDropdown from './Dropdown'
 import Nav from './Nav'
 
 const DefaultHeader = ({
@@ -86,7 +87,9 @@ const DefaultHeader = ({
               <Nav singleMenu={singleMenu} headerData={headerData?.navbar} />
               {/* Main Menu End*/}
             </div>
-            {!user && (
+            {user ? (
+              <UserDropdown user={user} />
+            ) : (
               <>
                 <div className='menu-btns'>
                   <div className='menu-sidebar'>
