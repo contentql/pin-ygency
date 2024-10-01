@@ -7007,10 +7007,14 @@ h6,
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+.tag-item .image {
+  position: relative;
+}
 .tag-item .image img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  position: relative;
 }
 .tag-item:after,
 .tag-item:before {
@@ -13125,7 +13129,9 @@ blockquote .blockquote-footer:before {
 }
 .menu-sidebar-signup button {
   cursor: pointer;
-  width: 80px;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 50px;
   background: var(--ygency-primary-color);
   line-height: 50px;

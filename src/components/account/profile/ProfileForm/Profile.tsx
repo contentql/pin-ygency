@@ -3,8 +3,8 @@
 import { Media, User } from '@payload-types'
 import Image from 'next/image'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 import { HiOutlinePencilAlt, HiUpload, HiX } from 'react-icons/hi'
-import { toast } from 'sonner'
 
 import { trpc } from '@/trpc/client'
 import uploadMedia from '@/utils/uploadMedia'

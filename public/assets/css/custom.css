@@ -93,3 +93,157 @@
   width: 100%;
   height: 45px;
 }
+
+/* profile */
+
+.cs_profile {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 100px;
+  @media screen and (max-width: 800px) {
+    gap: 15px;
+  }
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+.p-20 {
+  padding: 40px;
+}
+
+.margin-70 {
+  padding: 120px;
+}
+
+@media screen and (max-width: 1999px) {
+  .margin-70 {
+    padding: 40px 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .margin-70 {
+    padding: 10px;
+  }
+}
+
+.cs_left_20 {
+  width: 320px;
+  position: sticky;
+  top: 10px;
+  @media screen and (max-width: 600px) {
+    position: static;
+    width: 100%;
+  }
+  height: 100%;
+}
+.cs_right_80 {
+  width: 80%;
+  position: relative;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+
+.upload-image {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  cursor: pointer;
+}
+
+.cs_profile_form {
+  margin-top: 80px;
+  @media screen and (max-width: 600px) {
+    margin-top: 20px;
+  }
+}
+
+/* modal */
+.modal-custom {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 20px;
+}
+
+.modal-header .close {
+  color: white;
+  opacity: 0.8;
+}
+
+.modal-header .close:hover {
+  opacity: 1;
+}
+.btn-primary {
+  background-color: #55e6a5;
+  border-color: #55e6a5;
+  color: white;
+  outline: none;
+}
+
+/* Hover state */
+.btn-primary:hover {
+  background-color: #3ecb91; /* Slightly darker shade for hover */
+  border-color: #3ecb91;
+}
+
+/* Focus state */
+.btn-primary:focus {
+  outline: none; /* Remove default outline */
+  background-color: #55e6a5; /* Keep the same background on focus */
+  border-color: #55e6a5;
+  box-shadow: 0 0 0 0.2rem rgba(85, 230, 165, 0.5); /* Add a focus ring */
+}
+
+/* Active state */
+.btn-primary:active {
+  background-color: #45d69a; /* Darker shade for active state */
+  border-color: #45d69a;
+}
+
+/* Disabled state */
+.btn-primary:disabled {
+  background-color: #b2f5e1;
+  border-color: #b2f5e1;
+  color: rgba(255, 255, 255, 0.5);
+}
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for the backdrop */
+  backdrop-filter: blur(24px); /* Blur effect for the background */
+}
+
+.modal-custom .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-custom .image-types {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.user-image-upload {
+  background-color: #545b62;
+  width: 160px;
+  border-radius: 50%;
+  height: 160px;
+  /* margin: auto; */
+}

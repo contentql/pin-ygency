@@ -1,11 +1,11 @@
 import { env } from '@env'
 import { Media } from '@payload-types'
-import { toast } from 'sonner'
+import toast from 'react-hot-toast'
 
 async function uploadMedia(files: FileList | null): Promise<Media | undefined> {
   const formData = new FormData()
   if (!files) {
-    toast.info(`please select a file to upload`)
+    toast.error(`please select a file to upload`)
     return undefined
   }
   formData.append('file', files[0])
