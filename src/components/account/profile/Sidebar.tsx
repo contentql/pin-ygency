@@ -15,7 +15,6 @@ const Sidebar = ({ userData }: { userData: User }) => {
   const [userImage, setUserImage] = useState(null)
   // this is state to track uploading image, updating user profile
   const [uploadingImage, setUploadingImage] = useState(false)
-  const [open, setOpen] = useState(false)
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -38,7 +37,7 @@ const Sidebar = ({ userData }: { userData: User }) => {
 
   const { mutate: uploadUserImage } = trpc.user.updateUserImage.useMutation({
     onSuccess: async data => {
-      setOpen(false)
+      setShow(false)
       reFetchUser()
       toast.success(`Image updated successfully`)
       setUserImage(null)

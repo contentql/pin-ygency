@@ -13139,6 +13139,18 @@ blockquote .blockquote-footer:before {
   text-align: center;
   color: white;
 }
+.menu-sidebar-delete button {
+  cursor: pointer;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 50px;
+  background: red;
+  line-height: 50px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+}
 .menu-sidebar-signup button img {
   margin-top: -4px;
 }

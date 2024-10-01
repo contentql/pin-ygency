@@ -161,6 +161,13 @@
   }
 }
 
+.user-action {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
 /* modal */
 .modal-custom {
   background-color: #000;
@@ -208,7 +215,7 @@
 .btn-primary:disabled {
   background-color: #b2f5e1;
   border-color: #b2f5e1;
-  color: rgba(255, 255, 255, 0.5);
+  color: white;
 }
 .btn-secondary {
   background-color: #6c757d;
