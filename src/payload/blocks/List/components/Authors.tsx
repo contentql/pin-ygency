@@ -2,12 +2,15 @@ import { Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import TagSkeleton from '@/components/skeletons/TagSkeleton'
 import { trpc } from '@/trpc/client'
 
 const Authors = () => {
-  const { data: authorsWithCount } =
+  const { data: authorsWithCount, isLoading } =
     trpc.author.getAllAuthorsWithCount.useQuery()
-  return (
+  return isLoading ? (
+    <TagSkeleton />
+  ) : (
     <section className='blog-page-area py-130 rpy-100 rel z-1'>
       <div className='container-1290 container'>
         <div className='row'>

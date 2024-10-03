@@ -4,7 +4,7 @@ const TagSkeleton = () => {
       <div className='container-1290 container'>
         <div className='row'>
           <div className='col-xl-3 col-lg-4 col-sm-6'>
-            <div className='tag-item '>
+            <div className='skeleton tag-item '>
               <div className='content'>
                 <div className='skeleton-tag-image'></div>{' '}
                 {/* For the tag image */}
@@ -14,7 +14,7 @@ const TagSkeleton = () => {
             </div>
           </div>
           <div className='col-xl-3 col-lg-4 col-sm-6'>
-            <div className='tag-item '>
+            <div className='skeleton tag-item'>
               <div className='content'>
                 <div className='skeleton-tag-image'></div>{' '}
                 {/* For the tag image */}
@@ -24,7 +24,7 @@ const TagSkeleton = () => {
             </div>
           </div>
           <div className='col-xl-3 col-lg-4 col-sm-6'>
-            <div className='tag-item '>
+            <div className='skeleton tag-item '>
               <div className='content'>
                 <div className='skeleton-tag-image'></div>{' '}
                 {/* For the tag image */}
@@ -34,7 +34,7 @@ const TagSkeleton = () => {
             </div>
           </div>
           <div className='col-xl-3 col-lg-4 col-sm-6'>
-            <div className='tag-item '>
+            <div className='skeleton tag-item '>
               <div className='content'>
                 <div className='skeleton-tag-image'></div>{' '}
                 {/* For the tag image */}
