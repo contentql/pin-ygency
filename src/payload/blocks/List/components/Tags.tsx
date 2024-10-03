@@ -2,11 +2,14 @@ import { Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import TagSkeleton from '@/components/skeletons/TagSkeleton'
 import { trpc } from '@/trpc/client'
 
 const Tags = () => {
-  const { data } = trpc.tag.getAllTags.useQuery()
-  return (
+  const { data, isLoading } = trpc.tag.getAllTags.useQuery()
+  return isLoading ? (
+    <TagSkeleton />
+  ) : (
     <section className='blog-page-area py-130 rpy-100 rel z-1'>
       <div className='container-1290 container'>
         <div className='row'>
