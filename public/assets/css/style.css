@@ -4630,13 +4630,14 @@ h6,
 }
 .menu-sidebar button {
   cursor: pointer;
-  width: 80px;
-  height: 50px;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
   background: var(--ygency-primary-color);
-  line-height: 50px;
-  border-radius: 20px;
-  color: white;
+  border-radius: 5px;
   text-align: center;
+  color: var(--ygency-dark-color);
 }
 .menu-sidebar button img {
   margin-top: -4px;
@@ -13132,12 +13133,11 @@ blockquote .blockquote-footer:before {
   width: fit-content;
   padding-left: 10px;
   padding-right: 10px;
-  height: 50px;
+  height: 40px;
   background: var(--ygency-primary-color);
-  line-height: 50px;
-  border-radius: 20px;
+  border-radius: 5px;
   text-align: center;
-  color: white;
+  color: var(--ygency-dark-color);
 }
 .menu-sidebar-delete button {
   cursor: pointer;

@@ -1,6 +1,7 @@
 import { Media, User } from '@payload-types'
 import Image from 'next/image'
 import { Dropdown } from 'react-bootstrap'
+import { FaRegCircleUser } from 'react-icons/fa6'
 
 import { signOut } from '@/utils/signOut'
 
@@ -9,13 +10,17 @@ const UserDropdown = ({ user }: { user: User }) => {
     <Dropdown>
       <Dropdown.Toggle id='dropdown-basic' as='div' bsPrefix='custom-toggle'>
         <div className='user-dropdown'>
-          <Image
-            style={{ objectFit: 'fill' }}
-            src={(user?.imageUrl as Media)?.url || ''}
-            alt='user'
-            width={50}
-            height={50}
-          />
+          {user?.imageUrl ? (
+            <Image
+              style={{ objectFit: 'contain' }}
+              src={(user?.imageUrl as Media)?.url || ''}
+              alt='user'
+              width={50}
+              height={50}
+            />
+          ) : (
+            <FaRegCircleUser title='user profile' size={38} />
+          )}
         </div>
       </Dropdown.Toggle>
 

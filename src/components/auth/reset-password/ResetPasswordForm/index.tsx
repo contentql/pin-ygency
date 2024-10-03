@@ -1,12 +1,11 @@
 'use client'
 
-import { Input, LabelInputContainer } from '../../common/fields'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { z } from 'zod'
 
-import { Alert, AlertDescription } from '@/components/common/Alert'
 import { trpc } from '@/trpc/client'
 import { ResetPasswordSchema } from '@/trpc/routers/auth/validator'
 
@@ -36,11 +35,11 @@ const ResetPasswordForm: React.FC<Props> = ({ token }) => {
     isSuccess: isResetPasswordSuccess,
   } = trpc.auth.resetPassword.useMutation({
     onSuccess: () => {
-      //   toast.success('Changed your password!')
-      router.push('/sign-in')
+      toast.success('Password successfully updated, please login')
+      router.push('/')
     },
     onError: () => {
-      //   toast.error('Not able to change your password, try again!')
+      toast.error('Error while updating password, try again!')
     },
   })
 
@@ -51,65 +50,38 @@ const ResetPasswordForm: React.FC<Props> = ({ token }) => {
   }
 
   return (
-    <main className='flex h-screen w-full items-center justify-center bg-base-100'>
-      <div className='w-full max-w-md  drop-shadow-2xl'>
-        <div className='text-center'>
-          {isResetPasswordSuccess ? (
-            <Alert variant='success' className='mb-12'>
-              <AlertDescription>
-                Password Updated✅ redirecting to sign in page
-              </AlertDescription>
-            </Alert>
-          ) : isResetPasswordError ? (
-            <Alert variant='danger' className='mb-12'>
-              <AlertDescription>{resetPasswordError.message}</AlertDescription>
-            </Alert>
-          ) : null}
-          <h1 className='block text-2xl font-bold text-base-content'>
-            Almost there!
-          </h1>
-          <p className='mt-2 text-sm text-base-content/70'>
-            Please enter a new password to reset.
-          </p>
-        </div>
-
-        <div className='mt-10'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='space-y-4'>
-              <div>
-                <LabelInputContainer className='mb-4'>
-                  <div className='inline-flex justify-between'>
-                    <label
-                      htmlFor='password'
-                      className='mb-2 ml-1 block text-sm font-bold text-base-content/70'>
-                      Enter password
-                    </label>
-                    {errors.password && (
-                      <p className='mt-2 text-xs text-error' id='email-error'>
-                        {errors.password.message}
-                      </p>
-                    )}
-                  </div>
-                  <Input
-                    {...register('password')}
-                    type='password'
-                    id='password'
-                    name='password'
-                    placeholder='● ● ● ● ● ● ● ●'
-                  />
-                </LabelInputContainer>
+    <>
+      <div className='main-container'>
+        <h3> Almost there!</h3>
+        <p>Please enter a new password to reset.</p>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='forgot-password-form'>
+          <div className='form-group'>
+            <label> Enter password</label>
+            <input
+              {...register('password')}
+              type='password'
+              id='password'
+              name='password'
+              placeholder='● ● ● ● ● ● ● ●'
+            />
+            {errors?.password && (
+              <p className='form-error'>{errors.password.message}</p>
+            )}
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'end' }}>
+            <div className='menu-btns'>
+              <div className='menu-sidebar-signup'>
+                <button type='submit'>
+                  {isResetPasswordPending ? 'Processing...' : 'Reset Password'}
+                </button>
               </div>
-              <button
-                type='submit'
-                disabled={isResetPasswordPending}
-                className='mt-3 inline-flex w-full items-center justify-center gap-2 rounded-rounded-btn border border-transparent bg-primary px-4 py-3 text-sm font-semibold text-primary-content transition-all hover:bg-primary-focus disabled:cursor-not-allowed disabled:bg-opacity-50 '>
-                {isResetPasswordPending ? 'Processing...' : 'Reset Password'}
-              </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-    </main>
+    </>
   )
 }
 

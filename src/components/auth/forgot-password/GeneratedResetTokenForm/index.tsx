@@ -1,15 +1,19 @@
 'use client'
 
-import { Input, LabelInputContainer } from '../../common/fields'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 import { z } from 'zod'
 
-import { Alert, AlertDescription } from '@/components/common/Alert'
 import { trpc } from '@/trpc/client'
 import { GenerateTokenSchema } from '@/trpc/routers/auth/validator'
 
 const GenerateResetTokenForm: React.FC = () => {
+  const [emailSentTo, setEmailSentTo] = useState<string>('')
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
   const form = useForm<z.infer<typeof GenerateTokenSchema>>({
     resolver: zodResolver(GenerateTokenSchema),
     mode: 'onBlur',
@@ -29,91 +33,78 @@ const GenerateResetTokenForm: React.FC = () => {
     isSuccess: isGeneratePasswordSuccess,
   } = trpc.auth.forgotPassword.useMutation({
     onSuccess: () => {
-      //   toast.success('Please check you mail!')
+      setShow(true)
     },
     onError: () => {
-      //   toast.error('Error sending you mail, try again!')
+      setEmailSentTo('')
+      toast.error('Error while sending email, please check')
     },
   })
 
   const onSubmit = async (data: z.infer<typeof GenerateTokenSchema>) => {
+    setEmailSentTo(data?.email)
     generateResetPasswordTokenMutation({
       ...data,
     })
   }
 
   return (
-    <main
-      id='content'
-      role='main'
-      className='flex min-h-screen w-full items-center justify-center bg-base-100'>
-      <div className='mx-auto w-full max-w-md drop-shadow-2xl  md:p-8'>
-        <div className='text-center'>
-          {isGeneratePasswordSuccess ? (
-            <Alert variant='success' className='mb-12'>
-              <AlertDescription>
-                An reset email has been successfully sent.
-              </AlertDescription>
-            </Alert>
-          ) : isGeneratePasswordError ? (
-            <Alert variant='danger' className='mb-12'>
-              <AlertDescription>
-                {generatePasswordError.message}
-              </AlertDescription>
-            </Alert>
-          ) : null}
-          <h1 className='block text-2xl font-bold text-base-content'>
-            Forgot password?
-          </h1>
-          <p className='mt-2 text-sm text-base-content/70'>
-            Remember your password?
-            <a
-              className='pl-1 font-medium text-base-content decoration-1 hover:underline'
-              href='/sign-in'>
-              SignIn here
-            </a>
-          </p>
-        </div>
-
-        <div className='mt-10'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='space-y-4'>
-              <div>
-                <LabelInputContainer className='mb-4'>
-                  <div className='inline-flex justify-between'>
-                    <label
-                      htmlFor='email'
-                      className='mb-2 ml-1 block text-sm font-bold text-base-content/70'>
-                      Email address
-                    </label>
-                    {errors.email && (
-                      <p
-                        className='mt-2 hidden text-xs text-error'
-                        id='email-error'>
-                        {errors.email.message}
-                      </p>
-                    )}
-                  </div>
-                  <Input
-                    {...register('email')}
-                    type='email'
-                    id='email'
-                    name='email'
-                    placeholder='jon@gmail.com'
-                  />
-                </LabelInputContainer>
+    <>
+      <div className='main-container'>
+        <h3>Forgot password?</h3>
+        <p>
+          Remember your password?
+          <a className='\' href='/'>
+            SignIn here
+          </a>
+        </p>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='forgot-password-form'>
+          <div className='form-group'>
+            <label>Email</label>
+            <input
+              {...register('email')}
+              type='email'
+              id='email'
+              name='email'
+              placeholder='Email'
+              required
+            />
+            {errors?.email && (
+              <p className='form-error'>{errors.email.message}</p>
+            )}
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'end' }}>
+            <div className='menu-btns'>
+              <div className='menu-sidebar-signup'>
+                <button type='submit'>
+                  {isGeneratePasswordPending ? 'Sending...' : 'Send Reset Link'}
+                </button>
               </div>
-              <button
-                type='submit'
-                disabled={isGeneratePasswordPending}
-                className='mt-3 inline-flex w-full items-center justify-center gap-2 rounded-rounded-btn border border-transparent bg-primary px-4 py-3 text-sm font-semibold text-base-content transition-all hover:bg-primary-focus  disabled:cursor-not-allowed disabled:bg-opacity-50 '>
-                {isGeneratePasswordPending ? 'Sending...' : 'Send Reset Link'}
-              </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-    </main>
+      <Modal
+        show={show}
+        keyboard
+        animation={false}
+        onHide={handleClose}
+        centered>
+        <Modal.Header className='modal-custom' closeButton>
+          <Modal.Title>Rest Your Password</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='modal-custom'>
+          <p>
+            A verification link has been sent to your inbox at{' '}
+            <span className='user-email'>{emailSentTo}. </span> Please check
+            your email to confirm your address and complete the password reset
+            process.
+          </p>
+        </Modal.Body>
+      </Modal>
+    </>
   )
 }
 
