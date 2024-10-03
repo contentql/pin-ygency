@@ -1,6 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Fragment, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
@@ -38,6 +39,7 @@ const SignInForm: React.FC = () => {
     isSuccess: isSignInSuccess,
   } = trpc.auth.signIn.useMutation({
     onSuccess: () => {
+      document.querySelector('body')!.classList.remove('side-content-visible')
       router.push('/profile')
     },
     onError: () => {
@@ -53,9 +55,9 @@ const SignInForm: React.FC = () => {
     //   signInWithCredentials({ ...data, redirectTo: '/' }).then(result => {
     //     if (!result) return
     //     if (result.success === true) {
-    //       document
-    //         .querySelector('body')!
-    //         .classList.remove('side-content-visible')
+    // document
+    //   .querySelector('body')!
+    //   .classList.remove('side-content-visible')
     //       // router.push('/')
     //     }
     //     if ('error' in result) {
@@ -82,7 +84,7 @@ const SignInForm: React.FC = () => {
             ) : isSignInError ? (
               <p
                 style={{
-                  color: 'red',
+                  color: '#ff6666',
                   fontSize: '18px',
                   fontWeight: 'normal',
                 }}>
@@ -106,14 +108,7 @@ const SignInForm: React.FC = () => {
                   required
                 />
                 {errors?.email && (
-                  <p
-                    style={{
-                      color: 'red',
-                      fontSize: '14px',
-                      textAlign: 'left',
-                    }}>
-                    {errors.email.message}
-                  </p>
+                  <p className='form-error'>{errors.email.message}</p>
                 )}
               </div>
               <div className='form-group'>
@@ -126,17 +121,21 @@ const SignInForm: React.FC = () => {
                   required
                 />
                 {errors?.password && (
-                  <p
-                    style={{
-                      color: 'red',
-                      fontSize: '14px',
-                      textAlign: 'left',
-                    }}>
-                    {errors.password.message}
-                  </p>
+                  <p className='form-error'>{errors.password.message}</p>
                 )}
               </div>
               <div className='form-group'>
+                <p>
+                  Forgot your password?{' '}
+                  <Link
+                    href='/forgot-password'
+                    style={{
+                      color: '#b2f5e1',
+                      textDecoration: 'underline',
+                    }}>
+                    reset
+                  </Link>
+                </p>
                 <button
                   type='submit'
                   className='theme-btn'

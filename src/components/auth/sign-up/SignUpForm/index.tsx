@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Fragment, useState } from 'react'
+import { Modal } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import slugify from 'slugify'
@@ -13,6 +14,9 @@ import { SignUpFormData, SignUpFormSchema } from './validator'
 const SignUpForm: React.FC = () => {
   const [isEmailSent, setIsEmailSent] = useState(false)
   const [emailSentTo, setEmailSentTo] = useState<string>('')
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
 
   const form = useForm<SignUpFormData>({
     resolver: zodResolver(SignUpFormSchema),
@@ -41,9 +45,13 @@ const SignUpForm: React.FC = () => {
     isSuccess: isSignUpSuccess,
   } = trpc.auth.signUp.useMutation({
     onSuccess: data => {
+      document
+        .querySelector('body')
+        ?.classList.remove('side-content-visible-signup')
       reset()
       setIsEmailSent(true)
       setEmailSentTo(data.email)
+      setShow(true)
     },
     onError: () => {
       toast.error('Unable to create an account, try again!')
@@ -70,6 +78,11 @@ const SignUpForm: React.FC = () => {
           <div className='cross-icon-signup'>
             <span className='fa fa-times' />
           </div>
+          <div>
+            {isSignUpError ? (
+              <p style={{ color: '#ff6666' }}>{signUpError?.message}</p>
+            ) : null}
+          </div>
           <div className='title'>
             <h4>Sign Up</h4>
           </div>
@@ -95,7 +108,9 @@ const SignUpForm: React.FC = () => {
                   placeholder='User Name'
                   required
                 />
-                {errors?.username && <p>{errors.username.message}</p>}
+                {errors?.username && (
+                  <p className='form-error'>{errors.username.message}</p>
+                )}
               </div>
               <div className='form-group-signup'>
                 <input
@@ -106,7 +121,7 @@ const SignUpForm: React.FC = () => {
                   placeholder='john.doe@example.com'
                 />
                 {errors?.email && (
-                  <p className='text-sm text-error'>{errors.email.message}</p>
+                  <p className='form-error'>{errors.email.message}</p>
                 )}
               </div>
               <div className='form-group-signup'>
@@ -119,9 +134,7 @@ const SignUpForm: React.FC = () => {
                   required
                 />
                 {errors?.password && (
-                  <p className='text-sm text-error'>
-                    {errors.password.message}
-                  </p>
+                  <p className='form-error'>{errors.password.message}</p>
                 )}
               </div>
               <div className='form-group-signup'>
@@ -134,7 +147,7 @@ const SignUpForm: React.FC = () => {
                   required
                 />
                 {errors?.confirmPassword && (
-                  <p>{errors.confirmPassword.message}</p>
+                  <p className='form-error'>{errors.confirmPassword.message}</p>
                 )}
               </div>
               <div className='form-group-signup'>
@@ -146,6 +159,24 @@ const SignUpForm: React.FC = () => {
           </div>
         </div>
       </section>
+      <Modal
+        show={show}
+        keyboard
+        animation={false}
+        onHide={handleClose}
+        centered>
+        <Modal.Header className='modal-custom' closeButton>
+          <Modal.Title>Email Verification Required</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='modal-custom'>
+          <p>
+            We have sent a verification link to your inbox at{' '}
+            <span className='user-email'>{emailSentTo}. </span> Please check
+            your email to confirm your address and finalize your login. This
+            step helps ensure the security of your account.
+          </p>
+        </Modal.Body>
+      </Modal>
     </Fragment>
   )
 }
