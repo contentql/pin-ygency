@@ -2,6 +2,7 @@
 
 import { Blog, ListType, Tag } from '@payload-types'
 
+import BlogSkeleton from '@/components/skeletons/BlogSkeleton'
 import { trpc } from '@/trpc/client'
 
 import Blogs from './Blogs'
@@ -11,9 +12,12 @@ interface TagsDetails extends Tag {
 }
 
 function BlogList({ blogs, block }: { blogs: Blog[]; block: ListType }) {
-  const { data: blogsData } = trpc.blog.getAllBlogs.useQuery(undefined, {
-    initialData: blogs,
-  })
+  const { data: blogsData, isLoading } = trpc.blog.getAllBlogs.useQuery(
+    undefined,
+    {
+      initialData: blogs,
+    },
+  )
   return (
     <>
       <section
@@ -30,7 +34,7 @@ function BlogList({ blogs, block }: { blogs: Blog[]; block: ListType }) {
           </div>
         </div>
       </section>
-      <Blogs blogsData={blogsData as Blog[]} />
+      {isLoading ? <BlogSkeleton /> : <Blogs blogsData={blogsData as Blog[]} />}
     </>
   )
 }

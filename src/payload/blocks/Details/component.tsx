@@ -24,13 +24,17 @@ const Details: React.FC<DetailsProps> = ({ params, ...block }) => {
     }
 
     case 'tags': {
-      const { data: blogs } = trpc.tag.getBlogs.useQuery({
+      const { data: blogsData } = trpc.tag.getAllBlogsByTag.useQuery({
         tagSlug: params?.route.at(-1)!,
+      })
+      const { data: tagDetails } = trpc.tag.getTagBySlug.useQuery({
+        slug: params?.route.at(-1)!,
       })
       return (
         <TagDetails
-          blogs={blogs?.blogsData as Blog[]}
-          tagDetails={blogs?.tagData?.at(0) as Tag}
+          blogs={blogsData as Blog[]}
+          tagDetails={tagDetails as Tag}
+          params={params}
         />
       )
     }
@@ -44,7 +48,11 @@ const Details: React.FC<DetailsProps> = ({ params, ...block }) => {
       })
 
       return (
-        <AuthorDetails author={author as any} blogsData={authorBlogs as any} />
+        <AuthorDetails
+          author={author as any}
+          blogsData={authorBlogs as any}
+          params={params}
+        />
       )
     }
   }
