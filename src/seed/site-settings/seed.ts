@@ -17,7 +17,13 @@ const seed = async () => {
       },
     })
 
-    console.log('total docs', { totalPages, pages })
+    const nestedDocs = pages.filter(page =>
+      ['about', 'services', 'pricing'].includes(page?.slug!),
+    )
+
+    const nonNestedDocs = pages.filter(
+      page => !['about', 'services', 'pricing'].includes(page?.slug!),
+    )
 
     const fullLogoImageSeedResult = await payload.create({
       collection: 'media',
@@ -45,15 +51,40 @@ const seed = async () => {
           imageUrl: fullLogoImageSeedResult?.id,
         },
         menuLinks: siteSettingsData?.navbar?.menuLinks?.map((link, index) => {
+          // Check if it's a grouped link (menuLinkGroup)
+          if (link?.group === true) {
+            return {
+              ...link,
+              menuLinkGroup: {
+                ...link?.menuLinkGroup,
+                groupTitle:
+                  link?.menuLinkGroup?.groupTitle || 'Default Group Title', // Ensure groupTitle is a string
+                groupLinks: link?.menuLinkGroup?.groupLinks?.map(
+                  (page, pageIndex) => {
+                    return {
+                      ...page,
+                      label:
+                        nestedDocs?.at(pageIndex)?.title || 'Default Label', // Ensure label is defined
+                      page: {
+                        relationTo: 'pages',
+                        value: nestedDocs?.at(pageIndex)?.id as string,
+                      },
+                    }
+                  },
+                ),
+              },
+            }
+          }
+
+          // For non-group links
           return {
             ...link,
-
             menuLink: {
               ...link?.menuLink,
-              label: pages?.at(index)?.title || 'Default Title',
+              label: nonNestedDocs?.at(index)?.title || 'Default Title', // Ensure label is defined
               page: {
                 relationTo: 'pages',
-                value: pages?.at(index)?.id as string,
+                value: nonNestedDocs?.at(index)?.id as string,
               },
             },
           }
@@ -82,8 +113,6 @@ const seed = async () => {
         ),
       },
     }
-
-    console.log('complete data', formattedSiteSettingsData)
 
     const result = await payload.updateGlobal({
       slug: collectionSlug['site-settings'],
