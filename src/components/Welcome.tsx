@@ -52,13 +52,15 @@ const WelcomePage = () => {
           </Button>
         </div>
         <Modal
-          className='modal'
-          dialogClassName='custom-modal'
           show={show}
-          backdrop='static' // Disable closing when clicking outside
+          backdrop='static'
           keyboard={false}
-          onHide={handleClose}>
-          <div className='modal-content'>
+          onHide={handleClose}
+          centered>
+          <Modal.Header closeButton className='modal-custom'>
+            <Modal.Title>Load Demo Data</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className='modal-custom'>
             {isSeedLoading ? (
               <div className='loading'>
                 <span className='loader'></span>
@@ -69,26 +71,20 @@ const WelcomePage = () => {
                 </p>
               </div>
             ) : (
-              <div>
-                <h3>Are you sure you want to load demo data?</h3>
-                <p>It would take around a minute.</p>
-              </div>
+              <p>
+                Are you sure you want to load demo data? This process may take
+                around a minute to complete
+              </p>
             )}
-            <Modal.Footer>
-              <Button
-                variant='secondary'
-                disabled={isSeedLoading}
-                onClick={handleClose}>
-                Close
-              </Button>
-              <Button
-                variant='primary'
-                disabled={isSeedLoading}
-                onClick={handleConfirmLoad}>
-                Yes, Load Data
-              </Button>
-            </Modal.Footer>
-          </div>
+          </Modal.Body>
+          <Modal.Footer className='modal-custom'>
+            <Button
+              variant='primary'
+              disabled={isSeedLoading}
+              onClick={handleConfirmLoad}>
+              Yes, Load Data
+            </Button>
+          </Modal.Footer>
         </Modal>
       </div>
     </div>
