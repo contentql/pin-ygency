@@ -95,23 +95,26 @@ export default async function RootLayout({
           />
           {/* Flaticon */}
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/flaticon.min.css' />
+          <link rel='stylesheet' href='/assets/css/flaticon.min.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/fontawesome-5.14.0.min.css' />
+          <link
+            rel='stylesheet'
+            href='/assets/css/fontawesome-5.14.0.min.css'
+          />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/bootstrap.min.css' />
+          <link rel='stylesheet' href='/assets/css/bootstrap.min.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/magnific-popup.min.css' />
+          <link rel='stylesheet' href='/assets/css/magnific-popup.min.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/nice-select.min.css' />
+          <link rel='stylesheet' href='/assets/css/nice-select.min.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/animate.min.css' />
+          <link rel='stylesheet' href='/assets/css/animate.min.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/slick.min.css' />
+          <link rel='stylesheet' href='/assets/css/slick.min.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/style.css' />
+          <link rel='stylesheet' href='/assets/css/style.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='assets/css/custom.css' />
+          <link rel='stylesheet' href='/assets/css/custom.css' />
         </head>
       </head>
       <body className={`${inter.className}`}>
