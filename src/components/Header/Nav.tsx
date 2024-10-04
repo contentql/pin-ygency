@@ -1,7 +1,7 @@
 import { Media, SiteSetting } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Accordion } from 'react-bootstrap'
+import { Accordion, useAccordionButton } from 'react-bootstrap'
 
 import Menu from './Menu'
 
@@ -27,16 +27,9 @@ const Nav = ({
               />
             </Link>
           </div>
-          {/* Toggle Button */}
-          <Accordion.Button as={'button'} className='navbar-toggle'>
-            <span className='icon-bar' />
-            <span className='icon-bar' />
-            <span className='icon-bar' />
-          </Accordion.Button>
+          <CustomToggle eventKey='0'></CustomToggle>
         </div>
-        <Accordion.Collapse
-          eventKey='navbar-collapse'
-          className='navbar-collapse clearfix'>
+        <Accordion.Collapse eventKey='0' className='navbar-collapse clearfix'>
           <Menu singleMenu={singleMenu} headerLinks={headerData?.menuLinks} />
         </Accordion.Collapse>
       </Accordion>
@@ -44,3 +37,15 @@ const Nav = ({
   )
 }
 export default Nav
+
+function CustomToggle({ eventKey }: { eventKey: string }) {
+  const decoratedOnClick = useAccordionButton(eventKey)
+
+  return (
+    <div className='navbar-toggle' onClick={decoratedOnClick}>
+      <span className='icon-bar' />
+      <span className='icon-bar' />
+      <span className='icon-bar' />
+    </div>
+  )
+}

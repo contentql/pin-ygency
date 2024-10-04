@@ -138,8 +138,8 @@ const ProfileForm = ({ user }: { user: User }) => {
           </div>
           <div className='user-action'>
             <div className='menu-btns'>
-              <div className='menu-sidebar-signup'>
-                <button type='submit'>
+              <div className='action-button'>
+                <button>
                   {isUpdateUserPending ? 'Updating...' : 'Update Profile'}
                 </button>
               </div>

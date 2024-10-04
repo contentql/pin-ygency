@@ -72,7 +72,7 @@ const ResetPasswordForm: React.FC<Props> = ({ token }) => {
           </div>
           <div style={{ display: 'flex', justifyContent: 'end' }}>
             <div className='menu-btns'>
-              <div className='menu-sidebar-signup'>
+              <div className='action-button'>
                 <button type='submit'>
                   {isResetPasswordPending ? 'Processing...' : 'Reset Password'}
                 </button>

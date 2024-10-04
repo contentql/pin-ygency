@@ -13139,6 +13139,17 @@ blockquote .blockquote-footer:before {
   text-align: center;
   color: var(--ygency-dark-color);
 }
+.action-button button {
+  cursor: pointer;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  background: var(--ygency-primary-color);
+  border-radius: 5px;
+  text-align: center;
+  color: var(--ygency-dark-color);
+}
 .menu-sidebar-delete button {
   cursor: pointer;
   width: fit-content;
