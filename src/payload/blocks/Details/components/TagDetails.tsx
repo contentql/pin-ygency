@@ -1,12 +1,27 @@
 import Blogs from '../../List/components/Blogs'
+import { Params } from '../../types'
 import { Blog, Media, Tag } from '@payload-types'
 import Image from 'next/image'
+
+import TagSkeleton from '@/components/skeletons/TagSkeleton'
+import { trpc } from '@/trpc/client'
 
 interface TagDetailsProps {
   tagDetails: Tag
   blogs: Blog[]
+  params: Params
 }
-const TagDetails: React.FC<TagDetailsProps> = ({ tagDetails, blogs }) => {
+const TagDetails: React.FC<TagDetailsProps> = ({
+  tagDetails,
+  blogs,
+  params,
+}) => {
+  const { data: blogsData, isLoading } = trpc.tag.getAllBlogsByTag.useQuery(
+    {
+      tagSlug: params?.route.at(-1)!,
+    },
+    { initialData: blogs },
+  )
   return (
     <div>
       <section
@@ -35,8 +50,10 @@ const TagDetails: React.FC<TagDetailsProps> = ({ tagDetails, blogs }) => {
         </div>
       </section>
 
-      {blogs?.length !== 0 ? (
-        <Blogs blogsData={blogs as Blog[]} />
+      {isLoading ? (
+        <TagSkeleton />
+      ) : blogsData?.length !== 0 ? (
+        <Blogs blogsData={blogsData as Blog[]} />
       ) : (
         <p>Blogs not found</p>
       )}

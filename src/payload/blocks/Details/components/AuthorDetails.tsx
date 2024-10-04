@@ -1,13 +1,31 @@
 import Blogs from '../../List/components/Blogs'
+import { Params } from '../../types'
 import { Blog, Media, User } from '@payload-types'
 import Image from 'next/image'
+
+import BlogSkeleton from '@/components/skeletons/BlogSkeleton'
+import { trpc } from '@/trpc/client'
 
 interface AuthorDetailsProps {
   blogsData: Blog[]
   author: User
+  params: Params
 }
 
-const AuthorDetails: React.FC<AuthorDetailsProps> = ({ blogsData, author }) => {
+const AuthorDetails: React.FC<AuthorDetailsProps> = ({
+  blogsData,
+  author,
+  params,
+}) => {
+  const { data: authorBlogs, isLoading } =
+    trpc.author.getBlogsByAuthorName.useQuery(
+      {
+        authorName: params?.route.at(-1)!,
+      },
+      {
+        initialData: blogsData,
+      },
+    )
   return (
     <div>
       <section
@@ -35,8 +53,10 @@ const AuthorDetails: React.FC<AuthorDetailsProps> = ({ blogsData, author }) => {
           </div>
         </div>
       </section>
-      {blogsData?.length !== 0 ? (
-        <Blogs blogsData={blogsData as Blog[]} />
+      {isLoading ? (
+        <BlogSkeleton />
+      ) : authorBlogs?.length !== 0 ? (
+        <Blogs blogsData={authorBlogs as Blog[]} />
       ) : (
         <p>Blogs not found</p>
       )}
