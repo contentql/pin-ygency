@@ -1,20 +1,24 @@
 'use client'
 
-import { Media, User } from '@payload-types'
+import { Media } from '@payload-types'
 import Image from 'next/image'
 import { useState } from 'react'
+import { Button, Modal } from 'react-bootstrap'
 import toast from 'react-hot-toast'
-import { HiOutlinePencilAlt, HiUpload, HiX } from 'react-icons/hi'
+import { CiEdit } from 'react-icons/ci'
 
 import { trpc } from '@/trpc/client'
 import uploadMedia from '@/utils/uploadMedia'
 
-const Profile = ({ initialUser }: { initialUser: User | undefined }) => {
+const Profile = () => {
   const [uploadedImage, setUploadedImage] = useState(null)
   const [userImage, setUserImage] = useState(null)
   // this is state to track uploading image, updating user profile
   const [uploadingImage, setUploadingImage] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   function capitalizeWords(words: string) {
     return words
@@ -33,7 +37,7 @@ const Profile = ({ initialUser }: { initialUser: User | undefined }) => {
 
   const { mutate: uploadUserImage } = trpc.user.updateUserImage.useMutation({
     onSuccess: async data => {
-      setOpen(false)
+      setShow(false)
       reFetchUser()
       toast.success(`Image updated successfully`)
       setUserImage(null)
@@ -85,117 +89,72 @@ const Profile = ({ initialUser }: { initialUser: User | undefined }) => {
   const latestProfilePic = uploadedImage ? uploadedImage : userImageURL
 
   return (
-    <>
-      <div className='max-w-sm rounded p-5 text-center text-base-content/70'>
-        <div className='group relative z-0 mx-auto h-[141px] w-[141px]'>
-          <div
-            style={{
-              backgroundImage: `url(${(user?.imageUrl as Media)?.url})`,
-            }}
-            className='z-0 h-full w-full rounded-full bg-base-200 bg-cover bg-center bg-no-repeat'></div>
-          <button
-            onClick={() => setOpen(true)}
-            className={`absolute bottom-2 right-2`}>
-            <HiOutlinePencilAlt
-              size={24}
-              className='font-bold text-base-content'
-            />
-          </button>
-        </div>
-        <div className='mt-5 text-sm'>
-          <a
-            href='#'
-            className='text-xl font-medium leading-none text-base-content transition duration-500 ease-in-out hover:text-primary'>
-            {capitalizeWords(user?.username!)}
-          </a>
-          {user?.role.some(role => role === 'author') && (
-            <p className='mt-2 text-base-content'>Author</p>
-          )}
-        </div>
+    <div className='wraper'>
+      <div className='user-image'>
+        {user?.imageUrl ? (
+          <Image
+            src={(user?.imageUrl as Media)?.url || ''}
+            alt={'user'}
+            height={150}
+            width={150}
+          />
+        ) : (
+          <Image
+            src={(user?.imageUrl as Media)?.url || ''}
+            alt={'user'}
+            height={150}
+            width={150}
+          />
+        )}
+        <CiEdit className='upload-image' size={24} onClick={handleShow} />
       </div>
-      {open && (
-        <div
-          className='relative z-[100]'
-          aria-labelledby='modal-title'
-          role='dialog'
-          aria-modal={false}>
-          <div className='fixed inset-0 bg-base-100 bg-opacity-75 transition-opacity'></div>
-
-          <div className='fixed inset-0 z-[100] w-screen overflow-y-auto'>
-            <div className='flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0'>
-              <div className='relative transform overflow-hidden rounded-rounded-box bg-base-300 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
-                <div className='p-4 text-center'>
-                  <div className='group relative mx-auto mb-4 h-40 w-40'>
-                    <Image
-                      src={latestProfilePic}
-                      fill
-                      className='h-full w-full rounded-full bg-base-200 object-cover'
-                      alt='user profile'
-                    />
-                  </div>
-
-                  {open ? (
-                    <div className='flex items-center justify-center gap-x-5'>
-                      <label
-                        htmlFor='dropzone-file'
-                        className=' border-cq-input flex h-16 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed'>
-                        <div className='flex flex-col items-center justify-center pb-6 pt-5'>
-                          <svg
-                            className=' text-cq-text-secondary mb-1 mt-1 h-6 w-6'
-                            aria-hidden='true'
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 20 16'>
-                            <path
-                              stroke='currentColor'
-                              stroke-linecap='round'
-                              stroke-linejoin='round'
-                              stroke-width='2'
-                              d='M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2'
-                            />
-                          </svg>
-                          <p className='text-sm text-gray-500 dark:text-gray-400'>
-                            <span className='text-cq-text-secondary font-semibold'>
-                              Click to Upload
-                            </span>
-                          </p>
-                        </div>
-                        <input
-                          id='dropzone-file'
-                          type='file'
-                          className='hidden'
-                          onChange={handleUpload}
-                        />
-                      </label>
-                    </div>
-                  ) : null}
-
-                  {uploadedImage && (
-                    <button
-                      className='mt-4 inline-flex w-full items-center justify-center gap-x-2 rounded-md bg-primary py-2.5'
-                      onClick={handleUpdateUserProfile}
-                      disabled={uploadingImage}>
-                      <HiUpload size={20} />
-                      {uploadingImage ? <p>Uploading...</p> : <p>Upload</p>}
-                    </button>
-                  )}
-                </div>
-                <div
-                  className='absolute right-2 top-2 cursor-pointer'
-                  onClick={() => {
-                    setOpen(false)
-                    setUserImage(null)
-                    setUploadedImage(null)
-                  }}>
-                  <HiX size={24} />
-                  <p className='sr-only'>Close</p>
-                </div>
-              </div>
+      <h5>{user?.username}</h5>
+      <>
+        <Modal show={show} onHide={handleClose} centered>
+          <Modal.Header closeButton className='modal-custom'>
+            <Modal.Title>Upload Your Image</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className='modal-custom'>
+            <div className='image'>
+              <Image
+                src={latestProfilePic}
+                width={120}
+                height={120}
+                className='user-image-upload'
+                alt='user profile'
+              />
             </div>
-          </div>
-        </div>
-      )}
-    </>
+            <p className='image-types'>
+              Accepted file types: (.jpg, .jpeg, .png, .svg)
+            </p>
+          </Modal.Body>
+          <Modal.Footer className='modal-custom'>
+            {uploadedImage ? (
+              <Button
+                variant='primary'
+                disabled={uploadingImage}
+                onClick={handleUpdateUserProfile}>
+                {uploadingImage ? 'Uploading...' : 'Upload'}
+              </Button>
+            ) : (
+              <Button
+                variant='primary'
+                onClick={() =>
+                  document?.getElementById('dropzone-input')?.click()
+                }>
+                Click to upload
+                <input
+                  id='dropzone-input'
+                  type='file'
+                  style={{ display: 'none' }}
+                  onChange={handleUpload}
+                />
+              </Button>
+            )}
+          </Modal.Footer>
+        </Modal>
+      </>
+    </div>
   )
 }
 

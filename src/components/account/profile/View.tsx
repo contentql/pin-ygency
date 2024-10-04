@@ -1,7 +1,7 @@
 import { User } from '@payload-types'
 
 import ProfileForm from './ProfileForm'
-import Sidebar from './Sidebar'
+import Profile from './ProfileForm/Profile'
 
 interface Props {
   user: User
@@ -9,12 +9,16 @@ interface Props {
 
 const ProfileView: React.FC<Props> = ({ user }) => {
   return (
-    <div className='margin-70'>
-      <div className='cs_profile '>
-        <Sidebar userData={user} />
-        <ProfileForm user={user} />
-      </div>
-    </div>
+    // <div className='margin-70'>
+    //   <div className='cs_profile '>
+    //     <Sidebar userData={user} />
+    //     <ProfileForm user={user} />
+    //   </div>
+    // </div>
+    <>
+      <Profile />
+      <ProfileForm user={user} />
+    </>
   )
 }
 

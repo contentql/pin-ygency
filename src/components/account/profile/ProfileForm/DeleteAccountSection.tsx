@@ -47,7 +47,14 @@ export default function DeleteAccountSection() {
   }, [isDeleteAccountPending])
 
   return (
-    <div>
+    <div className='delete-account-warper'>
+      <div>
+        <h3>Delete Account</h3>
+        <p>
+          Delete your account and permanently erase all associated data. This
+          action cannot be undone.
+        </p>
+      </div>
       <div className='menu-btns'>
         <div className='menu-sidebar-delete'>
           <button type='button' onClick={handleShow}>
@@ -59,7 +66,7 @@ export default function DeleteAccountSection() {
       {/* Delete Account Dialog */}
       <>
         <Modal show={show} onHide={handleClose} centered>
-          <Modal.Header className='modal-custom'>
+          <Modal.Header className='modal-custom' closeButton>
             <Modal.Title>Delete account</Modal.Title>
           </Modal.Header>
           <Modal.Body className='modal-custom'>
@@ -79,7 +86,7 @@ export default function DeleteAccountSection() {
               </span>{' '}
               to confirm.
             </p>
-            <div className='footer-newsletter'>
+            <div className='delete-account'>
               <input
                 type='text'
                 id='confirmDelete'
@@ -98,13 +105,6 @@ export default function DeleteAccountSection() {
             </div>
           </Modal.Body>
           <Modal.Footer className='modal-custom'>
-            <Button
-              variant='secondary'
-              onClick={handleClose}
-              disabled={isDeleteAccountPending}>
-              Close
-            </Button>
-
             <Button
               variant='primary'
               onClick={handleDeleteUser}

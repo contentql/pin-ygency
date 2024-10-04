@@ -18,7 +18,7 @@ type ProfileFormDataType = z.infer<typeof ProfileFormSchema>
 
 const ProfileForm = ({ user }: { user: User }) => {
   const [formData, setFormData] = useState<ProfileFormDataType>({
-    name: user?.username,
+    name: user?.displayName,
     password: '',
     confirmPassword: '',
   })
@@ -46,6 +46,7 @@ const ProfileForm = ({ user }: { user: User }) => {
     const sanitizedData = Object.fromEntries(
       Object.entries(formData).filter(([key, value]) => Boolean(value)),
     )
+    console.log('user data', sanitizedData)
 
     if (
       sanitizedData.password &&
@@ -61,58 +62,92 @@ const ProfileForm = ({ user }: { user: User }) => {
   }
 
   return (
-    <div className='cs_right_80'>
-      <h2>Personal Information</h2>
-      <form onSubmit={handleUserUpdateForm} className='cs_profile_form '>
-        <div className='footer-newsletter'>
-          <input
-            type='text'
-            placeholder='Email Address'
-            id='email'
-            name='email'
-            value={user?.email}
-            disabled
-          />
-        </div>
-        <div className='footer-newsletter'>
-          <input
-            type='text'
-            id='name'
-            name='name'
-            placeholder='John'
-            value={user?.username || ''}
-            onChange={handleOnChange}
-          />
-        </div>
-        <div className='footer-newsletter'>
-          <input
-            type='password'
-            id='password'
-            name='password'
-            placeholder='Password'
-            onChange={handleOnChange}
-          />
-        </div>
-        <div className='footer-newsletter'>
-          <input
-            type='password'
-            id='confirmPassword'
-            name='confirmPassword'
-            placeholder='Confirm password'
-            onChange={handleOnChange}
-          />
-        </div>
-        <div className='user-action'>
-          <div className='menu-btns'>
-            <div className='menu-sidebar-signup'>
-              <button type='submit'>
-                {isUpdateUserPending ? 'Updating...' : 'Update Profile'}
-              </button>
+    <div className='container'>
+      <div className='user-profile'>
+        <form onSubmit={handleUserUpdateForm} className='user-form'>
+          <div className='form-row'>
+            <div className='form-group'>
+              <label>username</label>
+              <input
+                type='text'
+                placeholder='username'
+                id='username'
+                name='username'
+                value={user?.username!}
+                disabled
+              />
+            </div>
+            <div className='form-group'>
+              <label>userId</label>
+              <input
+                type='text'
+                placeholder='userId'
+                id='id'
+                name='id'
+                value={user?.id}
+                disabled
+              />
             </div>
           </div>
-          <DeleteAccountSection />
-        </div>
-      </form>
+          <div className='form-row'>
+            <div className='form-group'>
+              <label>Display Name</label>
+              <input
+                type='text'
+                placeholder='Name'
+                id='name'
+                name='name'
+                value={formData.name!}
+                onChange={handleOnChange}
+              />
+            </div>
+            <div className='form-group'>
+              <label>Email</label>
+              <input
+                type='text'
+                placeholder='email'
+                id='email'
+                name='email'
+                value={user?.email}
+                disabled
+              />
+            </div>
+          </div>
+
+          <div className='form-row'>
+            <div className='form-group'>
+              <label>Password</label>
+              <input
+                type='password'
+                id='password'
+                name='password'
+                placeholder='Password'
+                onChange={handleOnChange}
+              />
+            </div>
+            <div className='form-group'>
+              <label>Confirm Password</label>
+              <input
+                type='password'
+                id='confirmPassword'
+                name='confirmPassword'
+                placeholder='Confirm password'
+                onChange={handleOnChange}
+              />
+            </div>
+          </div>
+          <div className='user-action'>
+            <div className='menu-btns'>
+              <div className='menu-sidebar-signup'>
+                <button type='submit'>
+                  {isUpdateUserPending ? 'Updating...' : 'Update Profile'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <DeleteAccountSection />
     </div>
   )
 }

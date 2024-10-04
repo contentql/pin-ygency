@@ -67,7 +67,10 @@ export const userRouter = router({
         const updatedUser = await payload.update({
           collection: collectionSlug.users,
           id: user.id,
-          data,
+          data: {
+            displayName: data?.name,
+            ...data,
+          },
         })
 
         return updatedUser
