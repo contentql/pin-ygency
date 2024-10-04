@@ -77,7 +77,7 @@ const GenerateResetTokenForm: React.FC = () => {
           </div>
           <div style={{ display: 'flex', justifyContent: 'end' }}>
             <div className='menu-btns'>
-              <div className='menu-sidebar-signup'>
+              <div className='action-button'>
                 <button type='submit'>
                   {isGeneratePasswordPending ? 'Sending...' : 'Send Reset Link'}
                 </button>

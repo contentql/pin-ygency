@@ -1,6 +1,8 @@
 import { Page, SiteSetting } from '@payload-types'
 import Link from 'next/link'
 import { Fragment, useState } from 'react'
+import { Dropdown } from 'react-bootstrap'
+import { FaAngleDown } from 'react-icons/fa6'
 
 const Menu = ({
   singleMenu,
@@ -505,13 +507,52 @@ const SingleMenu = ({
 }) => {
   return (
     <ul className='navigation onepage clearfix'>
-      {headerLinks?.map((link, index) => (
-        <li key={index}>
-          <Link href={(link?.menuLink?.page?.value as Page)?.path || ''}>
-            {(link?.menuLink?.page?.value as Page)?.title}
-          </Link>
-        </li>
-      ))}
+      {headerLinks?.map((link, index) =>
+        link?.group ? (
+          <Dropdown align='start' key={index}>
+            <Dropdown.Toggle
+              id='dropdown-basic'
+              as='div'
+              bsPrefix='custom-toggle'>
+              <li>
+                <Link href={''}>
+                  {link?.menuLinkGroup?.groupTitle}{' '}
+                  <span>
+                    <FaAngleDown />
+                  </span>
+                </Link>
+              </li>
+            </Dropdown.Toggle>
+            <Dropdown.Menu className='custom-dropdown-menu  fullwidth-toggle'>
+              {link?.menuLinkGroup?.groupLinks?.map((nestedLink, index) => (
+                <Dropdown.Item
+                  key={index}
+                  className='custom-dropdown-item'
+                  href={
+                    nestedLink?.type === 'custom'
+                      ? nestedLink?.url!
+                      : (nestedLink?.page?.value as Page)?.path!
+                  }
+                  target={nestedLink?.newTab ? '_blank' : '_self'}>
+                  {nestedLink?.label}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        ) : (
+          <li key={index}>
+            <Link
+              target={link?.menuLink?.newTab ? '_blank' : '_self'}
+              href={
+                link?.menuLink?.type === 'custom'
+                  ? link?.menuLink?.url!
+                  : (link?.menuLink?.page?.value as Page)?.path!
+              }>
+              {link?.menuLink?.label}
+            </Link>
+          </li>
+        ),
+      )}
     </ul>
   )
 }

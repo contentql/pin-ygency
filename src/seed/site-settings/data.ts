@@ -53,35 +53,70 @@ export const siteSettingsData: siteSettingsDataType = {
         },
       },
       {
-        group: false,
-        menuLink: {
-          label: '',
-          page: {
-            relationTo: 'pages',
-            value: '',
-          },
+        group: true,
+        menuLinkGroup: {
+          groupTitle: 'More',
+          groupLinks: [
+            {
+              label: '',
+              newTab: false,
+              page: {
+                relationTo: 'pages',
+                value: '',
+              },
+              type: 'reference',
+            },
+            {
+              label: '',
+              newTab: false,
+              page: {
+                relationTo: 'pages',
+                value: '',
+              },
+              type: 'reference',
+            },
+            {
+              label: '',
+              newTab: false,
+              page: {
+                relationTo: 'pages',
+                value: '',
+              },
+              type: 'reference',
+            },
+          ],
         },
       },
-      {
-        group: false,
-        menuLink: {
-          label: '',
-          page: {
-            relationTo: 'pages',
-            value: '',
-          },
-        },
-      },
-      {
-        group: false,
-        menuLink: {
-          label: '',
-          page: {
-            relationTo: 'pages',
-            value: '',
-          },
-        },
-      },
+      // {
+      //   group: false,
+      //   menuLink: {
+      //     label: '',
+      //     page: {
+      //       relationTo: 'pages',
+      //       value: '',
+      //     },
+      //   },
+      // },
+      // {
+      //   group: false,
+      //   menuLink: {
+      //     label: '',
+      //     page: {
+      //       relationTo: 'pages',
+      //       value: '',
+      //     },
+      //   },
+      // },
+      // {
+      //   group: false,
+      //   menuLink: {
+      //     label: '',
+      //     page: {
+      //       relationTo: 'pages',
+      //       value: '',
+      //     },
+      //   },
+      // },
     ],
   },
 

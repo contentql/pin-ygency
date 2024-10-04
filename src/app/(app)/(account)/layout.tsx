@@ -2,6 +2,10 @@ import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { headers } from 'next/headers'
 
+import Footer from '@/components/Footer'
+import DefaultHeader from '@/components/Header/DefaultHeader'
+import { SignInView } from '@/components/auth/sign-in'
+import { SignUpView } from '@/components/auth/sign-up'
 import { getCurrentUser } from '@/utils/getCurrentUser'
 
 interface LayoutProps {
@@ -20,10 +24,12 @@ const AccountLayout: React.FC<LayoutProps> = async ({ children }) => {
   const user = await getCurrentUser(headersList)
 
   return (
-    <div className='flex min-h-screen flex-col'>
-      {/* Navbar */}
-      <div className='flex-grow'>{children}</div>
-      {/* Footer */}
+    <div>
+      <DefaultHeader user={user} headerData={initData} singleMenu={true} dark />
+      <SignInView />
+      <SignUpView />
+      <div>{children}</div>
+      <Footer metadata={initData} />
     </div>
   )
 }

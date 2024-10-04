@@ -5,7 +5,8 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import toast from 'react-hot-toast'
-import { CiEdit } from 'react-icons/ci'
+import { CiUser } from 'react-icons/ci'
+import { FaCamera } from 'react-icons/fa'
 
 import { trpc } from '@/trpc/client'
 import uploadMedia from '@/utils/uploadMedia'
@@ -89,24 +90,26 @@ const Profile = () => {
   const latestProfilePic = uploadedImage ? uploadedImage : userImageURL
 
   return (
-    <div className='wraper'>
-      <div className='user-image'>
-        {user?.imageUrl ? (
-          <Image
-            src={(user?.imageUrl as Media)?.url || ''}
-            alt={'user'}
-            height={150}
-            width={150}
+    <div className='wraper '>
+      <div className='image-wraper'>
+        <div className='user-image'>
+          {user?.imageUrl ? (
+            <Image
+              src={(user?.imageUrl as Media)?.url || ''}
+              alt={'user'}
+              height={150}
+              width={150}
+            />
+          ) : (
+            <CiUser title='user profile' size={160} />
+          )}
+          <FaCamera
+            size={24}
+            color='#10b981'
+            className='upload-image'
+            onClick={handleShow}
           />
-        ) : (
-          <Image
-            src={(user?.imageUrl as Media)?.url || ''}
-            alt={'user'}
-            height={150}
-            width={150}
-          />
-        )}
-        <CiEdit className='upload-image' size={24} onClick={handleShow} />
+        </div>
       </div>
       <h5>{user?.username}</h5>
       <>
