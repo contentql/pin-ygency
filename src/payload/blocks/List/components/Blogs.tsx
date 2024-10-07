@@ -1,4 +1,4 @@
-import { Blog, Media } from '@payload-types'
+import { Blog, Media, User } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -27,8 +27,24 @@ const Blogs = ({ blogsData }: { blogsData: Blog[] }) => {
                     <Link href='#'>{formatDate(blog?.createdAt)}</Link>
                   </li>
                   <li>
-                    <i className='far fa-comments' />
-                    <Link href='#'>Comment (5)</Link>
+                    {blog?.author?.slice(0, 4)?.map((author, index) => (
+                      <Link
+                        className='blog-authors-li'
+                        key={index}
+                        href={`/author/${(author?.value as User)?.username}`}>
+                        <Image
+                          title={(author?.value as User)?.username!}
+                          alt=''
+                          src={
+                            ((author?.value as User)?.imageUrl as Media)?.url ||
+                            ''
+                          }
+                          height={40}
+                          width={40}
+                          className='blog-authors'
+                        />
+                      </Link>
+                    ))}
                   </li>
                 </ul>
                 <hr />
