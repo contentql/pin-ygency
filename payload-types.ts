@@ -218,6 +218,7 @@ export interface Page {
         | PageBannerType
         | PricingFeaturesType
         | PricingSectionType
+        | DisqusCommentsType
       )[]
     | null;
   isHome?: boolean | null;
@@ -656,6 +657,17 @@ export interface PricingSectionType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'PricingSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DisqusCommentsType".
+ */
+export interface DisqusCommentsType {
+  title?: string | null;
+  shortName: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'DisqusComments';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

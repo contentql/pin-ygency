@@ -48,7 +48,7 @@ const PricingFeatures: React.FC<PricingFeaturesProps> = ({
                         <i className={`fal ${feature?.icons}`} />
                       </div>
                       <h5>
-                        <Link legacyBehavior href='/service-details'>
+                        <Link legacyBehavior href=''>
                           <span className='line-clamp-2'>{feature?.title}</span>
                         </Link>
                       </h5>

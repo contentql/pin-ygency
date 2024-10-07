@@ -12,14 +12,14 @@ const UserDropdown = ({ user }: { user: User }) => {
         id='dropdown-basic p-40'
         as='div'
         bsPrefix='custom-toggle'>
-        <div className='user-dropdown'>
+        <div className='user-dropdown' style={{ cursor: 'pointer' }}>
           {user?.imageUrl ? (
             <Image
-              style={{ objectFit: 'contain' }}
+              style={{ objectFit: 'cover' }}
               src={(user?.imageUrl as Media)?.url || ''}
               alt='user'
-              width={50}
-              height={50}
+              width={45}
+              height={45}
             />
           ) : (
             <CiUser title='user profile' size={38} />

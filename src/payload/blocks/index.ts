@@ -4,6 +4,7 @@ import { Advertise, AdvertiseConfig } from './Advertise'
 import { Banner, BannerConfig } from './Banner'
 import { Contact, ContactConfig } from './Contact'
 import { Details, DetailsConfig } from './Details'
+import { DisqusComments, DisqusCommentsConfig } from './Disqus'
 import { Headline, HeadlineConfig } from './Headline'
 import { Hero, HeroConfig } from './Hero'
 import { List, ListConfig } from './List'
@@ -48,6 +49,7 @@ export const blocksJSX = {
   PageBanner,
   PricingFeatures,
   PricingSection,
+  DisqusComments,
 }
 
 // Exporting an array that consolidates all block configurations
@@ -76,4 +78,5 @@ export const blocks = [
   PageBannerConfig,
   PricingFeaturesConfig,
   PricingSectionConfig,
+  DisqusCommentsConfig,
 ]
