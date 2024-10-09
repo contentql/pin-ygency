@@ -191,3 +191,30 @@
 .blog-authors:hover {
   transform: scale(1.1); /* Zooms the image by 10% on hover */
 }
+
+.branding {
+  display: flex;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 1rem;
+  background-color: #f4f4f5;
+  color: #09090b;
+  z-index: 10;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+img {
+  object-fit: cover;
+}

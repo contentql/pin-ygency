@@ -1,5 +1,6 @@
 import { headers } from 'next/headers'
 
+import Branding from '@/components/Branding'
 import Footer from '@/components/Footer'
 import DefaultHeader from '@/components/Header/DefaultHeader'
 import { SignInView } from '@/components/auth/sign-in'
@@ -20,6 +21,7 @@ const MarketingLayout = async ({ children }: { children: React.ReactNode }) => {
       <SignUpView />
       <main className='mt-16 flex-grow'>{children}</main>
       <Footer metadata={metadata} />
+      <Branding />
     </div>
   )
 }
