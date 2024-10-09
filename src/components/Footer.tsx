@@ -1,32 +1,9 @@
 import type { Page, SiteSetting } from '@payload-types'
 import Link from 'next/link'
-import { AiFillGithub } from 'react-icons/ai'
-import { FaYoutube } from 'react-icons/fa'
-import { FaXTwitter } from 'react-icons/fa6'
-import { IconType } from 'react-icons/lib'
 
 type SocialLinksType = NonNullable<
   Pick<SiteSetting, 'footer'>['footer']['socialLinks']
 >[0]
-
-const SocialIcons: { [key in SocialLinksType['platform']]: IconType | null } = {
-  facebook: null,
-  github: AiFillGithub,
-  instagram: null,
-  linkedin: null,
-  medium: null,
-  pinterest: null,
-  quora: null,
-  reddit: null,
-  snapchat: null,
-  telegram: null,
-  tiktok: null,
-  tumblr: null,
-  twitter: FaXTwitter,
-  whatsapp: null,
-  youtube: FaYoutube,
-  discord: null,
-}
 
 const Footer = ({ metadata }: { metadata: SiteSetting }) => {
   const { footer } = metadata
