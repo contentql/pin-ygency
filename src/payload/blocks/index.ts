@@ -1,10 +1,11 @@
 // Exporting an object that maps block names (as keys) to their corresponding JSX components (as values)
+import { DisqusComments } from '@contentql/core/client'
+
 import { About, AboutConfig } from './About'
 import { Advertise, AdvertiseConfig } from './Advertise'
 import { Banner, BannerConfig } from './Banner'
 import { Contact, ContactConfig } from './Contact'
 import { Details, DetailsConfig } from './Details'
-import { DisqusComments, DisqusCommentsConfig } from './Disqus'
 import { Headline, HeadlineConfig } from './Headline'
 import { Hero, HeroConfig } from './Hero'
 import { List, ListConfig } from './List'
@@ -78,5 +79,4 @@ export const blocks = [
   PageBannerConfig,
   PricingFeaturesConfig,
   PricingSectionConfig,
-  DisqusCommentsConfig,
 ]

@@ -1,3 +1,5 @@
+'use client'
+
 // import { StatisticsType } from '@payload-types'
 import { Params } from '../types'
 import { StatisticsType } from '@payload-types'
