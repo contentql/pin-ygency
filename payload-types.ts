@@ -11,12 +11,13 @@ export interface Config {
     users: UserAuthOperations;
   };
   collections: {
-    users: User;
-    tags: Tag;
-    blogs: Blog;
-    media: Media;
     pages: Page;
+    blogs: Blog;
+    tags: Tag;
+    media: Media;
+    users: User;
     search: Search;
+    'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -51,50 +52,82 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "pages".
  */
-export interface User {
+export interface Page {
   id: string;
-  displayName?: string | null;
-  username?: string | null;
-  imageUrl?: (string | null) | Media;
-  role: ('admin' | 'author' | 'user')[];
-  emailVerified?: string | null;
-  socialLinks?:
+  title: string;
+  layout?:
+    | (
+        | AboutType
+        | AdvertiseType
+        | HeroType
+        | SkillsType
+        | ServiceType
+        | HeadlineType
+        | RecentWorkType
+        | TestimonialType
+        | TeamType
+        | ServiceBannerType
+        | ServiceFeaturesType
+        | WorkProcessType
+        | BannerType
+        | OurClientsType
+        | StatisticsType
+        | TeamInfoType
+        | VideoAreaType
+        | ListType
+        | DetailsType
+        | ContactType
+        | PageBannerType
+        | PricingFeaturesType
+        | PricingSectionType
+        | DisqusCommentsType
+      )[]
+    | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (string | null) | Media;
+  };
+  isHome?: boolean | null;
+  isDynamic?: boolean | null;
+  slugMode?: ('generate' | 'custom') | null;
+  slug?: string | null;
+  pathMode?: ('generate' | 'custom') | null;
+  path?: string | null;
+  parent?: (string | null) | Page;
+  breadcrumbs?:
     | {
-        platform:
-          | 'facebook'
-          | 'instagram'
-          | 'twitter'
-          | 'linkedin'
-          | 'youtube'
-          | 'tiktok'
-          | 'pinterest'
-          | 'snapchat'
-          | 'reddit'
-          | 'tumblr'
-          | 'whatsapp'
-          | 'telegram'
-          | 'github'
-          | 'medium'
-          | 'quora'
-          | 'discord';
-        value: string;
+        doc?: (string | null) | Page;
+        url?: string | null;
+        label?: string | null;
         id?: string | null;
       }[]
     | null;
   updatedAt: string;
   createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  _verified?: boolean | null;
-  _verificationToken?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutType".
+ */
+export interface AboutType {
+  badge_title?: string | null;
+  title?: string | null;
+  description?: string | null;
+  percentages?:
+    | {
+        percentage?: number | null;
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  about_image?: (string | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'About';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -140,130 +173,6 @@ export interface Media {
       filename?: string | null;
     };
   };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags".
- */
-export interface Tag {
-  id: string;
-  tagImage: string | Media;
-  title: string;
-  description: string;
-  slug?: string | null;
-  color?: ('blue' | 'gray' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'pink') | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "blogs".
- */
-export interface Blog {
-  id: string;
-  blogImage: string | Media;
-  title: string;
-  description: string;
-  tags?:
-    | {
-        relationTo: 'tags';
-        value: string | Tag;
-      }[]
-    | null;
-  author?:
-    | {
-        relationTo: 'users';
-        value: string | User;
-      }[]
-    | null;
-  content: {
-    [k: string]: unknown;
-  }[];
-  slug?: string | null;
-  publishOn?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
- */
-export interface Page {
-  id: string;
-  title: string;
-  layout?:
-    | (
-        | AboutType
-        | AdvertiseType
-        | HeroType
-        | SkillsType
-        | ServiceType
-        | HeadlineType
-        | RecentWorkType
-        | TestimonialType
-        | TeamType
-        | ServiceBannerType
-        | ServiceFeaturesType
-        | WorkProcessType
-        | BannerType
-        | OurClientsType
-        | StatisticsType
-        | TeamInfoType
-        | VideoAreaType
-        | ListType
-        | DetailsType
-        | ContactType
-        | PageBannerType
-        | PricingFeaturesType
-        | PricingSectionType
-        | DisqusCommentsType
-      )[]
-    | null;
-  isHome?: boolean | null;
-  isDynamic?: boolean | null;
-  slugMode?: ('generate' | 'custom') | null;
-  slug?: string | null;
-  pathMode?: ('generate' | 'custom') | null;
-  path?: string | null;
-  parent?: (string | null) | Page;
-  breadcrumbs?:
-    | {
-        doc?: (string | null) | Page;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: (string | null) | Media;
-  };
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "AboutType".
- */
-export interface AboutType {
-  badge_title?: string | null;
-  title?: string | null;
-  description?: string | null;
-  percentages?:
-    | {
-        percentage?: number | null;
-        title?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  about_image?: (string | null) | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'About';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -671,6 +580,114 @@ export interface DisqusCommentsType {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blogs".
+ */
+export interface Blog {
+  id: string;
+  blogImage: string | Media;
+  title: string;
+  description: string;
+  tags?:
+    | {
+        relationTo: 'tags';
+        value: string | Tag;
+      }[]
+    | null;
+  author?:
+    | {
+        relationTo: 'users';
+        value: string | User;
+      }[]
+    | null;
+  content: {
+    [k: string]: unknown;
+  }[];
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (string | null) | Media;
+  };
+  slug?: string | null;
+  publishOn?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+  id: string;
+  tagImage: string | Media;
+  title: string;
+  description: string;
+  color?: ('blue' | 'gray' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'pink') | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (string | null) | Media;
+  };
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: string;
+  displayName?: string | null;
+  username: string;
+  imageUrl?: (string | null) | Media;
+  role: ('admin' | 'author' | 'user')[];
+  emailVerified?: string | null;
+  socialLinks?:
+    | {
+        platform:
+          | 'website'
+          | 'facebook'
+          | 'instagram'
+          | 'twitter'
+          | 'linkedin'
+          | 'youtube'
+          | 'tiktok'
+          | 'pinterest'
+          | 'snapchat'
+          | 'reddit'
+          | 'tumblr'
+          | 'whatsapp'
+          | 'telegram'
+          | 'github'
+          | 'medium'
+          | 'quora'
+          | 'discord';
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (string | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  _verified?: boolean | null;
+  _verificationToken?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "search".
  */
 export interface Search {
@@ -690,6 +707,45 @@ export interface Search {
         relationTo: 'users';
         value: string | User;
       };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-locked-documents".
+ */
+export interface PayloadLockedDocument {
+  id: string;
+  document?:
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'blogs';
+        value: string | Blog;
+      } | null)
+    | ({
+        relationTo: 'tags';
+        value: string | Tag;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null)
+    | ({
+        relationTo: 'search';
+        value: string | Search;
+      } | null);
+  globalSlug?: string | null;
+  user: {
+    relationTo: 'users';
+    value: string | User;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -814,6 +870,7 @@ export interface SiteSetting {
     socialLinks?:
       | {
           platform:
+            | 'website'
             | 'facebook'
             | 'instagram'
             | 'twitter'
