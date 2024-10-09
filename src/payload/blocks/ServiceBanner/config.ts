@@ -2,11 +2,10 @@ import { Block } from 'payload'
 
 const ServiceBannerConfig: Block = {
   slug: 'ServiceBanner',
-  // imageURL: '',
   interfaceName: 'ServiceBannerType',
   labels: {
-    singular: 'ServiceBanner Block',
-    plural: 'ServiceBanner Blocks',
+    singular: 'Service Banner Block',
+    plural: 'Service Banner Blocks',
   },
   fields: [
     {
@@ -14,6 +13,9 @@ const ServiceBannerConfig: Block = {
       type: 'text',
       label: 'Title',
       required: true,
+      admin: {
+        description: 'Enter the title for the service banner.',
+      },
     },
   ],
 }

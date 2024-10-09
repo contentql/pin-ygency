@@ -2,7 +2,6 @@ import { Block } from 'payload'
 
 const SkillsConfig: Block = {
   slug: 'Skills',
-  // imageURL: '',
   interfaceName: 'SkillsType',
   labels: {
     singular: 'Skills Block',
@@ -12,9 +11,12 @@ const SkillsConfig: Block = {
     {
       name: 'title',
       type: 'text',
-      label: 'Title',
+      label: 'Section Title',
+      required: true, // Optional: Make this field required
+      admin: {
+        description: 'Enter the title for the skills section.',
+      },
     },
-
     {
       name: 'skills',
       type: 'array',
@@ -26,11 +28,19 @@ const SkillsConfig: Block = {
           type: 'upload',
           relationTo: 'media',
           label: 'Skill Image',
+          required: true, // Optional: Make this field required
+          admin: {
+            description: 'Upload an image representing the skill.',
+          },
         },
         {
           name: 'skill_title',
           type: 'text',
           label: 'Skill Title',
+          required: true, // Optional: Make this field required
+          admin: {
+            description: 'Enter the name of the skill.',
+          },
         },
       ],
     },
