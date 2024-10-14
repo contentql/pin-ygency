@@ -119,13 +119,17 @@ const Profile = () => {
           </Modal.Header>
           <Modal.Body className='modal-custom'>
             <div className='image'>
-              <Image
-                src={latestProfilePic}
-                width={120}
-                height={120}
-                className='user-image-upload'
-                alt='user profile'
-              />
+              {latestProfilePic ? (
+                <Image
+                  src={latestProfilePic}
+                  width={120}
+                  height={120}
+                  className='user-image-upload'
+                  alt='user profile'
+                />
+              ) : (
+                <div className='user-image-upload' />
+              )}
             </div>
             <p className='image-types'>
               Accepted file types: (.jpg, .jpeg, .png, .svg)
