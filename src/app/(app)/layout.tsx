@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 
 import '@/app/(app)/globals.css'
+import GoogleAdsense from '@/components/GoogleAdsense'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import Provider from '@/trpc/Provider'
 import { serverClient } from '@/trpc/serverClient'
 
@@ -115,6 +117,8 @@ export default async function RootLayout({
           <link rel='stylesheet' href='/assets/css/style.css' />
           {/* eslint-disable-next-line @next/next/no-css-tags */}
           <link rel='stylesheet' href='/assets/css/custom.css' />
+          <GoogleAnalytics metadata={metadata} />
+          <GoogleAdsense metadata={metadata} />
         </head>
       </head>
       <body className={`${inter.className}`}>

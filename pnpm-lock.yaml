@@ -16,8 +16,8 @@ importers:
         specifier: ^0.7.0
         version: 0.7.0
       '@contentql/core':
-        specifier: ^0.2.6
-        version: 0.2.7(@aws-sdk/client-sso-oidc@3.654.0(@aws-sdk/client-sts@3.654.0))(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.0.0-canary.173(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(sass@1.79.3))(payload@3.0.0-beta.111(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(typescript@5.5.4))(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(sharp@0.32.6)(types-react@19.0.0-rc.0)(typescript@5.5.4)
+        specifier: ^0.3.0
+        version: 0.3.0(@aws-sdk/client-sso-oidc@3.654.0(@aws-sdk/client-sts@3.654.0))(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.0.0-canary.173(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(sass@1.79.3))(payload@3.0.0-beta.111(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(typescript@5.5.4))(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(sharp@0.32.6)(types-react@19.0.0-rc.0)(typescript@5.5.4)
       '@hookform/resolvers':
         specifier: ^3.4.0
         version: 3.9.0(react-hook-form@7.53.0(react@19.0.0-rc-3edc000d-20240926))
@@ -607,15 +607,15 @@ packages:
     bundledDependencies:
       - is-unicode-supported
 
-  '@contentql/core@0.2.7':
-    resolution: {integrity: sha512-K1E4d8PU1OPS6iuXL9WIDUk5NAcGR1EamEK1Dz/a9Hdwj1eSZsqHg22aGVhTZz8GGUtkWiFlJpVWJSyJ0pSQOw==}
+  '@contentql/core@0.3.0':
+    resolution: {integrity: sha512-v1/IoAq0761maHrwS3+RphCK/oAm+JLlbApUai4DG8jbAX74EYi1LqAoolGOBOZMWfQcZfSVzDMZZhDSe+qNiw==}
     engines: {node: '>=20 <21'}
     peerDependencies:
       next: 15.0.0-canary.173
       payload: 3.0.0-beta.111
       react: 19.0.0-rc-3edc000d-20240926
       react-dom: 19.0.0-rc-3edc000d-20240926
-      sharp: 0.33.5
+      sharp: ^0.33.5
 
   '@dnd-kit/accessibility@3.1.0':
     resolution: {integrity: sha512-ea7IkhKvlJUv9iSHJOnxinBcoOI3ppGnnL+VDJ75O45Nss6HtZd8IdN8touXPDtASfeI2T2LImb8VOZcL47wjQ==}
@@ -5719,7 +5719,7 @@ snapshots:
       picocolors: 1.0.1
       sisteransi: 1.0.5
 
-  '@contentql/core@0.2.7(@aws-sdk/client-sso-oidc@3.654.0(@aws-sdk/client-sts@3.654.0))(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.0.0-canary.173(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(sass@1.79.3))(payload@3.0.0-beta.111(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(typescript@5.5.4))(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(sharp@0.32.6)(types-react@19.0.0-rc.0)(typescript@5.5.4)':
+  '@contentql/core@0.3.0(@aws-sdk/client-sso-oidc@3.654.0(@aws-sdk/client-sts@3.654.0))(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.0.0-canary.173(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(sass@1.79.3))(payload@3.0.0-beta.111(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(typescript@5.5.4))(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(sharp@0.32.6)(types-react@19.0.0-rc.0)(typescript@5.5.4)':
     dependencies:
       '@payloadcms/db-mongodb': 3.0.0-beta.111(@aws-sdk/client-sso-oidc@3.654.0(@aws-sdk/client-sts@3.654.0))(payload@3.0.0-beta.111(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(typescript@5.5.4))
       '@payloadcms/email-resend': 3.0.0-beta.111(payload@3.0.0-beta.111(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-3edc000d-20240926(react@19.0.0-rc-3edc000d-20240926))(react@19.0.0-rc-3edc000d-20240926)(typescript@5.5.4))
