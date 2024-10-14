@@ -592,3 +592,15 @@
   animation: skeleton-loading 1.5s infinite;
   transition-timing-function: linear;
 }
+
+/* empty state */
+.empty-state-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  flex-direction: column;
+}
+.empty-state-image img {
+  object-fit: fit;
+}

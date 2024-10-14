@@ -2,6 +2,7 @@
 
 import { Blog, ListType, Tag } from '@payload-types'
 
+import Empty from '@/components/Empty'
 import BlogSkeleton from '@/components/skeletons/BlogSkeleton'
 import { trpc } from '@/trpc/client'
 
@@ -34,7 +35,15 @@ function BlogList({ blogs, block }: { blogs: Blog[]; block: ListType }) {
           </div>
         </div>
       </section>
-      {isLoading ? <BlogSkeleton /> : <Blogs blogsData={blogsData as Blog[]} />}
+      {isLoading ? (
+        <BlogSkeleton />
+      ) : blogs?.length <= 0 ? (
+        <Empty>
+          <h4 style={{ marginBottom: '40px' }}>Blogs not found</h4>
+        </Empty>
+      ) : (
+        <Blogs blogsData={blogsData as Blog[]} />
+      )}
     </>
   )
 }

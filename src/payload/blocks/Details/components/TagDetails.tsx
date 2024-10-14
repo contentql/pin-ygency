@@ -3,6 +3,7 @@ import { Params } from '../../types'
 import { Blog, Media, Tag } from '@payload-types'
 import Image from 'next/image'
 
+import Empty from '@/components/Empty'
 import TagSkeleton from '@/components/skeletons/TagSkeleton'
 import { trpc } from '@/trpc/client'
 
@@ -55,7 +56,9 @@ const TagDetails: React.FC<TagDetailsProps> = ({
       ) : blogsData?.length !== 0 ? (
         <Blogs blogsData={blogsData as Blog[]} />
       ) : (
-        <p>Blogs not found</p>
+        <Empty>
+          <h4 style={{ marginBottom: '40px' }}>Blogs not found</h4>
+        </Empty>
       )}
     </div>
   )
