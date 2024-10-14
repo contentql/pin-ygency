@@ -481,3 +481,114 @@
     width: 100%;
   }
 }
+
+/* skeletons */
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.skeleton-line {
+  height: 28px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    rgb(181, 180, 180) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgb(181, 180, 180) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+.skeleton-Image {
+  height: 220px;
+  width: 220px;
+  margin: 10px auto;
+  border-radius: 50%;
+  background: linear-gradient(
+    to right,
+    rgb(181, 180, 180) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgb(181, 180, 180) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  transition-timing-function: linear;
+}
+.skeleton-name {
+  height: 16px;
+  width: 50%;
+  border-radius: 4px;
+  margin: auto;
+  background: linear-gradient(
+    to right,
+    rgb(181, 180, 180) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgb(181, 180, 180) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  transition-timing-function: linear;
+}
+.skeleton-h6 {
+  height: 22px;
+  width: 50%;
+  border-radius: 4px;
+  margin: 30px 0px;
+  background: linear-gradient(
+    to right,
+    rgb(181, 180, 180) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgb(181, 180, 180) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  transition-timing-function: linear;
+}
+
+.skeleton-p {
+  height: 18px;
+  width: 75%;
+  border-radius: 4px;
+  margin: 35px 0px;
+  background: linear-gradient(
+    to right,
+    rgb(181, 180, 180) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgb(181, 180, 180) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  transition-timing-function: linear;
+}
+.skeleton-blog-image {
+  height: 120px;
+  width: 120px;
+  background: linear-gradient(
+    to right,
+    rgb(181, 180, 180) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgb(181, 180, 180) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  transition-timing-function: linear;
+}
+.skeleton-blog-title {
+  height: 16px;
+  width: 200px;
+  background: linear-gradient(
+    to right,
+    rgb(181, 180, 180) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgb(181, 180, 180) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  transition-timing-function: linear;
+}

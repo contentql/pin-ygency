@@ -132,6 +132,19 @@ const Profile = () => {
             </p>
           </Modal.Body>
           <Modal.Footer className='modal-custom'>
+            <Button
+              variant='primary'
+              onClick={() =>
+                document?.getElementById('dropzone-input')?.click()
+              }>
+              Click to upload
+              <input
+                id='dropzone-input'
+                type='file'
+                style={{ display: 'none' }}
+                onChange={handleUpload}
+              />
+            </Button>
             {uploadedImage ? (
               <Button
                 variant='primary'
@@ -139,21 +152,7 @@ const Profile = () => {
                 onClick={handleUpdateUserProfile}>
                 {uploadingImage ? 'Uploading...' : 'Upload'}
               </Button>
-            ) : (
-              <Button
-                variant='primary'
-                onClick={() =>
-                  document?.getElementById('dropzone-input')?.click()
-                }>
-                Click to upload
-                <input
-                  id='dropzone-input'
-                  type='file'
-                  style={{ display: 'none' }}
-                  onChange={handleUpload}
-                />
-              </Button>
-            )}
+            ) : null}
           </Modal.Footer>
         </Modal>
       </>
