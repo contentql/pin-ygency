@@ -51,4 +51,5 @@ export const blocks = [
   PageBannerConfig,
   PricingFeaturesConfig,
   PricingSectionConfig,
+  SkillsConfig,
 ]
