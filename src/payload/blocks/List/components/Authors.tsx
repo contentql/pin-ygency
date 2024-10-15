@@ -2,6 +2,7 @@ import { Media } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import Empty from '@/components/Empty'
 import TagSkeleton from '@/components/skeletons/TagSkeleton'
 import { trpc } from '@/trpc/client'
 
@@ -10,6 +11,10 @@ const Authors = () => {
     trpc.author.getAllAuthorsWithCount.useQuery()
   return isLoading ? (
     <TagSkeleton />
+  ) : authorsWithCount?.length! <= 0 ? (
+    <Empty>
+      <h4 style={{ marginBottom: '40px' }}>Authors not found</h4>
+    </Empty>
   ) : (
     <section className='blog-page-area py-130 rpy-100 rel z-1'>
       <div className='container-1290 container'>

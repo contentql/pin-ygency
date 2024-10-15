@@ -179,14 +179,14 @@ export interface Media {
  * via the `definition` "AdvertiseType".
  */
 export interface AdvertiseType {
-  title?: string | null;
-  banner_image?: (string | null) | Media;
+  title: string;
+  banner_image: string | Media;
   project_completion_count?: string | null;
   completion_status?: string | null;
   description?: string | null;
   clients?:
     | {
-        image?: (string | null) | Media;
+        image: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -200,16 +200,16 @@ export interface AdvertiseType {
  * via the `definition` "HeroType".
  */
 export interface HeroType {
-  title?: string | null;
+  title: string;
   description?: string | null;
   clients?:
     | {
-        image?: (string | null) | Media;
+        image: string | Media;
         id?: string | null;
       }[]
     | null;
   client_description?: string | null;
-  hero_image?: (string | null) | Media;
+  hero_image: string | Media;
   badge_title?: string | null;
   id?: string | null;
   blockName?: string | null;
@@ -220,11 +220,11 @@ export interface HeroType {
  * via the `definition` "SkillsType".
  */
 export interface SkillsType {
-  title?: string | null;
+  title: string;
   skills?:
     | {
-        skill_image?: (string | null) | Media;
-        skill_title?: string | null;
+        skill_image: string | Media;
+        skill_title: string;
         id?: string | null;
       }[]
     | null;
@@ -668,11 +668,6 @@ export interface User {
         id?: string | null;
       }[]
     | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: (string | null) | Media;
-  };
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -892,6 +887,15 @@ export interface SiteSetting {
         }[]
       | null;
     copyright?: string | null;
+  };
+  redirectionLinks?: {
+    blogLink?: (string | null) | Page;
+    authorLink?: (string | null) | Page;
+    tagLink?: (string | null) | Page;
+  };
+  monetization?: {
+    adSenseId?: string | null;
+    measurementId?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;

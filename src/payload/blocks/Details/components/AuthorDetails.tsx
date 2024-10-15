@@ -3,6 +3,7 @@ import { Params } from '../../types'
 import { Blog, Media, User } from '@payload-types'
 import Image from 'next/image'
 
+import Empty from '@/components/Empty'
 import BlogSkeleton from '@/components/skeletons/BlogSkeleton'
 import { trpc } from '@/trpc/client'
 
@@ -58,7 +59,9 @@ const AuthorDetails: React.FC<AuthorDetailsProps> = ({
       ) : authorBlogs?.length !== 0 ? (
         <Blogs blogsData={authorBlogs as Blog[]} />
       ) : (
-        <p>Blogs not found</p>
+        <Empty>
+          <h4 style={{ marginBottom: '40px' }}>Blogs not found</h4>
+        </Empty>
       )}
     </div>
   )

@@ -1,4 +1,3 @@
-import { env } from '@env'
 import { Media } from '@payload-types'
 import toast from 'react-hot-toast'
 
@@ -11,10 +10,11 @@ async function uploadMedia(files: FileList | null): Promise<Media | undefined> {
   formData.append('file', files[0])
 
   try {
-    const response = await fetch(env.NEXT_PUBLIC_PUBLIC_URL + '/api/media', {
+    const response = await fetch(window.location.origin + '/api/media', {
       method: 'POST',
       body: formData,
     })
+    console.log('response', response)
 
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`)

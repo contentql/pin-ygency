@@ -2,7 +2,7 @@ import { collectionSlug } from '@contentql/core'
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 
-import { fullLogo, logo, siteSettingsData, siteSettingsDataType } from './data'
+import { logo, siteSettingsData, siteSettingsDataType } from './data'
 
 const payload = await getPayloadHMR({ config: configPromise })
 
@@ -25,12 +25,6 @@ const seed = async () => {
       page => !['about', 'services', 'pricing'].includes(page?.slug!),
     )
 
-    const fullLogoImageSeedResult = await payload.create({
-      collection: 'media',
-      data: { alt: fullLogo?.alt },
-      filePath: fullLogo?.filePath,
-    })
-
     const logoImageSeedResult = await payload.create({
       collection: 'media',
       data: { alt: logo?.alt },
@@ -48,7 +42,7 @@ const seed = async () => {
         ...siteSettingsData?.navbar,
         logo: {
           ...siteSettingsData?.navbar?.logo,
-          imageUrl: fullLogoImageSeedResult?.id,
+          imageUrl: logoImageSeedResult?.id,
         },
         menuLinks: siteSettingsData?.navbar?.menuLinks?.map((link, index) => {
           // Check if it's a grouped link (menuLinkGroup)
@@ -94,7 +88,7 @@ const seed = async () => {
         ...siteSettingsData?.footer,
         logo: {
           ...siteSettingsData?.navbar?.logo,
-          imageUrl: fullLogoImageSeedResult?.id,
+          imageUrl: logoImageSeedResult?.id,
         },
         footerLinks: siteSettingsData?.footer?.footerLinks?.map(
           (link, index) => {

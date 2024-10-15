@@ -194,7 +194,7 @@ export const siteSettingsData: siteSettingsDataType = {
 
 export const logo: ImageType = {
   alt: 'footer',
-  filePath: path.join(process.cwd(), '/public/assets/images/logos/logo.png'),
+  filePath: path.join(process.cwd(), '/public/images/logo.svg'),
 }
 export const fullLogo: ImageType = {
   alt: 'header',

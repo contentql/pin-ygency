@@ -119,19 +119,36 @@ const Profile = () => {
           </Modal.Header>
           <Modal.Body className='modal-custom'>
             <div className='image'>
-              <Image
-                src={latestProfilePic}
-                width={120}
-                height={120}
-                className='user-image-upload'
-                alt='user profile'
-              />
+              {latestProfilePic ? (
+                <Image
+                  src={latestProfilePic}
+                  width={120}
+                  height={120}
+                  className='user-image-upload'
+                  alt='user profile'
+                />
+              ) : (
+                <div className='user-image-upload' />
+              )}
             </div>
             <p className='image-types'>
               Accepted file types: (.jpg, .jpeg, .png, .svg)
             </p>
           </Modal.Body>
           <Modal.Footer className='modal-custom'>
+            <Button
+              variant='primary'
+              onClick={() =>
+                document?.getElementById('dropzone-input')?.click()
+              }>
+              Click to upload
+              <input
+                id='dropzone-input'
+                type='file'
+                style={{ display: 'none' }}
+                onChange={handleUpload}
+              />
+            </Button>
             {uploadedImage ? (
               <Button
                 variant='primary'
@@ -139,21 +156,7 @@ const Profile = () => {
                 onClick={handleUpdateUserProfile}>
                 {uploadingImage ? 'Uploading...' : 'Upload'}
               </Button>
-            ) : (
-              <Button
-                variant='primary'
-                onClick={() =>
-                  document?.getElementById('dropzone-input')?.click()
-                }>
-                Click to upload
-                <input
-                  id='dropzone-input'
-                  type='file'
-                  style={{ display: 'none' }}
-                  onChange={handleUpload}
-                />
-              </Button>
-            )}
+            ) : null}
           </Modal.Footer>
         </Modal>
       </>
