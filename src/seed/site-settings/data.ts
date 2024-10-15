@@ -19,7 +19,7 @@ export const siteSettingsData: siteSettingsDataType = {
     logo: {
       imageUrl: '',
       height: 40,
-      width: 120,
+      width: 40,
     },
     menuLinks: [
       {

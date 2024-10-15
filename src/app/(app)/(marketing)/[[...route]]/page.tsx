@@ -114,7 +114,8 @@ export async function generateMetadata({
 
     return {}
   } catch (error: any) {
-    notFound()
+    console.log('error', error?.message)
+    return {}
   }
 }
 
