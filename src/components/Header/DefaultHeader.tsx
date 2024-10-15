@@ -10,6 +10,7 @@ import { sidebarClick, sidebarSignUpClick, stickyNav } from '@/utils/nav'
 
 import UserDropdown from './Dropdown'
 import Nav from './Nav'
+import NavSearch from './NavSearch'
 
 const DefaultHeader = ({
   singleMenu,
@@ -87,6 +88,7 @@ const DefaultHeader = ({
               <Nav singleMenu={singleMenu} headerData={headerData?.navbar} />
               {/* Main Menu End*/}
             </div>
+            <NavSearch />
             {user ? (
               <UserDropdown user={user} />
             ) : (

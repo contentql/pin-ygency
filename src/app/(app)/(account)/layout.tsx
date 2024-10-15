@@ -7,6 +7,7 @@ import DefaultHeader from '@/components/Header/DefaultHeader'
 import { SignInView } from '@/components/auth/sign-in'
 import { SignUpView } from '@/components/auth/sign-up'
 import { getCurrentUser } from '@/utils/getCurrentUser'
+import { MetadataProvider } from '@/utils/metadataContext'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -25,11 +26,18 @@ const AccountLayout: React.FC<LayoutProps> = async ({ children }) => {
 
   return (
     <div>
-      <DefaultHeader user={user} headerData={initData} singleMenu={true} dark />
-      <SignInView />
-      <SignUpView />
-      <div>{children}</div>
-      <Footer metadata={initData} />
+      <MetadataProvider metadata={initData}>
+        <DefaultHeader
+          user={user}
+          headerData={initData}
+          singleMenu={true}
+          dark
+        />
+        <SignInView />
+        <SignUpView />
+        <div>{children}</div>
+        <Footer metadata={initData} />
+      </MetadataProvider>
     </div>
   )
 }
