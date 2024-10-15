@@ -112,16 +112,6 @@ const seed = async (): Promise<any> => {
               image: image.id,
             })),
           }
-        } else if (block?.blockType === 'Skills') {
-          return {
-            ...block,
-            skills: block?.skills?.map((skill, index) => {
-              return {
-                ...skill,
-                skill_image: formattedSkillImagesResult.at(index)?.id,
-              }
-            }),
-          }
         } else if (block?.blockType === 'About') {
           return {
             ...block,
@@ -155,6 +145,16 @@ const seed = async (): Promise<any> => {
               return {
                 ...testimonial,
                 reviewer_image: formattedImagesResult.at(index)?.id,
+              }
+            }),
+          }
+        } else if (block?.blockType === 'Skills') {
+          return {
+            ...block,
+            skills: block?.skills?.map((skill, index) => {
+              return {
+                ...skill,
+                skill_image: formattedSkillImagesResult?.at(index)?.id as any,
               }
             }),
           }
