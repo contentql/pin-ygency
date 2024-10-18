@@ -1,13 +1,26 @@
 import { collectionSlug } from '@contentql/core'
 import configPromise from '@payload-config'
+import { Page } from '@payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { Ora } from 'ora'
 
 import { logo, siteSettingsData, siteSettingsDataType } from './data'
 
 const payload = await getPayloadHMR({ config: configPromise })
 
-const seed = async () => {
+const seed = async ({
+  authorDetailsPage,
+  tagDetailsPage,
+  blogDetailsPage,
+  spinner,
+}: {
+  authorDetailsPage: Page
+  tagDetailsPage: Page
+  blogDetailsPage: Page
+  spinner: Ora
+}) => {
   try {
+    spinner.start(`Started created site-settings...`)
     const { docs: pages, totalDocs: totalPages } = await payload.find({
       collection: collectionSlug['pages'],
       where: {
@@ -106,6 +119,20 @@ const seed = async () => {
           },
         ),
       },
+      redirectionLinks: {
+        authorLink: {
+          relationTo: 'pages',
+          value: authorDetailsPage?.id,
+        },
+        blogLink: {
+          relationTo: 'pages',
+          value: blogDetailsPage?.id,
+        },
+        tagLink: {
+          relationTo: 'pages',
+          value: tagDetailsPage?.id,
+        },
+      },
     }
 
     const result = await payload.updateGlobal({
@@ -113,8 +140,10 @@ const seed = async () => {
       data: formattedSiteSettingsData,
     })
 
+    spinner.succeed(`Successfully created site-settings`)
     return result
   } catch (error) {
+    spinner.succeed(`Failed to create site-settings`)
     throw error
   }
 }

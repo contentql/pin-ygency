@@ -1,5 +1,6 @@
 import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { Ora } from 'ora'
 import { RequiredDataFromCollectionSlug } from 'payload'
 
 import {
@@ -14,8 +15,9 @@ import {
 
 const payload = await getPayloadHMR({ config: configPromise })
 
-const seed = async (): Promise<any> => {
+const seed = async (spinner: Ora): Promise<any> => {
   try {
+    spinner.start(`Started creating about-page...`)
     const aboutImageSeedResult = await payload.create({
       collection: 'media',
       data: { alt: AboutImageData?.alt },
@@ -157,7 +159,9 @@ const seed = async (): Promise<any> => {
       collection: 'pages',
       data: AboutResult,
     })
+    spinner.succeed(`Successfully created about-page`)
   } catch (error) {
+    spinner.succeed(`Failed to create about-page`)
     throw error
   }
 }
