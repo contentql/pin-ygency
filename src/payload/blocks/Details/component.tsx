@@ -34,11 +34,13 @@ const Details: React.FC<DetailsProps> = ({ params, ...block }) => {
       const { data: blogsData } = trpc.tag.getAllBlogsByTag.useQuery({
         tagSlug: params?.route.at(-1)!,
       })
-      const { data: tagDetails } = trpc.tag.getTagBySlug.useQuery({
-        slug: params?.route.at(-1)!,
-      })
+      const { data: tagDetails, isLoading: isTagDetailsPending } =
+        trpc.tag.getTagBySlug.useQuery({
+          slug: params?.route.at(-1)!,
+        })
       return (
         <TagDetails
+          isTagDetailsPending={isTagDetailsPending}
           blogs={blogsData as Blog[]}
           tagDetails={tagDetails as Tag}
           params={params}
@@ -47,9 +49,10 @@ const Details: React.FC<DetailsProps> = ({ params, ...block }) => {
     }
 
     case 'users': {
-      const { data: author } = trpc.author.getAuthorByName.useQuery({
-        authorName: params?.route.at(-1)!,
-      })
+      const { data: author, isLoading: isAuthorLoading } =
+        trpc.author.getAuthorByName.useQuery({
+          authorName: params?.route.at(-1)!,
+        })
       const { data: authorBlogs } = trpc.author.getBlogsByAuthorName.useQuery({
         authorName: params?.route.at(-1)!,
       })
@@ -58,6 +61,7 @@ const Details: React.FC<DetailsProps> = ({ params, ...block }) => {
         <AuthorDetails
           author={author as any}
           blogsData={authorBlogs as any}
+          isAuthorLoading={isAuthorLoading}
           params={params}
         />
       )
