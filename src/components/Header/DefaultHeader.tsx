@@ -74,6 +74,7 @@ const DefaultHeader = ({
                 <Link legacyBehavior href='/'>
                   {logoDetails.url && (
                     <Image
+                      style={{ objectFit: 'contain' }}
                       src={logoDetails.url}
                       alt={logoDetails.alt}
                       width={logoDetails?.width ? logoDetails?.width : 24}

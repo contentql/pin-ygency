@@ -151,7 +151,10 @@ const SignUpForm: React.FC = () => {
                 )}
               </div>
               <div className='form-group-signup'>
-                <button type='submit' className='theme-btn'>
+                <button
+                  type='submit'
+                  disabled={isSignUpPending}
+                  className='theme-btn'>
                   {isSignUpPending ? 'Creating account...' : 'Sign Up'}
                 </button>
               </div>

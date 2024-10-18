@@ -5,8 +5,11 @@ import Link from 'next/link'
 import Empty from '@/components/Empty'
 import TagSkeleton from '@/components/skeletons/TagSkeleton'
 import { trpc } from '@/trpc/client'
+import getSlugs from '@/utils/getSlugs'
+import { useMetadata } from '@/utils/metadataContext'
 
 const Tags = () => {
+  const { redirectionLinks } = useMetadata()
   const { data, isLoading } = trpc.tag.getAllTags.useQuery()
   return isLoading ? (
     <TagSkeleton />
@@ -20,7 +23,7 @@ const Tags = () => {
         <div className='row'>
           {data?.map((tag, index) => (
             <div key={index} className='col-xl-3 col-lg-4 col-sm-6'>
-              <Link href={`/tag/${tag?.slug}`}>
+              <Link href={`${getSlugs({ redirectionLinks })?.tag}${tag?.slug}`}>
                 <div className='tag-item wow fadeInUp delay-0-2s'>
                   <div className='content'>
                     <div className='image'>

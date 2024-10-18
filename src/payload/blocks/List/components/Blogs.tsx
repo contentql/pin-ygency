@@ -3,8 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { formatDate } from '@/utils/dateFormatter'
+import getSlugs from '@/utils/getSlugs'
+import { useMetadata } from '@/utils/metadataContext'
 
 const Blogs = ({ blogsData }: { blogsData: Blog[] }) => {
+  const { redirectionLinks } = useMetadata()
+
   return (
     <section className='blog-page-area py-130 rpy-100 rel z-1'>
       <div className='container-1290 container'>
@@ -31,7 +35,7 @@ const Blogs = ({ blogsData }: { blogsData: Blog[] }) => {
                       <Link
                         className='blog-authors-li'
                         key={index}
-                        href={`/author/${(author?.value as User)?.username}`}>
+                        href={`${getSlugs({ redirectionLinks })?.author}${(author?.value as User)?.username}`}>
                         <Image
                           title={(author?.value as User)?.username!}
                           alt=''
@@ -49,11 +53,15 @@ const Blogs = ({ blogsData }: { blogsData: Blog[] }) => {
                 </ul>
                 <hr />
                 <h4>
-                  <Link legacyBehavior href={`/blog/${blog?.slug}`}>
+                  <Link
+                    legacyBehavior
+                    href={`${getSlugs({ redirectionLinks })?.blog}${blog?.slug}`}>
                     {blog?.title}
                   </Link>
                 </h4>
-                <Link legacyBehavior href={`/blog/${blog?.slug}`}>
+                <Link
+                  legacyBehavior
+                  href={`${getSlugs({ redirectionLinks })?.blog}${blog?.slug}`}>
                   <span className='read-more'>
                     Read More <i className='far fa-arrow-right' />
                   </span>

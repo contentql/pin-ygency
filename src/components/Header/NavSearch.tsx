@@ -1,5 +1,6 @@
 'use client'
 
+import { Page } from '@payload-types'
 import { useDebouncedEffect } from '@payloadcms/ui'
 import {
   type Action,
@@ -14,7 +15,7 @@ import {
   useMatches,
   useRegisterActions,
 } from 'kbar'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next-nprogress-bar'
 import { useState } from 'react'
 
 import { trpc } from '@/trpc/client'
@@ -68,7 +69,10 @@ const NavSearch = () => {
 
                 const link = linkMap[section]
 
-                const slug = link && typeof link !== 'string' ? link.path! : ''
+                const slug =
+                  link && typeof link !== 'string'
+                    ? (link?.value as Page)?.path!
+                    : ''
                 const slicedSlug = slug ? slug.split('[')[0] : ''
 
                 if (slug) {
@@ -170,13 +174,14 @@ const NavSearch = () => {
                 backgroundColor: '#1e293b',
                 padding: '4px',
                 zIndex: '9999px',
+                overflow: 'hidden',
               }}>
               <KBarSearch
                 defaultPlaceholder='Search'
                 className='kbar-search '
               />
               {results && results.length > 0 ? (
-                <div className='mx-4 mt-2'>
+                <div className='kbar-list mx-4 mt-2'>
                   <KBarResults
                     items={results}
                     onRender={({ item, active }) => {

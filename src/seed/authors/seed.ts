@@ -1,6 +1,7 @@
 import configPromise from '@payload-config'
 import { User } from '@payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { Ora } from 'ora'
 
 import { getRandomInt } from '@/utils/getRandomInt'
 
@@ -8,8 +9,9 @@ import { AuthorDataType, authorImagesData, authorsData } from './data'
 
 const payload = await getPayloadHMR({ config: configPromise })
 
-const seed = async (): Promise<(string | User)[]> => {
+const seed = async (spinner: Ora): Promise<(string | User)[]> => {
   try {
+    spinner.start(`Started created authors...`)
     const imagesResult = await Promise.allSettled(
       authorImagesData.map(tagImageData =>
         payload.create({
@@ -73,8 +75,10 @@ const seed = async (): Promise<(string | User)[]> => {
       )
     }
 
+    spinner.succeed(`Successfully created authors.`)
     return formattedResults
   } catch (error) {
+    spinner.succeed(`Failed to create authors.`)
     throw error
   }
 }

@@ -1,6 +1,7 @@
 import configPromise from '@payload-config'
 import { Blog } from '@payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { Ora } from 'ora'
 
 import { getRandomInt } from '@/utils/getRandomInt'
 
@@ -8,8 +9,9 @@ import { BlogDataType, blogsData, blogsImagesData } from './data'
 
 const payload = await getPayloadHMR({ config: configPromise })
 
-const seed = async (): Promise<(string | Blog)[]> => {
+const seed = async (spinner: Ora): Promise<(string | Blog)[]> => {
   try {
+    spinner.start(`Started created blogs...`)
     const { docs: tags, totalDocs: totalTags } = await payload.find({
       collection: 'tags',
     })
@@ -77,8 +79,10 @@ const seed = async (): Promise<(string | Blog)[]> => {
         ? result.value
         : `Failed to seed: ${result.reason}`,
     )
+    spinner.start(`Successfully created blogs.`)
     return formattedResults
   } catch (error) {
+    spinner.succeed(`Failed to create blogs`)
     throw error
   }
 }

@@ -1,6 +1,7 @@
 import configPromise from '@payload-config'
 import { Tag } from '@payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
+import { Ora } from 'ora'
 
 import { getRandomInt } from '@/utils/getRandomInt'
 
@@ -8,8 +9,9 @@ import { TagDataType, tagsData, tagsImagesData } from './data'
 
 const payload = await getPayloadHMR({ config: configPromise })
 
-const seed = async (): Promise<(string | Tag)[]> => {
+const seed = async (spinner: Ora): Promise<(string | Tag)[]> => {
   try {
+    spinner.start(`Started created tags...`)
     const imagesResult = await Promise.allSettled(
       tagsImagesData.map(tagImageData =>
         payload.create({
@@ -63,9 +65,11 @@ const seed = async (): Promise<(string | Tag)[]> => {
         `Seeding failed with the following errors:\n${errors.join('\n')}`,
       )
     }
+    spinner.succeed(`Successfully created tags`)
 
     return formattedResults
   } catch (error) {
+    spinner.succeed(`Failed to create tags`)
     throw error
   }
 }

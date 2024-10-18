@@ -6,7 +6,9 @@ import Link from 'next/link'
 
 import BlogDetailsSkeleton from '@/components/skeletons/BlogDetailsSkeleton'
 import { trpc } from '@/trpc/client'
+import getSlugs from '@/utils/getSlugs'
 import { icons } from '@/utils/icons'
+import { useMetadata } from '@/utils/metadataContext'
 
 const BlogDetails = ({
   blogData,
@@ -17,6 +19,7 @@ const BlogDetails = ({
   blogsData: Blog[]
   blogDataIsLoading: boolean
 }) => {
+  const { redirectionLinks } = useMetadata()
   const { data: allTags } = trpc?.tag?.getAllTags?.useQuery()
   const formatDate = (dateString: string) => {
     const date = parseISO(dateString)
@@ -44,7 +47,7 @@ const BlogDetails = ({
                         {blogData?.author?.slice(0, 2).map((author, index) => (
                           <Link
                             key={index}
-                            href={`/author/${(author?.value as User)?.username}`}>
+                            href={`${getSlugs({ redirectionLinks })?.author}${(author?.value as User)?.username}`}>
                             {(author?.value as User)?.displayName}
                           </Link>
                         ))}
@@ -86,7 +89,7 @@ const BlogDetails = ({
                           <Link
                             key={index}
                             legacyBehavior
-                            href={`/tag/${(tag?.value as Tag)?.slug}`}>
+                            href={`${getSlugs({ redirectionLinks })?.tag}${(tag?.value as Tag)?.slug}`}>
                             {(tag?.value as Tag)?.title}
                           </Link>
                         ))}
@@ -144,7 +147,7 @@ const BlogDetails = ({
                               <h5>
                                 <Link
                                   legacyBehavior
-                                  href={`/blog/${blogData?.slug}`}>
+                                  href={`${getSlugs({ redirectionLinks })?.blog}${blogData?.slug}`}>
                                   {blogData?.title}
                                 </Link>
                               </h5>
@@ -164,7 +167,7 @@ const BlogDetails = ({
                           <Link
                             key={index}
                             legacyBehavior
-                            href={`/tag/${tagData?.slug}`}>
+                            href={`${getSlugs({ redirectionLinks })?.tag}${tagData?.slug}`}>
                             {tagData?.title}
                           </Link>
                         ))}

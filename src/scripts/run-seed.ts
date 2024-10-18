@@ -13,6 +13,7 @@ import { MongoClient } from 'mongodb'
 import ora, { Ora } from 'ora'
 
 // ! For running shell commands (if needed for additional tasks)
+import { seedAboutPage } from '@/seed/about-page'
 import { seedAuthorDetailsPage } from '@/seed/author-details-page'
 import { seedAuthors } from '@/seed/authors'
 import { seedAuthorsPage } from '@/seed/authors-page'
@@ -20,6 +21,9 @@ import { seedBlogDetailsPage } from '@/seed/blog-details-page'
 import { seedBlogs } from '@/seed/blogs'
 import { seedBlogsPage } from '@/seed/blogs-page'
 import { seedHomePage } from '@/seed/home-page'
+import { seedPricingPage } from '@/seed/pricing-page'
+import { seedServicePage } from '@/seed/service-page'
+import { seedSiteSettingsGlobal } from '@/seed/site-settings'
 import { seedTagDetailsPage } from '@/seed/tag-details-page'
 import { seedTags } from '@/seed/tags'
 import { seedTagsPage } from '@/seed/tags-page'
@@ -75,20 +79,25 @@ const executeSeeding = async (): Promise<void> => {
   }).start()
 
   try {
-    await seedAndLog('Seeding Home Page', seedHomePage, spinner)
-    await seedAndLog('Seeding Tags Page', seedTagsPage, spinner)
-    await seedAndLog('Seeding Tag Details Page', seedTagDetailsPage, spinner)
-    await seedAndLog('Seeding Tags', seedTags, spinner)
-    await seedAndLog('Seeding Authors Page', seedAuthorsPage, spinner)
-    await seedAndLog(
-      'Seeding Author Details Page',
-      seedAuthorDetailsPage,
+    await seedHomePage(spinner)
+    await seedServicePage(spinner)
+    await seedAboutPage(spinner)
+    await seedPricingPage(spinner)
+    await seedTags(spinner)
+    await seedAuthors(spinner)
+    await seedBlogs(spinner)
+    await seedAuthorsPage(spinner)
+    await seedTagsPage(spinner)
+    await seedBlogsPage(spinner)
+    const blogDetailsPage = await seedBlogDetailsPage(spinner)
+    const tagDetailsPage = await seedTagDetailsPage(spinner)
+    const authorDetailsPage = await seedAuthorDetailsPage(spinner)
+    await seedSiteSettingsGlobal({
+      blogDetailsPage,
+      tagDetailsPage,
+      authorDetailsPage,
       spinner,
-    )
-    await seedAndLog('Seeding Authors', seedAuthors, spinner)
-    await seedAndLog('Seeding Blogs Page', seedBlogsPage, spinner)
-    await seedAndLog('Seeding Blog Details Page', seedBlogDetailsPage, spinner)
-    await seedAndLog('Seeding Blogs', seedBlogs, spinner)
+    })
   } catch (error) {
     console.error(chalk.red('Error running seeds:'), error)
   } finally {

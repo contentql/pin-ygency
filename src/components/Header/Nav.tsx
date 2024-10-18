@@ -1,4 +1,4 @@
-import { Media, SiteSetting } from '@payload-types'
+import { SiteSetting } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Accordion, useAccordionButton } from 'react-bootstrap'
@@ -12,19 +12,43 @@ const Nav = ({
   singleMenu: boolean
   headerData: SiteSetting['navbar']
 }) => {
+  let logoDetails = {
+    url: '',
+    alt: '',
+    height: 0,
+    width: 0,
+  }
+  const { logo } = headerData
+  if (Object.keys(logo).length && logo?.imageUrl === 'string') {
+    logoDetails = {
+      url: logo?.imageUrl,
+      alt: '',
+      height: logo?.height!,
+      width: logo?.width!,
+    }
+  } else if (Object.keys(logo).length && typeof logo?.imageUrl !== 'string') {
+    logoDetails = {
+      url: logo.imageUrl?.url!,
+      alt: logo.imageUrl?.alt || '',
+      height: logo?.height!,
+      width: logo?.width!,
+    }
+  }
   return (
     <nav className='main-menu navbar-expand-lg'>
       <Accordion>
         <div className='navbar-header py-10'>
           <div className='mobile-logo'>
             <Link legacyBehavior href='/'>
-              <Image
-                src={(headerData?.logo?.imageUrl as Media)?.url || ''}
-                alt={'Logo'}
-                title='Logo'
-                height={40}
-                width={150}
-              />
+              {logoDetails.url && (
+                <Image
+                  style={{ objectFit: 'contain' }}
+                  src={logoDetails.url}
+                  alt={logoDetails.alt}
+                  width={logoDetails?.width ? logoDetails?.width : 24}
+                  height={logoDetails?.height ? logoDetails?.height : 24}
+                />
+              )}
             </Link>
           </div>
           <CustomToggle eventKey='0'></CustomToggle>

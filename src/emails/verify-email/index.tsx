@@ -41,7 +41,7 @@ export const VerifyEmailTemplate = ({
             <Row style={header}>
               <Column>
                 <Img
-                  src={`${env.PAYLOAD_URL}/favicon.ico`}
+                  src={`${env.PAYLOAD_URL}/contentql.ico`}
                   width='40'
                   height='40'
                   alt='ContentQL'

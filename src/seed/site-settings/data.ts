@@ -87,36 +87,6 @@ export const siteSettingsData: siteSettingsDataType = {
           ],
         },
       },
-      // {
-      //   group: false,
-      //   menuLink: {
-      //     label: '',
-      //     page: {
-      //       relationTo: 'pages',
-      //       value: '',
-      //     },
-      //   },
-      // },
-      // {
-      //   group: false,
-      //   menuLink: {
-      //     label: '',
-      //     page: {
-      //       relationTo: 'pages',
-      //       value: '',
-      //     },
-      //   },
-      // },
-      // {
-      //   group: false,
-      //   menuLink: {
-      //     label: '',
-      //     page: {
-      //       relationTo: 'pages',
-      //       value: '',
-      //     },
-      //   },
-      // },
     ],
   },
 
@@ -189,6 +159,20 @@ export const siteSettingsData: siteSettingsDataType = {
         },
       },
     ],
+  },
+  redirectionLinks: {
+    authorLink: {
+      relationTo: 'pages',
+      value: '',
+    },
+    tagLink: {
+      relationTo: 'pages',
+      value: '',
+    },
+    blogLink: {
+      relationTo: 'pages',
+      value: '',
+    },
   },
 }
 
