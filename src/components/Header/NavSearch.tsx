@@ -1,5 +1,6 @@
 'use client'
 
+import { Page } from '@payload-types'
 import { useDebouncedEffect } from '@payloadcms/ui'
 import {
   type Action,
@@ -68,7 +69,10 @@ const NavSearch = () => {
 
                 const link = linkMap[section]
 
-                const slug = link && typeof link !== 'string' ? link.path! : ''
+                const slug =
+                  link && typeof link !== 'string'
+                    ? (link?.value as Page)?.path!
+                    : ''
                 const slicedSlug = slug ? slug.split('[')[0] : ''
 
                 if (slug) {
@@ -170,6 +174,7 @@ const NavSearch = () => {
                 backgroundColor: '#1e293b',
                 padding: '4px',
                 zIndex: '9999px',
+                overflow: 'hidden',
               }}>
               <KBarSearch
                 defaultPlaceholder='Search'

@@ -5,10 +5,14 @@ import Link from 'next/link'
 import Empty from '@/components/Empty'
 import TagSkeleton from '@/components/skeletons/TagSkeleton'
 import { trpc } from '@/trpc/client'
+import getSlugs from '@/utils/getSlugs'
+import { useMetadata } from '@/utils/metadataContext'
 
 const Authors = () => {
   const { data: authorsWithCount, isLoading } =
     trpc.author.getAllAuthorsWithCount.useQuery()
+  const { redirectionLinks } = useMetadata()
+
   return isLoading ? (
     <TagSkeleton />
   ) : authorsWithCount?.length! <= 0 ? (
@@ -21,7 +25,8 @@ const Authors = () => {
         <div className='row'>
           {authorsWithCount?.map((author, index) => (
             <div key={index} className='col-xl-3 col-lg-4 col-sm-6'>
-              <Link href={`/author/${author?.username}`}>
+              <Link
+                href={`${getSlugs({ redirectionLinks })?.author}${author?.username}`}>
                 <div className='tag-item wow fadeInUp delay-0-2s'>
                   <div className='content'>
                     <div className='image'>
