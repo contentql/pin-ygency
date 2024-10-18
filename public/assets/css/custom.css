@@ -646,6 +646,7 @@
   height: max-content;
   min-width: 500px;
   max-width: 600px;
+  min-height: 120px;
 }
 .kbar-search {
   position: relative;

@@ -15,7 +15,7 @@ import {
   useMatches,
   useRegisterActions,
 } from 'kbar'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next-nprogress-bar'
 import { useState } from 'react'
 
 import { trpc } from '@/trpc/client'
@@ -181,7 +181,7 @@ const NavSearch = () => {
                 className='kbar-search '
               />
               {results && results.length > 0 ? (
-                <div className='mx-4 mt-2'>
+                <div className='kbar-list mx-4 mt-2'>
                   <KBarResults
                     items={results}
                     onRender={({ item, active }) => {
