@@ -38,9 +38,15 @@ const SignInForm: React.FC = () => {
     error: signInError,
     isSuccess: isSignInSuccess,
   } = trpc.auth.signIn.useMutation({
-    onSuccess: () => {
+    onSuccess: result => {
       document.querySelector('body')!.classList.remove('side-content-visible')
       router.push('/profile')
+      const isAdmin = result?.user?.role?.includes('admin')
+      if (isAdmin) {
+        router.push('/admin')
+      } else {
+        router.push('/profile')
+      }
     },
     onError: () => {
       reset()
