@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Branding = () => {
   return (
     <Link
-      className='branding shadow-xl'
+      className='branding'
       href='https://contentql.io'
       target='_blank'
       aria-label='contentQL website'>
