@@ -5,6 +5,7 @@ import { Advertise } from './Advertise'
 import { Banner } from './Banner'
 import { Contact } from './Contact'
 import { Details } from './Details'
+import { FormBlock } from './Form'
 import { Headline } from './Headline'
 import { Hero } from './Hero'
 import { List } from './List'
@@ -49,4 +50,5 @@ export const blocksJSX = {
   PricingFeatures,
   PricingSection,
   DisqusComments,
+  FormBlock,
 }

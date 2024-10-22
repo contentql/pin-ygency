@@ -53,6 +53,16 @@ export const siteSettingsData: siteSettingsDataType = {
         },
       },
       {
+        group: false,
+        menuLink: {
+          label: '',
+          page: {
+            relationTo: 'pages',
+            value: '',
+          },
+        },
+      },
+      {
         group: true,
         menuLinkGroup: {
           groupTitle: 'More',
@@ -98,6 +108,16 @@ export const siteSettingsData: siteSettingsDataType = {
       width: 40,
     },
     footerLinks: [
+      {
+        group: false,
+        menuLink: {
+          label: '',
+          page: {
+            relationTo: 'pages',
+            value: '',
+          },
+        },
+      },
       {
         group: false,
         menuLink: {
