@@ -49,12 +49,12 @@ const SelectField: React.FC<
 }) => {
   return (
     <Width width={width as number}>
-      <div className='flex flex-col gap-1'>
-        <label className='block text-sm font-medium capitalize'>{label}</label>
+      <div>
+        <label>{label}</label>
         <div className='user-form'>
           <Form.Select
             size='sm'
-            aria-label='Default select example'
+            aria-label={defaultValue || 'select'}
             className='custom-select'
             {...register(name, {
               required: requiredFromProps as boolean,
@@ -62,10 +62,12 @@ const SelectField: React.FC<
                 setValue(name, event.target.value)
               },
             })}>
-            <option>Open this select menu</option>
-            <option value='1'>One</option>
-            <option value='2'>Two</option>
-            <option value='3'>Three</option>
+            <option>Options</option>
+            {options?.map((option, index) => (
+              <option key={index} value={option?.value}>
+                {option?.label}
+              </option>
+            ))}
           </Form.Select>
         </div>
 

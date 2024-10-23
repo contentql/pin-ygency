@@ -125,7 +125,7 @@ const Form = ({
             }
           })}
       </div>
-      <div className='menu-btns'>
+      <div className='button-group'>
         <div className='action-button '>
           <button
             type='submit'

@@ -59,12 +59,12 @@ const Country: React.FC<
               },
             })}>
             {countries?.flatMap((country: any, index: number) => (
-              <option key={index}>
-                {' '}
-                <div style={{ display: 'flex', gap: '2px' }}>
-                  <Image src={country?.flag} alt='' width={28} height={14} />
-                  <p>{country?.name}</p>
-                </div>
+              <option
+                className='option'
+                key={index}
+                style={{ display: 'flex', gap: '2px' }}>
+                <Image src={country?.flag} alt='' width={28} height={14} />
+                <p>{country?.name}</p>
               </option>
             ))}
           </Form.Select>
