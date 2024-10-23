@@ -1,6 +1,6 @@
 import Error from '../Error'
 import Width from '../Width'
-import Form from 'react-bootstrap/Form'
+import { Form } from 'react-bootstrap'
 import {
   FieldErrorsImpl,
   FieldValues,

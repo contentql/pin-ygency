@@ -131,7 +131,11 @@ const Form = ({
             type='submit'
             className='action-button'
             disabled={isFormSubmissionPending}>
-            {submitButtonLabel ? submitButtonLabel : 'Submit'}
+            {isFormSubmissionPending
+              ? 'Submitting...'
+              : submitButtonLabel
+                ? submitButtonLabel
+                : 'Submit'}
           </button>
         </div>
       </div>

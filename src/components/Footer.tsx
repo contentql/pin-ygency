@@ -1,6 +1,8 @@
 import type { Page, SiteSetting } from '@payload-types'
 import Link from 'next/link'
 
+import { logoMapping } from '@/utils/logoMapping'
+
 type SocialLinksType = NonNullable<
   Pick<SiteSetting, 'footer'>['footer']['socialLinks']
 >[0]
@@ -97,16 +99,39 @@ const Footer = ({ metadata }: { metadata: SiteSetting }) => {
           </div>
           <div className='col-lg-5 order-lg-2 align-self-center me-auto'>
             <div className='footer-widget newsletter-widget wow fadeInUp delay-0-2s'>
-              <form className='footer-newsletter' action='#'>
+              {/* <form className='footer-newsletter' action='#'>
                 <input type='email' placeholder='Email Address' required />
                 <button type='submit'>
                   <i className='fas fa-arrow-right' />
                 </button>
-              </form>
-              <p>{footer?.copyright}</p>
+              </form> */}
+              <div>
+                {socialLinks?.length ? (
+                  <div>
+                    <ul className='social-links'>
+                      {socialLinks.map(({ platform, value, id }) => {
+                        const Component = logoMapping[platform]
+
+                        return Component ? (
+                          <li key={id}>
+                            <Link
+                              href={value}
+                              target='_blank'
+                              className='social-link'>
+                              <Component className='icon' />
+                              <div>{platform}</div>
+                            </Link>
+                          </li>
+                        ) : null
+                      })}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
+        <p className='copyright'>{footer?.copyright}</p>
       </div>
     </footer>
   )

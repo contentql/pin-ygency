@@ -289,6 +289,7 @@ export interface RecentWorkType {
   recent_works?:
     | {
         title?: string | null;
+        url?: string | null;
         image?: (string | null) | Media;
         id?: string | null;
       }[]
@@ -369,6 +370,7 @@ export interface ServiceFeaturesType {
   features?:
     | {
         title?: string | null;
+        url?: string | null;
         description?: string | null;
         id?: string | null;
       }[]

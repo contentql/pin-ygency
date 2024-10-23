@@ -19,7 +19,7 @@ const ServiceFeatures: React.FC<ServiceFeatureProps> = ({
               <div className='feature-item-three wow fadeInUp delay-0-2s'>
                 <div className='top-part'>
                   <span className='serial-number'>{index + 1}</span>
-                  <Link legacyBehavior href='/service-details'>
+                  <Link legacyBehavior href={feature?.url || '#'}>
                     <span className='details-btn'>
                       <i className='far fa-arrow-right' />
                     </span>
@@ -27,7 +27,7 @@ const ServiceFeatures: React.FC<ServiceFeatureProps> = ({
                 </div>
                 <div className='content'>
                   <h4>
-                    <Link legacyBehavior href='/service-details'>
+                    <Link legacyBehavior href={feature?.url || '#'}>
                       {feature?.title}
                     </Link>
                   </h4>

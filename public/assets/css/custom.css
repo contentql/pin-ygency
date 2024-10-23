@@ -801,6 +801,11 @@
   width: 100%;
 }
 
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .checkbox-wrapper input[type='checkbox'] {
   position: relative;
   cursor: pointer;
@@ -849,4 +854,29 @@
 .button-group {
   display: flex;
   justify-content: end;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.social-link {
+  display: inline-flex;
+  column-gap: 10px;
+  align-items: center;
+}
+.social-link:hover {
+  color: #10b981;
+}
+.social-link div {
+  font-size: large;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.copyright {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

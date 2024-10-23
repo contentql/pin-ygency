@@ -39,6 +39,14 @@ export const RecentWorkConfig: Block = {
           },
         },
         {
+          name: 'url',
+          type: 'text',
+          label: 'Url',
+          admin: {
+            description: 'Enter Your website url here.',
+          },
+        },
+        {
           name: 'image',
           type: 'upload',
           relationTo: 'media',

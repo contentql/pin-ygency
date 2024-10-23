@@ -58,11 +58,7 @@ const CheckboxField: React.FC<
           />
         </div>
 
-        <label
-          style={{ marginLeft: '8px', textAlign: 'left' }}
-          htmlFor={label ?? ''}>
-          {label}
-        </label>
+        <div style={{ marginLeft: '6px', textAlign: 'left' }}>{label}</div>
       </div>
       {requiredFromProps && errors[name] && (
         <p style={{ color: 'red' }}>{errors[name]?.type as any}</p>

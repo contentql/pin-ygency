@@ -71,7 +71,7 @@ const DefaultHeader = ({
           <div className='header-inner rpy-10 rel d-flex align-items-center'>
             <div className='logo-outer'>
               <div className='logo'>
-                <Link legacyBehavior href='/'>
+                <Link href='/'>
                   {logoDetails.url && (
                     <Image
                       style={{ objectFit: 'contain' }}

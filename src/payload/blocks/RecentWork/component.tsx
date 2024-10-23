@@ -32,7 +32,10 @@ const RecentWork: React.FC<RecentWorkProps> = ({ params, ...block }) => {
               <div className='project-timeline-two wow fadeInUp delay-0-2s'>
                 <span className='serial-number'>{idx + 1}</span>
                 <h4>
-                  <Link legacyBehavior href='/project-details'>
+                  <Link
+                    legacyBehavior
+                    href={recentWork?.url || '#'}
+                    target='_blank'>
                     {recentWork?.title}
                   </Link>
                 </h4>
