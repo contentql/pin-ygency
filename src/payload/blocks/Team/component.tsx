@@ -44,12 +44,11 @@ const Team: React.FC<TeamProps> = ({ params, ...block }) => {
                   </Link>
                 </div>
                 <div className='btn-social'>
-                  <Link legacyBehavior href='/team-details'>
-                    <span className='read-more'>
-                      <span>View Details</span>{' '}
-                      <i className='far fa-arrow-right' />
-                    </span>
-                  </Link>
+                  <span className='read-more'>
+                    <span>{member?.name}</span>{' '}
+                    {/* <i className='far fa-arrow-right' /> */}
+                  </span>
+
                   <div className='social-style-two'>
                     {member?.social_media?.map((social, idx) => (
                       <Link key={idx} href={social?.url}>

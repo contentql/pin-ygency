@@ -29,6 +29,7 @@ export const pageRouter = router({
         const { docs: allPages } = await payload.find({
           collection: collectionSlug.pages,
           depth: 3,
+          pagination: false,
         })
 
         if (!allPages?.length) {
@@ -73,6 +74,7 @@ export const pageRouter = router({
       const { docs } = await payload.find({
         collection: 'pages',
         draft: false,
+        pagination: false,
       })
 
       return docs

@@ -24,6 +24,14 @@ const ServiceFeaturesConfig: Block = {
           },
         },
         {
+          name: 'url',
+          label: 'Url',
+          type: 'text',
+          admin: {
+            description: 'Enter url.',
+          },
+        },
+        {
           name: 'description',
           label: 'Description',
           type: 'textarea', // Changed to textarea for longer descriptions

@@ -8,6 +8,8 @@ import { seedAuthorsPage } from '@/seed/authors-page'
 import { seedBlogDetailsPage } from '@/seed/blog-details-page'
 import { seedBlogs } from '@/seed/blogs'
 import { seedBlogsPage } from '@/seed/blogs-page'
+import { seedContactPage } from '@/seed/contact-page'
+import { seedForm } from '@/seed/forms'
 import { seedHomePage } from '@/seed/home-page'
 import { seedPricingPage } from '@/seed/pricing-page'
 import { seedServicePage } from '@/seed/service-page'
@@ -36,9 +38,12 @@ export const seedRouter = router({
       await seedTags(spinner)
       await seedAuthors(spinner)
       await seedBlogs(spinner)
+      const forms = await seedForm(spinner)
+      const contactPage = await seedContactPage({ spinner, forms })
       await seedAuthorsPage(spinner)
       await seedTagsPage(spinner)
       await seedBlogsPage(spinner)
+
       const blogDetailsPage = await seedBlogDetailsPage(spinner)
       const tagDetailsPage = await seedTagDetailsPage(spinner)
       const authorDetailsPage = await seedAuthorDetailsPage(spinner)

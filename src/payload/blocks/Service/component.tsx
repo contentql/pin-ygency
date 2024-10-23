@@ -1,7 +1,6 @@
 import { Params } from '../types'
 import { Media, ServiceType } from '@payload-types'
 import Image from 'next/image'
-import Link from 'next/link'
 
 interface ServiceProps extends ServiceType {
   params: Params
@@ -25,19 +24,15 @@ const Service: React.FC<ServiceProps> = ({ params, ...block }) => {
             <div key={idx} className='col-xl-3 col-lg-4 col-sm-6'>
               <div className='service-four-item wow fadeInDown delay-0-2s'>
                 <div className='content'>
-                  <div className='icon-btn'>
+                  {/* <div className='icon-btn'>
                     <i className={`${service?.service_icon}`} />
                     <Link legacyBehavior href='/service-details'>
                       <span className='more-btn'>
                         <i className='far fa-arrow-right' />
                       </span>
                     </Link>
-                  </div>
-                  <h5>
-                    <Link legacyBehavior href='/service-details'>
-                      {service?.title}
-                    </Link>
-                  </h5>
+                  </div> */}
+                  <h5>{service?.title}</h5>
                 </div>
                 <div className='image'>
                   <Image

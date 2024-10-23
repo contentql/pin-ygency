@@ -25,7 +25,15 @@ const seed = async ({
       collection: collectionSlug['pages'],
       where: {
         slug: {
-          in: ['about', 'services', 'blogs', 'tags', 'authors', 'pricing'],
+          in: [
+            'about',
+            'services',
+            'blogs',
+            'tags',
+            'authors',
+            'pricing',
+            'contact',
+          ],
         },
       },
     })

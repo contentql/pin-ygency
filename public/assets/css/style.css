@@ -7133,6 +7133,7 @@ h6,
   margin-bottom: 0;
   margin-top: 18px;
 }
+
 .service-four-item .icon-btn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7238,7 +7239,7 @@ h6,
 .service-four-item:hover {
   background: var(--ygency-primary-color);
 }
-.service-four-item:hover .content h5 a,
+.service-four-item:hover .content h5,
 .service-four-item:hover .content .icon-btn > i {
   color: var(--ygency-dark-color);
 }

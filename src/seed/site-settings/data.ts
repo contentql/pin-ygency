@@ -53,6 +53,16 @@ export const siteSettingsData: siteSettingsDataType = {
         },
       },
       {
+        group: false,
+        menuLink: {
+          label: '',
+          page: {
+            relationTo: 'pages',
+            value: '',
+          },
+        },
+      },
+      {
         group: true,
         menuLinkGroup: {
           groupTitle: 'More',
@@ -158,7 +168,40 @@ export const siteSettingsData: siteSettingsDataType = {
           },
         },
       },
+      {
+        group: false,
+        menuLink: {
+          label: '',
+          page: {
+            relationTo: 'pages',
+            value: '',
+          },
+        },
+      },
     ],
+    socialLinks: [
+      {
+        platform: 'youtube',
+        value: 'https://youtube.com',
+      },
+      {
+        platform: 'github',
+        value: 'https://github.com/contentql',
+      },
+      {
+        platform: 'twitter',
+        value: 'https://x.com',
+      },
+      {
+        platform: 'instagram',
+        value: 'https://instagram.com',
+      },
+      {
+        platform: 'linkedin',
+        value: 'https://linkedin.com',
+      },
+    ],
+    copyright: '© 2024 Ygency. All Rights Reserved.',
   },
   redirectionLinks: {
     authorLink: {

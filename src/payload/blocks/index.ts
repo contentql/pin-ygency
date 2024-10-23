@@ -4,6 +4,7 @@ import { AdvertiseConfig } from './Advertise'
 import { BannerConfig } from './Banner'
 import { ContactConfig } from './Contact'
 import { DetailsConfig } from './Details'
+import { FormConfig } from './Form'
 import { HeadlineConfig } from './Headline'
 import { HeroConfig } from './Hero'
 import { ListConfig } from './List'
@@ -51,4 +52,5 @@ export const blocks = [
   PageBannerConfig,
   PricingFeaturesConfig,
   PricingSectionConfig,
+  FormConfig,
 ]
