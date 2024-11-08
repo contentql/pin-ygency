@@ -7,6 +7,7 @@ export const OurClientsConfig: Block = {
     singular: 'Our Clients Block',
     plural: 'Our Clients Blocks',
   },
+  imageURL: '/images/blocks/our-clients.png',
   fields: [
     {
       name: 'title',

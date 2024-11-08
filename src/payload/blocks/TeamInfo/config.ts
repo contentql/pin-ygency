@@ -7,6 +7,7 @@ const TeamInfoConfig: Block = {
     singular: 'TeamInfo Block',
     plural: 'TeamInfo Blocks',
   },
+  imageURL: '/images/blocks/team-info.png',
   fields: [
     {
       name: 'caption',

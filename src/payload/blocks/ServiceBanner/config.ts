@@ -7,6 +7,7 @@ const ServiceBannerConfig: Block = {
     singular: 'Service Banner Block',
     plural: 'Service Banner Blocks',
   },
+  imageURL: '/images/blocks/service-banner.png',
   fields: [
     {
       name: 'title',

@@ -7,6 +7,7 @@ const WorkProcessConfig: Block = {
     singular: 'Work Process Block',
     plural: 'Work Process Blocks',
   },
+  imageURL: '/images/blocks/work-process.png',
   fields: [
     {
       name: 'steps',

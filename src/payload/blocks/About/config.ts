@@ -7,6 +7,7 @@ const AboutConfig: Block = {
     singular: 'About Block',
     plural: 'About Blocks',
   },
+  imageURL: '/images/blocks/about.png',
   fields: [
     {
       name: 'badge_title',

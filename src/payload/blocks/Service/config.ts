@@ -7,6 +7,7 @@ const ServiceConfig: Block = {
     singular: 'Service Block',
     plural: 'Service Blocks',
   },
+  imageURL: '/images/blocks/service.png',
   fields: [
     {
       name: 'badge_title',

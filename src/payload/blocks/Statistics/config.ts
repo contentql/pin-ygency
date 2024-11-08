@@ -7,6 +7,7 @@ const StatisticsConfig: Block = {
     singular: 'Statistics Block',
     plural: 'Statistics Blocks',
   },
+  imageURL: '/images/blocks/statistics.png',
   fields: [
     {
       name: 'statistics',

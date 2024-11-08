@@ -7,6 +7,7 @@ const TeamConfig: Block = {
     singular: 'Team Block',
     plural: 'Team Blocks',
   },
+  imageURL: '/images/blocks/team.png',
   fields: [
     {
       name: 'badge_title',

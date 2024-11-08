@@ -7,6 +7,7 @@ const VideoAreaConfig: Block = {
     singular: 'VideoArea Block',
     plural: 'VideoArea Blocks',
   },
+  imageURL: '/images/blocks/video-area.png',
   fields: [
     {
       name: 'video_image',

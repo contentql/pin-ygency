@@ -7,6 +7,7 @@ export const RecentWorkConfig: Block = {
     singular: 'Recent Work Block',
     plural: 'Recent Work Blocks',
   },
+  imageURL: '/images/blocks/recent-work.png',
   fields: [
     {
       name: 'badge_title',

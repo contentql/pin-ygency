@@ -8,6 +8,7 @@ const FormConfig: Block = {
     singular: 'Form Block',
     plural: 'Form Blocks',
   },
+  imageURL: '/images/blocks/form.png',
   fields: [
     {
       name: 'title',

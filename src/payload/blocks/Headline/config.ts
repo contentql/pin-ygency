@@ -7,6 +7,7 @@ const HeadlineConfig: Block = {
     singular: 'Headline Block',
     plural: 'Headline Blocks',
   },
+  imageURL: '/images/blocks/headline.png',
   fields: [
     {
       name: 'headlines',

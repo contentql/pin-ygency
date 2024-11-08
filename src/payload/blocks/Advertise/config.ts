@@ -7,6 +7,7 @@ const AdvertiseConfig: Block = {
     singular: 'Advertise Block',
     plural: 'Advertise Blocks',
   },
+  imageURL: '/images/blocks/advertise.png',
   fields: [
     {
       name: 'title',

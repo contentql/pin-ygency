@@ -7,6 +7,7 @@ const PageBannerConfig: Block = {
     singular: 'Page Banner Block',
     plural: 'Page Banner Blocks',
   },
+  imageURL: '/images/blocks/page-banner.png',
   fields: [
     {
       name: 'page_name',

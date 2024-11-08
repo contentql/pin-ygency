@@ -7,6 +7,7 @@ const BannerConfig: Block = {
     singular: 'Banner Block',
     plural: 'Banner Blocks',
   },
+  imageURL: '/images/blocks/banner.png',
   fields: [
     {
       name: 'title',

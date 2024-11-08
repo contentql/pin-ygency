@@ -7,6 +7,7 @@ const SkillsConfig: Block = {
     singular: 'Skills Block',
     plural: 'Skills Blocks',
   },
+  imageURL: '/images/blocks/skills.png',
   fields: [
     {
       name: 'title',

@@ -7,6 +7,7 @@ const TestimonialConfig: Block = {
     singular: 'Testimonial Block',
     plural: 'Testimonial Blocks',
   },
+  imageURL: '/images/blocks/testimonial.png',
   fields: [
     {
       name: 'image',

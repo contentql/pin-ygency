@@ -7,6 +7,7 @@ const PricingSectionConfig: Block = {
     singular: 'Pricing Section Block',
     plural: 'Pricing Section Blocks',
   },
+  imageURL: '/images/blocks/pricing-section.png',
   fields: [
     {
       name: 'title',
