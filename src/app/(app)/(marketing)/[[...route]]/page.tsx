@@ -4,6 +4,7 @@ import { Page as PageType } from '@payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import type { Metadata, NextPage } from 'next'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
 import WelcomePage from '@/components/Welcome'
 import RenderBlocks from '@/payload/blocks/RenderBlocks'
@@ -26,10 +27,12 @@ const Page: NextPage<PageProps> = async ({ params }) => {
     })
 
     return (
-      <RenderBlocks
-        pageInitialData={pageData as PageType}
-        params={syncParams}
-      />
+      <Suspense fallback={null}>
+        <RenderBlocks
+          pageInitialData={pageData as PageType}
+          params={syncParams}
+        />
+      </Suspense>
     )
   } catch (error: any) {
     if (error?.message === 'Pages not found') {
