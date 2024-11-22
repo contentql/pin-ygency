@@ -525,15 +525,16 @@ const SingleMenu = ({
             </Dropdown.Toggle>
             <Dropdown.Menu className='custom-dropdown-menu  fullwidth-toggle'>
               {link?.menuLinkGroup?.groupLinks?.map((nestedLink, index) => (
-                <Dropdown.Item
-                  key={index}
-                  className='custom-dropdown-item'
-                  href={
-                    nestedLink?.type === 'custom'
-                      ? nestedLink?.url!
-                      : (nestedLink?.page?.value as Page)?.path!
-                  }
-                  target={nestedLink?.newTab ? '_blank' : '_self'}>
+                <Dropdown.Item key={index}>
+                  <Link
+                    className='custom-dropdown-item'
+                    prefetch
+                    href={
+                      nestedLink?.type === 'custom'
+                        ? nestedLink?.url!
+                        : (nestedLink?.page?.value as Page)?.path!
+                    }
+                    target={nestedLink?.newTab ? '_blank' : '_self'}></Link>
                   {nestedLink?.label}
                 </Dropdown.Item>
               ))}
@@ -542,6 +543,7 @@ const SingleMenu = ({
         ) : (
           <li key={index}>
             <Link
+              prefetch
               target={link?.menuLink?.newTab ? '_blank' : '_self'}
               href={
                 link?.menuLink?.type === 'custom'
