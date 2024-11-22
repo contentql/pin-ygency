@@ -46,6 +46,7 @@ const BlogDetails = ({
                         <i className='fal fa-user-alt' />
                         {blogData?.author?.slice(0, 2).map((author, index) => (
                           <Link
+                            prefetch
                             key={index}
                             href={`${getSlugs({ redirectionLinks })?.author}${(author?.value as User)?.username}`}>
                             {(author?.value as User)?.displayName}
@@ -87,6 +88,7 @@ const BlogDetails = ({
                       <div className='tag-coulds'>
                         {blogData?.tags?.map((tag, index) => (
                           <Link
+                            prefetch
                             key={index}
                             legacyBehavior
                             href={`${getSlugs({ redirectionLinks })?.tag}${(tag?.value as Tag)?.slug}`}>
@@ -146,6 +148,7 @@ const BlogDetails = ({
                             <div className='content'>
                               <h5>
                                 <Link
+                                  prefetch
                                   legacyBehavior
                                   href={`${getSlugs({ redirectionLinks })?.blog}${blogData?.slug}`}>
                                   {blogData?.title}

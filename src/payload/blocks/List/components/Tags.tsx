@@ -23,7 +23,9 @@ const Tags = () => {
         <div className='row'>
           {data?.map((tag, index) => (
             <div key={index} className='col-xl-3 col-lg-4 col-sm-6'>
-              <Link href={`${getSlugs({ redirectionLinks })?.tag}${tag?.slug}`}>
+              <Link
+                prefetch
+                href={`${getSlugs({ redirectionLinks })?.tag}${tag?.slug}`}>
                 <div className='tag-item wow fadeInUp delay-0-2s'>
                   <div className='content'>
                     <div className='image'>
