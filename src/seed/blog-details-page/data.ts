@@ -10,7 +10,7 @@ export const blogDetailsPageData: BlogDetailsPageDataType = {
   isHome: false,
   _status: 'published',
   isDynamic: true,
-  parent: '',
+  parent: 0,
   layout: [
     {
       blockType: 'Details',

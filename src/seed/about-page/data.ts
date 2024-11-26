@@ -16,8 +16,8 @@ export const aboutPageData: AboutPageDataType = {
     {
       blockType: 'Banner',
       title: 'We’re Digital Web Development Agency',
-      banner_image1: '',
-      banner_image2: '',
+      banner_image1: 0,
+      banner_image2: 0,
     },
     {
       blockType: 'VideoArea',
@@ -25,7 +25,7 @@ export const aboutPageData: AboutPageDataType = {
         'Sed ut perspiciatis unde omnis iste natus error sit voluptat emey accusantium doloremque laudantium totam aperiam eaque quabillo inventore veritatisey quasi architecto beatae dictasunt',
       video_link:
         'https://www.youtube.com/watch?v=jCMU4qw6LqI&list=PLjy3Q_oHlvcwJtv01zNqziPXr0XoVrTn7&index=1&t=3s',
-      video_image: '',
+      video_image: 0,
     },
     {
       blockType: 'TeamInfo',
@@ -72,7 +72,7 @@ export const aboutPageData: AboutPageDataType = {
       title: 'View our team members',
       team_members: [
         {
-          image: '',
+          image: 0,
           name: 'Patrick V',
           role: 'Frontend Developer',
           social_media: [
@@ -91,7 +91,7 @@ export const aboutPageData: AboutPageDataType = {
           ],
         },
         {
-          image: '',
+          image: 0,
           name: 'Shiva V',
           role: 'backend Developer',
           social_media: [
@@ -110,7 +110,7 @@ export const aboutPageData: AboutPageDataType = {
           ],
         },
         {
-          image: '',
+          image: 0,
           name: 'Jagadeesh M',
           role: 'Full Stack Developer',
           social_media: [
@@ -129,7 +129,7 @@ export const aboutPageData: AboutPageDataType = {
           ],
         },
         {
-          image: '',
+          image: 0,
           name: 'Manikanta P',
           role: 'Backend Developer',
           social_media: [
@@ -172,20 +172,20 @@ export const aboutPageData: AboutPageDataType = {
     },
     {
       blockType: 'Testimonial',
-      image: '',
+      image: 0,
       testimonials: [
         {
           rating: 4,
           review:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos repudiandae dolor quae in rem, deleniti blanditiis similique nisi optio saepe facere vero sint. Ab consectetur perferendis officia quam ducimus! Pariatur!',
-          reviewer_image: '',
+          reviewer_image: 0,
           reviewer_name: 'James Manikanta',
         },
         {
           rating: 4,
           review:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos repudiandae dolor quae in rem, deleniti blanditiis similique nisi optio saepe facere vero sint. Ab consectetur perferendis officia quam ducimus! Pariatur!',
-          reviewer_image: '',
+          reviewer_image: 0,
           reviewer_name: 'Jhonson Abdul',
         },
       ],
@@ -195,16 +195,16 @@ export const aboutPageData: AboutPageDataType = {
       title: 'We Have 1520+Global Clients',
       clients: [
         {
-          client_logo: '',
+          client_logo: 0,
         },
         {
-          client_logo: '',
+          client_logo: 0,
         },
         {
-          client_logo: '',
+          client_logo: 0,
         },
         {
-          client_logo: '',
+          client_logo: 0,
         },
       ],
     },

@@ -12,7 +12,7 @@ export const blogsData: BlogDataType[] = [
     title: 'Aureate Serpent and Celestial Sojourn',
     description:
       "In the celestial ballet of myth, the Aureate Serpent's golden scales shimmer as heroes navigate cosmic realms. From East to West, the universal allure of mythical journeys echoes humanity's timeless quest for understanding.",
-    blogImage: '',
+    blogImage: 0,
 
     content: [
       {
@@ -155,13 +155,13 @@ export const blogsData: BlogDataType[] = [
     author: [
       {
         relationTo: 'users',
-        value: '',
+        value: 0,
       },
     ],
     tags: [
       {
         relationTo: 'tags',
-        value: '',
+        value: 0,
       },
     ],
   },
@@ -170,7 +170,7 @@ export const blogsData: BlogDataType[] = [
 
     description:
       "Embark on an enchanting journey through Eldoria's skies, where celestial felines dance and enigmatic chalices hold tales of magic and mystery.",
-    blogImage: '',
+    blogImage: 0,
 
     content: [
       {
@@ -304,13 +304,13 @@ export const blogsData: BlogDataType[] = [
     author: [
       {
         relationTo: 'users',
-        value: '',
+        value: 0,
       },
     ],
     tags: [
       {
         relationTo: 'tags',
-        value: '',
+        value: 0,
       },
     ],
   },
@@ -319,7 +319,7 @@ export const blogsData: BlogDataType[] = [
 
     description:
       'Uncover the enigma of Amethyst Depths, where dragons nest among ancient secrets in the mystical abyss.',
-    blogImage: '',
+    blogImage: 0,
 
     content: [
       {
@@ -455,13 +455,13 @@ export const blogsData: BlogDataType[] = [
     author: [
       {
         relationTo: 'users',
-        value: '',
+        value: 0,
       },
     ],
     tags: [
       {
         relationTo: 'tags',
-        value: '',
+        value: 0,
       },
     ],
   },
@@ -470,7 +470,7 @@ export const blogsData: BlogDataType[] = [
 
     description:
       'This journey transcends ordinary boundaries, inviting you to explore a world where magic emanates from every cap and the air is alive with the hum of mystical kingdoms.',
-    blogImage: '',
+    blogImage: 0,
 
     content: [
       {
@@ -589,13 +589,13 @@ export const blogsData: BlogDataType[] = [
     author: [
       {
         relationTo: 'users',
-        value: '',
+        value: 0,
       },
     ],
     tags: [
       {
         relationTo: 'tags',
-        value: '',
+        value: 0,
       },
     ],
   },

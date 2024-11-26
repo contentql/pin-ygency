@@ -19,13 +19,13 @@ export const homePageData: HomePageDataType = {
       description:
         'Harness the power of Analytica, your in-browser tool for streamlined development processes. Make the most of your coding time and bring your projects to life faster.',
       badge_title: 'Explore more',
-      hero_image: '',
+      hero_image: 0,
       clients: [
         {
-          image: '',
+          image: 0,
         },
         {
-          image: '',
+          image: 0,
         },
       ],
     },
@@ -35,16 +35,16 @@ export const homePageData: HomePageDataType = {
       description: 'Quis autem vel eum reprehe voluptate velit esse quam',
       clients: [
         {
-          image: '',
+          image: 0,
         },
         {
-          image: '',
+          image: 0,
         },
       ],
       project_completion_count: '150+',
       completion_status: 'Project Complete',
       client_description: 'We denounce indignatione dislike mende charms',
-      banner_image: '',
+      banner_image: 0,
     },
     {
       blockType: 'Skills',
@@ -52,29 +52,29 @@ export const homePageData: HomePageDataType = {
       skills: [
         {
           skill_title: 'Bootstrap',
-          skill_image: '',
+          skill_image: 0,
         },
         {
           skill_title: 'HTML',
-          skill_image: '',
+          skill_image: 0,
         },
         {
           skill_title: 'CSS',
-          skill_image: '',
+          skill_image: 0,
         },
         {
           skill_title: 'Javascript',
-          skill_image: '',
+          skill_image: 0,
         },
         {
           skill_title: 'React',
-          skill_image: '',
+          skill_image: 0,
         },
       ],
     },
     {
       blockType: 'About',
-      about_image: '',
+      about_image: 0,
       badge_title: 'About Company',
       title: 'We’re Award-Winning Web Development Agency',
       description:
@@ -101,22 +101,22 @@ export const homePageData: HomePageDataType = {
 
       services: [
         {
-          image: '',
+          image: 0,
           service_icon: 'flaticon-mobile-development',
           title: 'Web Development',
         },
         {
-          image: '',
+          image: 0,
           service_icon: 'flaticon-mobile-development',
           title: 'Mobile Development',
         },
         {
-          image: '',
+          image: 0,
           service_icon: 'flaticon-brainstorming',
           title: 'Team Agumentation',
         },
         {
-          image: '',
+          image: 0,
           service_icon: 'flaticon-mobile-development',
           title: 'Design & Branding',
         },
@@ -145,39 +145,39 @@ export const homePageData: HomePageDataType = {
       title: 'Let’s Look Our Recent Project Gallery',
       recent_works: [
         {
-          image: '',
+          image: 0,
           title: 'Business Task Management Dashboard Design',
         },
         {
-          image: '',
+          image: 0,
           title: 'Mobile Application Design & Development',
         },
         {
-          image: '',
+          image: 0,
           title: 'PSD, Figma & XD to HTML Design & Development',
         },
         {
-          image: '',
+          image: 0,
           title: 'Business Development and Marketing Strategy',
         },
       ],
     },
     {
       blockType: 'Testimonial',
-      image: '',
+      image: 0,
       testimonials: [
         {
           rating: 4,
           review:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos repudiandae dolor quae in rem, deleniti blanditiis similique nisi optio saepe facere vero sint. Ab consectetur perferendis officia quam ducimus! Pariatur!',
-          reviewer_image: '',
+          reviewer_image: 0,
           reviewer_name: 'James Manikanta',
         },
         {
           rating: 4,
           review:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos repudiandae dolor quae in rem, deleniti blanditiis similique nisi optio saepe facere vero sint. Ab consectetur perferendis officia quam ducimus! Pariatur!',
-          reviewer_image: '',
+          reviewer_image: 0,
           reviewer_name: 'Jhonson Abdul',
         },
       ],

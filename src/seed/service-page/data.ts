@@ -79,20 +79,20 @@ export const ServicePageData: ServicePageDataType = {
     },
     {
       blockType: 'Testimonial',
-      image: '',
+      image: 0,
       testimonials: [
         {
           rating: 4,
           review:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos repudiandae dolor quae in rem, deleniti blanditiis similique nisi optio saepe facere vero sint. Ab consectetur perferendis officia quam ducimus! Pariatur!',
-          reviewer_image: '',
+          reviewer_image: 0,
           reviewer_name: 'James Manikanta',
         },
         {
           rating: 4,
           review:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos repudiandae dolor quae in rem, deleniti blanditiis similique nisi optio saepe facere vero sint. Ab consectetur perferendis officia quam ducimus! Pariatur!',
-          reviewer_image: '',
+          reviewer_image: 0,
           reviewer_name: 'Jhonson Abdul',
         },
       ],

@@ -12,12 +12,12 @@ export const siteSettingsData: siteSettingsDataType = {
   general: {
     title: 'Ygency',
     description: 'Ygency is a theme part of contentql',
-    faviconUrl: '',
-    ogImageUrl: '',
+    faviconUrl: 0,
+    ogImageUrl: 0,
   },
   navbar: {
     logo: {
-      imageUrl: '',
+      imageUrl: 0,
       height: 40,
       width: 40,
     },
@@ -28,7 +28,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -38,7 +38,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -48,7 +48,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -58,7 +58,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -72,7 +72,7 @@ export const siteSettingsData: siteSettingsDataType = {
               newTab: false,
               page: {
                 relationTo: 'pages',
-                value: '',
+                value: 0,
               },
               type: 'reference',
             },
@@ -81,7 +81,7 @@ export const siteSettingsData: siteSettingsDataType = {
               newTab: false,
               page: {
                 relationTo: 'pages',
-                value: '',
+                value: 0,
               },
               type: 'reference',
             },
@@ -90,7 +90,7 @@ export const siteSettingsData: siteSettingsDataType = {
               newTab: false,
               page: {
                 relationTo: 'pages',
-                value: '',
+                value: 0,
               },
               type: 'reference',
             },
@@ -102,7 +102,7 @@ export const siteSettingsData: siteSettingsDataType = {
 
   footer: {
     logo: {
-      imageUrl: '',
+      imageUrl: 0,
       description: '',
       height: 40,
       width: 40,
@@ -114,7 +114,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -124,7 +124,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -134,7 +134,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -144,7 +144,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -154,7 +154,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -164,7 +164,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -174,7 +174,7 @@ export const siteSettingsData: siteSettingsDataType = {
           label: '',
           page: {
             relationTo: 'pages',
-            value: '',
+            value: 0,
           },
         },
       },
@@ -206,15 +206,15 @@ export const siteSettingsData: siteSettingsDataType = {
   redirectionLinks: {
     authorLink: {
       relationTo: 'pages',
-      value: '',
+      value: 0,
     },
     tagLink: {
       relationTo: 'pages',
-      value: '',
+      value: 0,
     },
     blogLink: {
       relationTo: 'pages',
-      value: '',
+      value: 0,
     },
   },
 }
