@@ -103,7 +103,10 @@ const Form = ({
   }
 
   return (
-    <form id={id} onSubmit={handleSubmit(onsubmit)} className={className}>
+    <form
+      id={id.toString()}
+      onSubmit={handleSubmit(onsubmit)}
+      className={className}>
       <div className='form-wrap'>
         {fields &&
           fields?.map((field, index) => {

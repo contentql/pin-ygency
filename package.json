@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@clack/prompts": "^0.7.0",
-    "@contentql/core": "^0.3.3",
+    "@contentql/core": "^0.3.5",
     "@hookform/resolvers": "^3.4.0",
     "@payloadcms/live-preview-react": "3.0.0-beta.111",
     "@payloadcms/next": "3.0.0-beta.111",
@@ -28,6 +28,8 @@
     "@payloadcms/richtext-slate": "3.0.0-beta.111",
     "@payloadcms/translations": "beta",
     "@payloadcms/ui": "3.0.0-beta.111",
+    "@libsql/client": "^0.14.0",
+    "@payloadcms/db-sqlite": "3.0.0-beta.111",
     "@react-email/components": "^0.0.22",
     "@slate-serializers/html": "^2.2.1",
     "@t3-oss/env-nextjs": "^0.10.1",

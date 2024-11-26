@@ -24,7 +24,7 @@ export interface Config {
     'payload-migrations': PayloadMigration;
   };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
   globals: {
     'site-settings': SiteSetting;
@@ -57,7 +57,7 @@ export interface UserAuthOperations {
  * via the `definition` "pages".
  */
 export interface Page {
-  id: string;
+  id: number;
   title: string;
   layout?:
     | (
@@ -91,7 +91,7 @@ export interface Page {
   meta?: {
     title?: string | null;
     description?: string | null;
-    image?: (string | null) | Media;
+    image?: (number | null) | Media;
   };
   isHome?: boolean | null;
   isDynamic?: boolean | null;
@@ -99,10 +99,10 @@ export interface Page {
   slug?: string | null;
   pathMode?: ('generate' | 'custom') | null;
   path?: string | null;
-  parent?: (string | null) | Page;
+  parent?: (number | null) | Page;
   breadcrumbs?:
     | {
-        doc?: (string | null) | Page;
+        doc?: (number | null) | Page;
         url?: string | null;
         label?: string | null;
         id?: string | null;
@@ -127,7 +127,7 @@ export interface AboutType {
         id?: string | null;
       }[]
     | null;
-  about_image?: (string | null) | Media;
+  about_image?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'About';
@@ -137,7 +137,7 @@ export interface AboutType {
  * via the `definition` "media".
  */
 export interface Media {
-  id: string;
+  id: number;
   alt?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -183,13 +183,13 @@ export interface Media {
  */
 export interface AdvertiseType {
   title: string;
-  banner_image: string | Media;
+  banner_image: number | Media;
   project_completion_count?: string | null;
   completion_status?: string | null;
   description?: string | null;
   clients?:
     | {
-        image: string | Media;
+        image: number | Media;
         id?: string | null;
       }[]
     | null;
@@ -207,12 +207,12 @@ export interface HeroType {
   description?: string | null;
   clients?:
     | {
-        image: string | Media;
+        image: number | Media;
         id?: string | null;
       }[]
     | null;
   client_description?: string | null;
-  hero_image: string | Media;
+  hero_image: number | Media;
   badge_title?: string | null;
   id?: string | null;
   blockName?: string | null;
@@ -226,7 +226,7 @@ export interface SkillsType {
   title: string;
   skills?:
     | {
-        skill_image: string | Media;
+        skill_image: number | Media;
         skill_title: string;
         id?: string | null;
       }[]
@@ -256,7 +256,7 @@ export interface ServiceType {
             )
           | null;
         title?: string | null;
-        image?: (string | null) | Media;
+        image?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -290,7 +290,7 @@ export interface RecentWorkType {
     | {
         title?: string | null;
         url?: string | null;
-        image?: (string | null) | Media;
+        image?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -303,12 +303,12 @@ export interface RecentWorkType {
  * via the `definition` "TestimonialType".
  */
 export interface TestimonialType {
-  image?: (string | null) | Media;
+  image?: (number | null) | Media;
   testimonials?:
     | {
         reviewer_name?: string | null;
         review?: string | null;
-        reviewer_image?: (string | null) | Media;
+        reviewer_image?: (number | null) | Media;
         reviewer_role?: string | null;
         rating?: number | null;
         id?: string | null;
@@ -327,7 +327,7 @@ export interface TeamType {
   title?: string | null;
   team_members?:
     | {
-        image?: (string | null) | Media;
+        image?: (number | null) | Media;
         name?: string | null;
         role?: string | null;
         social_media?:
@@ -401,8 +401,8 @@ export interface WorkProcessType {
  */
 export interface BannerType {
   title?: string | null;
-  banner_image1?: (string | null) | Media;
-  banner_image2?: (string | null) | Media;
+  banner_image1?: (number | null) | Media;
+  banner_image2?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'Banner';
@@ -415,7 +415,7 @@ export interface OurClientsType {
   title?: string | null;
   clients?:
     | {
-        client_logo?: (string | null) | Media;
+        client_logo?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -463,7 +463,7 @@ export interface TeamInfoType {
  * via the `definition` "VideoAreaType".
  */
 export interface VideoAreaType {
-  video_image?: (string | null) | Media;
+  video_image?: (number | null) | Media;
   video_link?: string | null;
   description?: string | null;
   id?: string | null;
@@ -580,7 +580,7 @@ export interface FormType {
   title: string;
   form: {
     relationTo: 'forms';
-    value: string | Form;
+    value: number | Form;
   };
   id?: string | null;
   blockName?: string | null;
@@ -591,7 +591,7 @@ export interface FormType {
  * via the `definition` "forms".
  */
 export interface Form {
-  id: string;
+  id: number;
   title: string;
   fields?:
     | (
@@ -727,20 +727,20 @@ export interface DisqusCommentsType {
  * via the `definition` "blogs".
  */
 export interface Blog {
-  id: string;
-  blogImage: string | Media;
+  id: number;
+  blogImage: number | Media;
   title: string;
   description: string;
   tags?:
     | {
         relationTo: 'tags';
-        value: string | Tag;
+        value: number | Tag;
       }[]
     | null;
   author?:
     | {
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       }[]
     | null;
   content: {
@@ -749,7 +749,7 @@ export interface Blog {
   meta?: {
     title?: string | null;
     description?: string | null;
-    image?: (string | null) | Media;
+    image?: (number | null) | Media;
   };
   slug?: string | null;
   publishOn?: string | null;
@@ -762,15 +762,15 @@ export interface Blog {
  * via the `definition` "tags".
  */
 export interface Tag {
-  id: string;
-  tagImage: string | Media;
+  id: number;
+  tagImage: number | Media;
   title: string;
   description: string;
   color?: ('blue' | 'gray' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'pink') | null;
   meta?: {
     title?: string | null;
     description?: string | null;
-    image?: (string | null) | Media;
+    image?: (number | null) | Media;
   };
   slug?: string | null;
   updatedAt: string;
@@ -782,10 +782,10 @@ export interface Tag {
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   displayName?: string | null;
   username: string;
-  imageUrl?: (string | null) | Media;
+  imageUrl?: (number | null) | Media;
   role: ('admin' | 'author' | 'user')[];
   emailVerified?: string | null;
   socialLinks?:
@@ -830,8 +830,8 @@ export interface User {
  * via the `definition` "form-submissions".
  */
 export interface FormSubmission {
-  id: string;
-  form: string | Form;
+  id: number;
+  form: number | Form;
   submissionData?:
     | {
         field: string;
@@ -847,21 +847,21 @@ export interface FormSubmission {
  * via the `definition` "search".
  */
 export interface Search {
-  id: string;
+  id: number;
   title?: string | null;
   priority?: number | null;
   doc:
     | {
         relationTo: 'blogs';
-        value: string | Blog;
+        value: number | Blog;
       }
     | {
         relationTo: 'tags';
-        value: string | Tag;
+        value: number | Tag;
       }
     | {
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       };
   updatedAt: string;
   createdAt: string;
@@ -871,44 +871,44 @@ export interface Search {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
+  id: number;
   document?:
     | ({
         relationTo: 'pages';
-        value: string | Page;
+        value: number | Page;
       } | null)
     | ({
         relationTo: 'blogs';
-        value: string | Blog;
+        value: number | Blog;
       } | null)
     | ({
         relationTo: 'tags';
-        value: string | Tag;
+        value: number | Tag;
       } | null)
     | ({
         relationTo: 'media';
-        value: string | Media;
+        value: number | Media;
       } | null)
     | ({
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       } | null)
     | ({
         relationTo: 'forms';
-        value: string | Form;
+        value: number | Form;
       } | null)
     | ({
         relationTo: 'form-submissions';
-        value: string | FormSubmission;
+        value: number | FormSubmission;
       } | null)
     | ({
         relationTo: 'search';
-        value: string | Search;
+        value: number | Search;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -918,10 +918,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -941,7 +941,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -952,12 +952,12 @@ export interface PayloadMigration {
  * via the `definition` "site-settings".
  */
 export interface SiteSetting {
-  id: string;
+  id: number;
   general: {
     title: string;
     description: string;
-    faviconUrl: string | Media;
-    ogImageUrl: string | Media;
+    faviconUrl: number | Media;
+    ogImageUrl: number | Media;
     keywords?: string[] | null;
   };
   navbar: {
@@ -971,7 +971,7 @@ export interface SiteSetting {
             label: string;
             page?: {
               relationTo: 'pages';
-              value: string | Page;
+              value: number | Page;
             } | null;
             url?: string | null;
             id?: string | null;
@@ -985,7 +985,7 @@ export interface SiteSetting {
                   label: string;
                   page?: {
                     relationTo: 'pages';
-                    value: string | Page;
+                    value: number | Page;
                   } | null;
                   url?: string | null;
                   id?: string | null;
@@ -1007,7 +1007,7 @@ export interface SiteSetting {
             label: string;
             page?: {
               relationTo: 'pages';
-              value: string | Page;
+              value: number | Page;
             } | null;
             url?: string | null;
             id?: string | null;
@@ -1021,7 +1021,7 @@ export interface SiteSetting {
                   label: string;
                   page?: {
                     relationTo: 'pages';
-                    value: string | Page;
+                    value: number | Page;
                   } | null;
                   url?: string | null;
                   id?: string | null;
@@ -1060,15 +1060,15 @@ export interface SiteSetting {
   redirectionLinks?: {
     blogLink?: {
       relationTo: 'pages';
-      value: string | Page;
+      value: number | Page;
     } | null;
     authorLink?: {
       relationTo: 'pages';
-      value: string | Page;
+      value: number | Page;
     } | null;
     tagLink?: {
       relationTo: 'pages';
-      value: string | Page;
+      value: number | Page;
     } | null;
   };
   monetization?: {
@@ -1083,7 +1083,7 @@ export interface SiteSetting {
  * via the `definition` "BrandLogo".
  */
 export interface BrandLogo {
-  imageUrl: string | Media;
+  imageUrl: number | Media;
   height?: number | null;
   width?: number | null;
   description?: string | null;

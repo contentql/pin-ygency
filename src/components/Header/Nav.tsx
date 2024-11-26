@@ -19,14 +19,14 @@ const Nav = ({
     width: 0,
   }
   const { logo } = headerData
-  if (Object.keys(logo).length && logo?.imageUrl === 'string') {
+  if (Object.keys(logo).length && typeof logo?.imageUrl === 'string') {
     logoDetails = {
       url: logo?.imageUrl,
       alt: '',
       height: logo?.height!,
       width: logo?.width!,
     }
-  } else if (Object.keys(logo).length && typeof logo?.imageUrl !== 'string') {
+  } else if (Object.keys(logo).length && typeof logo?.imageUrl === 'object') {
     logoDetails = {
       url: logo.imageUrl?.url!,
       alt: logo.imageUrl?.alt || '',

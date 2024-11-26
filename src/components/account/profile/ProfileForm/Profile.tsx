@@ -86,7 +86,7 @@ const Profile = () => {
 
   const userImageURL = user?.imageUrl
     ? (user?.imageUrl as Media)?.url!
-    : (user?.imageUrl! as string)
+    : user?.imageUrl!
   const latestProfilePic = uploadedImage ? uploadedImage : userImageURL
 
   return (
@@ -121,7 +121,7 @@ const Profile = () => {
             <div className='image'>
               {latestProfilePic ? (
                 <Image
-                  src={latestProfilePic}
+                  src={latestProfilePic as string}
                   width={120}
                   height={120}
                   className='user-image-upload'

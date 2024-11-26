@@ -54,7 +54,7 @@ const NavSearch = () => {
             | 'authors'
 
           return {
-            id: result.id,
+            id: result.id.toString(),
             name: result.parsedValues?.title || '',
             subtitle: result.parsedValues?.description || '',
             perform: () => {
