@@ -85,7 +85,7 @@ const Sidebar = ({ userData }: { userData: User }) => {
 
   const userImageURL = user?.imageUrl
     ? (user?.imageUrl as Media)?.url!
-    : (user?.imageUrl! as string)
+    : user?.imageUrl!
   const latestProfilePic = uploadedImage ? uploadedImage : userImageURL
 
   return (
@@ -117,7 +117,7 @@ const Sidebar = ({ userData }: { userData: User }) => {
             <Modal.Body className='modal-custom'>
               <div className='image'>
                 <Image
-                  src={latestProfilePic}
+                  src={latestProfilePic as string}
                   width={120}
                   height={120}
                   className='user-image-upload'
