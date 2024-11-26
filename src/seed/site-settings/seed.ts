@@ -82,7 +82,7 @@ const seed = async ({
                         nestedDocs?.at(pageIndex)?.title || 'Default Label', // Ensure label is defined
                       page: {
                         relationTo: 'pages',
-                        value: nestedDocs?.at(pageIndex)?.id as string,
+                        value: nestedDocs?.at(pageIndex)?.id as number,
                       },
                     }
                   },
@@ -99,7 +99,7 @@ const seed = async ({
               label: nonNestedDocs?.at(index)?.title || 'Default Title', // Ensure label is defined
               page: {
                 relationTo: 'pages',
-                value: nonNestedDocs?.at(index)?.id as string,
+                value: nonNestedDocs?.at(index)?.id as any,
               },
             },
           }
@@ -120,7 +120,7 @@ const seed = async ({
                 label: pages?.at(index)?.title || 'Default Title',
                 page: {
                   relationTo: 'pages',
-                  value: pages?.at(index)?.id as string,
+                  value: pages?.at(index)?.id as any,
                 },
               },
             }
