@@ -92,3 +92,4 @@ jobs:
             RESEND_SENDER_EMAIL=${{ secrets.RESEND_SENDER_EMAIL }}
             RESEND_SENDER_NAME=${{ secrets.RESEND_SENDER_NAME }}
             SUBSCRIPTION_PLAN=${{secrets.SUBSCRIPTION_PLAN}}
+            DATABASE_SECRET=${{secrets.DATABASE_SECRET}}
