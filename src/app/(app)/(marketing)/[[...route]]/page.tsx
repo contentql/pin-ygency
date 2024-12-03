@@ -27,7 +27,6 @@ const Page: NextPage<PageProps> = async ({ params }) => {
 
     const dataToUse = pageData?.layout
     return (
-      <Suspense fallback={null}>
         <div className=''>
           {dataToUse?.map((block, index) => {
             // Casting to 'React.FC<any>' to bypass TypeScript error related to 'Params' type incompatibility.
@@ -42,11 +41,6 @@ const Page: NextPage<PageProps> = async ({ params }) => {
             return <h3 key={block.id}>Block does not exist </h3>
           })}
         </div>
-        {/* <RenderBlocks
-          pageInitialData={pageData as PageType}
-          params={syncParams}
-        /> */}
-      </Suspense>
     )
   } catch (error: any) {
     if (error?.message === 'Pages not found') {
