@@ -1,13 +1,13 @@
 import configPromise from '@payload-config'
 import { User } from '@payload-types'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Ora } from 'ora'
+import { getPayload } from 'payload'
 
 import { getRandomInt } from '@/utils/getRandomInt'
 
 import { AuthorDataType, authorImagesData, authorsData } from './data'
 
-const payload = await getPayloadHMR({ config: configPromise })
+const payload = await getPayload({ config: configPromise })
 
 const seed = async (spinner: Ora): Promise<(string | User)[]> => {
   try {

@@ -72,15 +72,17 @@ const DefaultHeader = ({
             <div className='logo-outer'>
               <div className='logo'>
                 <Link href='/' prefetch>
-                  {logoDetails.url && (
-                    <Image
-                      style={{ objectFit: 'contain' }}
-                      src={logoDetails.url}
-                      alt={logoDetails.alt}
-                      width={logoDetails?.width ? logoDetails?.width : 24}
-                      height={logoDetails?.height ? logoDetails?.height : 24}
-                    />
-                  )}
+                  <>
+                    {logoDetails.url && (
+                      <Image
+                        style={{ objectFit: 'contain' }}
+                        src={logoDetails.url}
+                        alt={logoDetails.alt}
+                        width={logoDetails?.width ? logoDetails?.width : 24}
+                        height={logoDetails?.height ? logoDetails?.height : 24}
+                      />
+                    )}
+                  </>
                 </Link>
               </div>
             </div>

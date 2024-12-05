@@ -52,11 +52,13 @@ const Footer = ({ metadata }: { metadata: SiteSetting }) => {
           </div>
           <div className='col-lg-5 col-sm-7 col-6 col-small wow fadeInRight delay-0-2s'>
             <div className='footer-right-btn mb-35 text-lg-end'>
-              <Link legacyBehavior href='/'>
-                <span className='explore-more text-start'>
-                  <i className='fas fa-arrow-right' />{' '}
-                  <span>Send Us Message</span>
-                </span>
+              <Link href='/'>
+                <>
+                  <span className='explore-more text-start'>
+                    <i className='fas fa-arrow-right' />{' '}
+                    <span>Send Us Message</span>
+                  </span>
+                </>
               </Link>
             </div>
           </div>
@@ -84,7 +86,6 @@ const Footer = ({ metadata }: { metadata: SiteSetting }) => {
                     {footer?.footerLinks?.slice(4)?.map((footerLink, index) => (
                       <li key={index}>
                         <Link
-                          legacyBehavior
                           href={
                             (footerLink?.menuLink?.page?.value as Page)?.path!
                           }>
@@ -118,8 +119,10 @@ const Footer = ({ metadata }: { metadata: SiteSetting }) => {
                               href={value}
                               target='_blank'
                               className='social-link'>
-                              <Component className='icon' />
-                              <div>{platform}</div>
+                              <>
+                                <Component className='icon' />
+                                <div>{platform}</div>
+                              </>
                             </Link>
                           </li>
                         ) : null

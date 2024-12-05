@@ -1,11 +1,10 @@
 import configPromise from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { Ora } from 'ora'
-import { RequiredDataFromCollectionSlug } from 'payload'
+import { RequiredDataFromCollectionSlug, getPayload } from 'payload'
 
 import { AboutImageData, ClientsImageData, ServicePageData } from './data'
 
-const payload = await getPayloadHMR({ config: configPromise })
+const payload = await getPayload({ config: configPromise })
 
 const seed = async (spinner: Ora): Promise<any> => {
   try {

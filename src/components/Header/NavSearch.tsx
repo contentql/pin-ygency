@@ -115,8 +115,9 @@ const NavSearch = () => {
 
       globalSearchMutate({ search: searchQuery })
     },
-    800,
+
     [searchQuery],
+    800,
   )
 
   useRegisterActions(formattedSearchResults, [formattedSearchResults])
