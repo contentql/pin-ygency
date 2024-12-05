@@ -1,20 +1,35 @@
-import { collectionSlug } from '@contentql/core'
 import { env } from '@env'
 import configPromise from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
-import type { MetadataRoute } from 'next'
+import { NextResponse } from 'next/server'
+import { getPayload } from 'payload'
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const payload = await getPayloadHMR({ config: configPromise })
+export const dynamic = 'force-dynamic'
+export async function GET() {
+  const payload = await getPayload({ config: configPromise })
   const { docs: pages } = await payload.find({
-    collection: collectionSlug.pages,
+    collection: 'pages',
     depth: 0,
   })
-  const sitemapObject: MetadataRoute.Sitemap = pages.map(page => ({
-    url: `${env.PAYLOAD_URL}${page.path}`,
-    lastModified: new Date(page.updatedAt),
-    changeFrequency: 'daily',
-    priority: 0.8,
-  }))
-  return sitemapObject
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${pages
+        .map(
+          page => `
+        <url>
+          <loc>${env.PAYLOAD_URL}${page.path}</loc>
+          <lastmod>${new Date(page.updatedAt).toISOString()}</lastmod>
+          <changefreq>daily</changefreq>
+          <priority>0.8</priority>
+        </url>
+      `,
+        )
+        .join('')}
+    </urlset>`
+  return new NextResponse(sitemap, {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'no-store',
+    },
+  })
 }
