@@ -77,50 +77,46 @@ export default async function RootLayout({
 
   return (
     <html lang='en' className='dark'>
+      {/* added a explicit link tag because favicon is coming from site-settings */}
+      <link rel='icon' type='image/x-icon' href={`${faviconUrl}`} />
       <head>
-        {/* added a explicit link tag because favicon is coming from site-settings */}
-        <link rel='icon' type='image/x-icon' href={`${faviconUrl}`} />
-        <head>
-          <meta charSet='utf-8' />
-          <meta name='description' />
-          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-          <meta
-            name='viewport'
-            content='width=device-width, initial-scale=1, shrink-to-fit=no'
-          />
+        <meta charSet='utf-8' />
+        <meta name='description' />
+        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, shrink-to-fit=no'
+        />
 
-          {/* Google Fonts */}
-          {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-          <link
-            href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-            rel='stylesheet'
-          />
-          {/* Flaticon */}
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='/assets/css/flaticon.min.css' />
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link
-            rel='stylesheet'
-            href='/assets/css/fontawesome-5.14.0.min.css'
-          />
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='/assets/css/bootstrap.min.css' />
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='/assets/css/magnific-popup.min.css' />
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='/assets/css/nice-select.min.css' />
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='/assets/css/animate.min.css' />
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='/assets/css/slick.min.css' />
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='/assets/css/style.css' />
-          {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link rel='stylesheet' href='/assets/css/custom.css' />
-          <GoogleAnalytics metadata={metadata} />
-          <GoogleAdsense metadata={metadata} />
-        </head>
+        {/* Google Fonts */}
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
+          rel='stylesheet'
+        />
+        {/* Flaticon */}
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/flaticon.min.css' />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/fontawesome-5.14.0.min.css' />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/bootstrap.min.css' />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/magnific-popup.min.css' />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/nice-select.min.css' />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/animate.min.css' />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/slick.min.css' />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/style.css' />
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel='stylesheet' href='/assets/css/custom.css' />
+        <GoogleAnalytics metadata={metadata} />
+        <GoogleAdsense metadata={metadata} />
       </head>
+
       <body className={`${inter.className}`}>
         <Provider>{children}</Provider>
         <Toaster position='bottom-right' />

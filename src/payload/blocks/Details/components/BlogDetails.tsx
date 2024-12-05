@@ -1,3 +1,5 @@
+'use client'
+
 import { Blog, Media, Tag, User } from '@payload-types'
 import { payloadSlateToHtmlConfig, slateToHtml } from '@slate-serializers/html'
 import { format, parseISO } from 'date-fns'
