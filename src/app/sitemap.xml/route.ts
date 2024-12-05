@@ -1,7 +1,7 @@
 import { env } from '@env'
 import configPromise from '@payload-config'
-import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
+import { NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'
 export async function GET() {
