@@ -52,7 +52,7 @@ const Footer = ({ metadata }: { metadata: SiteSetting }) => {
           </div>
           <div className='col-lg-5 col-sm-7 col-6 col-small wow fadeInRight delay-0-2s'>
             <div className='footer-right-btn mb-35 text-lg-end'>
-              <Link href='/'>
+              <Link href='/contact'>
                 <>
                   <span className='explore-more text-start'>
                     <i className='fas fa-arrow-right' />{' '}
