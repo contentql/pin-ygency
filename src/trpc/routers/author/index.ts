@@ -12,6 +12,7 @@ export const authorRouter = router({
     try {
       const { docs: authors } = await payload.find({
         collection: 'users',
+        limit: 1000,
         where: {
           role: {
             equals: 'author',

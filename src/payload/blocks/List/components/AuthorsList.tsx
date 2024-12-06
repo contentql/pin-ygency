@@ -2,15 +2,24 @@
 
 import { ListType, User } from '@payload-types'
 
+import { trpc } from '@/trpc/client'
+
 import Authors from './Authors'
 
+interface AuthorsWithCountProps extends User {
+  totalDocs: number
+}
 const AuthorsList = ({
   authors,
   block,
 }: {
-  authors: User[]
+  authors: AuthorsWithCountProps[]
   block: ListType
 }) => {
+  const { data: authorsWithCount, isLoading } =
+    trpc.author.getAllAuthorsWithCount.useQuery(undefined, {
+      initialData: authors,
+    })
   return (
     <>
       <section
@@ -25,7 +34,7 @@ const AuthorsList = ({
           </div>
         </div>
       </section>
-      <Authors />
+      <Authors authorsWithCount={authorsWithCount} isLoading={isLoading} />
     </>
   )
 }

@@ -1,18 +1,27 @@
 'use client'
 
-import { Media } from '@payload-types'
+import { Media, Tag } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import Empty from '@/components/Empty'
 import TagSkeleton from '@/components/skeletons/TagSkeleton'
-import { trpc } from '@/trpc/client'
 import getSlugs from '@/utils/getSlugs'
 import { useMetadata } from '@/utils/metadataContext'
 
-const Tags = () => {
+interface TagWithCountProps extends Tag {
+  count: number
+}
+
+const Tags = ({
+  isLoading,
+  data,
+}: {
+  isLoading: boolean
+  data: TagWithCountProps[]
+}) => {
   const { redirectionLinks } = useMetadata()
-  const { data, isLoading } = trpc.tag.getAllTags.useQuery()
+
   return isLoading ? (
     <TagSkeleton />
   ) : data?.length! <= 0 ? (

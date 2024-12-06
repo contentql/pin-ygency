@@ -1,18 +1,25 @@
 'use client'
 
-import { Media } from '@payload-types'
+import { Media, User } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import Empty from '@/components/Empty'
 import TagSkeleton from '@/components/skeletons/TagSkeleton'
-import { trpc } from '@/trpc/client'
 import getSlugs from '@/utils/getSlugs'
 import { useMetadata } from '@/utils/metadataContext'
 
-const Authors = () => {
-  const { data: authorsWithCount, isLoading } =
-    trpc.author.getAllAuthorsWithCount.useQuery()
+interface AuthorsWithCountProps extends User {
+  totalDocs: number
+}
+
+const Authors = ({
+  authorsWithCount,
+  isLoading,
+}: {
+  authorsWithCount: AuthorsWithCountProps[]
+  isLoading: boolean
+}) => {
   const { redirectionLinks } = useMetadata()
 
   return isLoading ? (

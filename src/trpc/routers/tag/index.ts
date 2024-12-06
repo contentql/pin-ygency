@@ -50,6 +50,8 @@ export const tagRouter = router({
 
       const { docs: allBlogs } = await payload.find({
         collection: 'blogs',
+        limit: 1000,
+        draft: false,
       })
 
       return allTags.map(tag => ({

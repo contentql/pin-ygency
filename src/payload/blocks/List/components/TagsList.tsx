@@ -1,8 +1,25 @@
+'use client'
+
 import { ListType, Tag } from '@payload-types'
+
+import { trpc } from '@/trpc/client'
 
 import Tags from './Tags'
 
-const TagsList = ({ tags, block }: { tags: Tag[]; block: ListType }) => {
+interface TagWithCountProps extends Tag {
+  count: number
+}
+
+const TagsList = ({
+  tags,
+  block,
+}: {
+  tags: TagWithCountProps[]
+  block: ListType
+}) => {
+  const { data, isLoading } = trpc.tag.getAllTags.useQuery(undefined, {
+    initialData: tags,
+  })
   return (
     <>
       <section
@@ -17,7 +34,7 @@ const TagsList = ({ tags, block }: { tags: Tag[]; block: ListType }) => {
           </div>
         </div>
       </section>
-      <Tags />
+      <Tags data={data} isLoading={isLoading} />
     </>
   )
 }

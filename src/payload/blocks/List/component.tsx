@@ -12,6 +12,13 @@ interface ListProps extends ListType {
   params: Params
 }
 
+interface TagWithCountProps extends Tag {
+  count: number
+}
+interface AuthorsWithCountProps extends User {
+  totalDocs: number
+}
+
 const List: React.FC<ListProps> = async ({ params, ...block }) => {
   const payload = await getPayload({
     config: configPromise,
@@ -35,7 +42,23 @@ const List: React.FC<ListProps> = async ({ params, ...block }) => {
         draft: false,
         limit: 1000,
       })
-      return <TagsList tags={tags as Tag[]} block={block} />
+      const { docs: allBlogs } = await payload.find({
+        collection: 'blogs',
+        limit: 1000,
+        draft: false,
+      })
+
+      const tagsWithCount = tags.map(tag => ({
+        ...tag,
+        count: allBlogs.filter(blog => {
+          const blogTags = blog.tags
+          return blogTags?.find(blogTag => (blogTag.value as Tag).id === tag.id)
+        }).length,
+      }))
+
+      return (
+        <TagsList tags={tagsWithCount as TagWithCountProps[]} block={block} />
+      )
     }
 
     case 'users': {
@@ -48,7 +71,27 @@ const List: React.FC<ListProps> = async ({ params, ...block }) => {
         },
         limit: 1000,
       })
-      return <AuthorsList authors={authors as User[]} block={block} />
+
+      const authorBlogCounts = await Promise.all(
+        authors.map(async author => {
+          const count = await payload.count({
+            collection: 'blogs',
+            where: {
+              'author.value': {
+                equals: author.id,
+              },
+            },
+          })
+          return { ...author, ...count }
+        }),
+      )
+
+      return (
+        <AuthorsList
+          authors={authorBlogCounts as AuthorsWithCountProps[]}
+          block={block}
+        />
+      )
     }
   }
 }
