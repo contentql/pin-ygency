@@ -8,6 +8,7 @@ import toast from 'react-hot-toast'
 import { CiUser } from 'react-icons/ci'
 import { FaCamera } from 'react-icons/fa'
 
+import { useUser } from '@/context/UserContext'
 import { trpc } from '@/trpc/client'
 import uploadMedia from '@/utils/uploadMedia'
 
@@ -17,6 +18,7 @@ const Profile = () => {
   // this is state to track uploading image, updating user profile
   const [uploadingImage, setUploadingImage] = useState(false)
   const [show, setShow] = useState(false)
+  const { user: contextData } = useUser()
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -32,9 +34,13 @@ const Profile = () => {
 
   const {
     data: user,
-    isLoading: isUserPending,
+
     refetch: reFetchUser,
-  } = trpc.user.getUser.useQuery()
+  } = trpc.user.getUser.useQuery(undefined, {
+    ...(contextData
+      ? { placeholderData: { ...contextData, collection: 'users' } }
+      : {}),
+  })
 
   const { mutate: uploadUserImage } = trpc.user.updateUserImage.useMutation({
     onSuccess: async data => {

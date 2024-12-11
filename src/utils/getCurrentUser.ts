@@ -1,5 +1,6 @@
 import { env } from '@env'
 import configPromise from '@payload-config'
+import { User } from '@payload-types'
 import { getPayload } from 'payload'
 
 /**
@@ -21,7 +22,7 @@ import { getPayload } from 'payload'
  * const user = await getCurrentUser(headers)
  * console.log(user) // User object or throws an error if not authenticated
  */
-export const getCurrentUser = async (headers?: Headers): Promise<any> => {
+export const getCurrentUser = async (headers?: Headers) => {
   if (!headers) {
     // This is a client component
     try {
@@ -29,7 +30,7 @@ export const getCurrentUser = async (headers?: Headers): Promise<any> => {
         credentials: 'include',
       })
 
-      const { user } = await res.json()
+      const { user }: { user: User | null } = await res.json()
 
       return user
     } catch (error) {

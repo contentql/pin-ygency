@@ -1,10 +1,10 @@
 'use client'
 
-import type { User } from '@payload-types'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { z } from 'zod'
 
+import { useUser } from '@/context/UserContext'
 import { trpc } from '@/trpc/client'
 
 import DeleteAccountSection from './DeleteAccountSection'
@@ -16,7 +16,9 @@ const ProfileFormSchema = z.object({
 })
 type ProfileFormDataType = z.infer<typeof ProfileFormSchema>
 
-const ProfileForm = ({ user }: { user: User }) => {
+const ProfileForm = () => {
+  const { user } = useUser()
+
   const [formData, setFormData] = useState<ProfileFormDataType>({
     name: user?.displayName,
     password: '',

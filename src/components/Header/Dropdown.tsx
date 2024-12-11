@@ -1,11 +1,42 @@
-import { Media, User } from '@payload-types'
+import { Media } from '@payload-types'
 import Image from 'next/image'
 import { Dropdown } from 'react-bootstrap'
 import { CiUser } from 'react-icons/ci'
 
+import { useUser } from '@/context/UserContext'
 import { signOut } from '@/utils/signOut'
 
-const UserDropdown = ({ user }: { user: User }) => {
+const UserDropdown = () => {
+  const { user, setUser } = useUser()
+
+  const handleSignOut = async () => {
+    try {
+      const response = await signOut()
+      if (response.message === 'Logout successful.') {
+        setUser(null)
+      }
+    } catch (error) {
+      console.log({ error })
+    }
+  }
+
+  if (!user) {
+    return (
+      <>
+        <div className='menu-btns'>
+          <div className='menu-sidebar'>
+            <button>LogIn</button>
+          </div>
+        </div>
+        <div className='menu-btns'>
+          <div className='menu-sidebar-signup'>
+            <button>SignUp</button>
+          </div>
+        </div>
+      </>
+    )
+  }
+
   return (
     <Dropdown>
       <Dropdown.Toggle
@@ -38,7 +69,7 @@ const UserDropdown = ({ user }: { user: User }) => {
         </Dropdown.Item>
         <Dropdown.Item
           className='custom-dropdown-item'
-          onClick={() => signOut()}>
+          onClick={() => handleSignOut()}>
           Logout
         </Dropdown.Item>
       </Dropdown.Menu>

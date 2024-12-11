@@ -6,7 +6,7 @@ import { ComponentType, ReactElement } from 'react'
 import { getCurrentUser } from '@/utils/getCurrentUser'
 
 interface UserProps {
-  user: User
+  user: User | null
 }
 
 interface WithNoAuthOptions {
