@@ -1,20 +1,53 @@
+import '../../../public/assets/css/animate.min.css'
+import '../../../public/assets/css/bootstrap.min.css'
+import '../../../public/assets/css/custom.css'
+import '../../../public/assets/css/flaticon.min.css'
+import '../../../public/assets/css/flaticon_ygency.css'
+import '../../../public/assets/css/fontawesome-5.14.0.min.css'
+import '../../../public/assets/css/magnific-popup.min.css'
+import '../../../public/assets/css/nice-select.min.css'
+import '../../../public/assets/css/slick.min.css'
+import '../../../public/assets/css/style.css'
 import { env } from '@env'
+import configPromise from '@payload-config'
 import type { Metadata } from 'next'
+import { unstable_cache } from 'next/cache'
 import { Inter } from 'next/font/google'
+import { headers } from 'next/headers'
+import { getPayload } from 'payload'
 import { Toaster } from 'react-hot-toast'
 
 import '@/app/(app)/globals.css'
 import GoogleAdsense from '@/components/GoogleAdsense'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import { UserProvider } from '@/context/UserContext'
 import Provider from '@/trpc/Provider'
-import { serverClient } from '@/trpc/serverClient'
+import { getCurrentUser } from '@/utils/getCurrentUser'
+import { MetadataProvider } from '@/utils/metadataContext'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const getCachedSiteSettings = unstable_cache(
+  async () => {
+    const payload = await getPayload({
+      config: configPromise,
+    })
+
+    const data = await payload.findGlobal({
+      slug: 'site-settings',
+      draft: false,
+    })
+
+    return data
+  },
+  ['site-settings'],
+  { tags: ['site-settings'] },
+)
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
     // calling the site-settings to get all the data
-    const metadata = await serverClient.siteSettings.getSiteSettings()
+    const metadata = await getCachedSiteSettings()
     const generalSettings = metadata.general
 
     const ogImageUrl =
@@ -62,12 +95,20 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
+export const viewport = {
+  colorScheme: 'dark',
+  initialScale: 1,
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const metadata = await serverClient.siteSettings.getSiteSettings()
+  const metadata = await getCachedSiteSettings()
+  const headersList = await headers()
+  const user = await getCurrentUser(headersList)
+
   const generalSettings = metadata.general
 
   const faviconUrl =
@@ -80,45 +121,17 @@ export default async function RootLayout({
       {/* added a explicit link tag because favicon is coming from site-settings */}
       <link rel='icon' type='image/x-icon' href={`${faviconUrl}`} />
       <head>
-        <meta charSet='utf-8' />
-        <meta name='description' />
-        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-        <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1, shrink-to-fit=no'
-        />
-
-        {/* Google Fonts */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-          rel='stylesheet'
-        />
-        {/* Flaticon */}
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/flaticon.min.css' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/fontawesome-5.14.0.min.css' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/bootstrap.min.css' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/magnific-popup.min.css' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/nice-select.min.css' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/animate.min.css' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/slick.min.css' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/style.css' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/assets/css/custom.css' />
         <GoogleAnalytics metadata={metadata} />
         <GoogleAdsense metadata={metadata} />
       </head>
 
       <body className={`${inter.className}`}>
-        <Provider>{children}</Provider>
+        <UserProvider initialUser={user}>
+          <MetadataProvider metadata={metadata}>
+            <Provider>{children}</Provider>
+          </MetadataProvider>
+        </UserProvider>
+
         <Toaster position='bottom-right' />
       </body>
     </html>

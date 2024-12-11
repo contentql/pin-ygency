@@ -35,7 +35,6 @@ const Authors = ({
           {authorsWithCount?.map((author, index) => (
             <div key={index} className='col-xl-3 col-lg-4 col-sm-6'>
               <Link
-                prefetch
                 href={`${getSlugs({ redirectionLinks })?.author}${author?.username}`}>
                 <div className='tag-item wow fadeInUp delay-0-2s'>
                   <div className='content'>

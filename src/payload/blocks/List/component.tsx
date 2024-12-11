@@ -1,6 +1,7 @@
 import { Params } from '../types'
 import configPromise from '@payload-config'
-import { Blog, ListType, Tag, User } from '@payload-types'
+import { ListType } from '@payload-types'
+import { unstable_cache } from 'next/cache'
 import { getPayload } from 'payload'
 import React from 'react'
 
@@ -12,13 +13,6 @@ interface ListProps extends ListType {
   params: Params
 }
 
-interface TagWithCountProps extends Tag {
-  count: number
-}
-interface AuthorsWithCountProps extends User {
-  totalDocs: number
-}
-
 const List: React.FC<ListProps> = async ({ params, ...block }) => {
   const payload = await getPayload({
     config: configPromise,
@@ -26,72 +20,126 @@ const List: React.FC<ListProps> = async ({ params, ...block }) => {
 
   switch (block?.collectionSlug) {
     case 'blogs': {
-      const { docs: blogs = [] } = await payload.find({
-        collection: 'blogs',
-        depth: 5,
-        draft: false,
-        limit: 1000,
-      })
-      return <BlogsList blogs={blogs as Blog[]} block={block} />
+      const { docs: blogs = [] } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'blogs',
+            depth: 5,
+            draft: false,
+            limit: 1000,
+          }),
+        ['list', 'blogs'],
+        { tags: ['list-blogs'] },
+      )()
+
+      return <BlogsList blogs={blogs} block={block} />
     }
 
     case 'tags': {
-      const { docs: tags = [] } = await payload.find({
-        collection: 'tags',
-        depth: 5,
-        draft: false,
-        limit: 1000,
-      })
-      const { docs: allBlogs } = await payload.find({
-        collection: 'blogs',
-        limit: 1000,
-        draft: false,
-      })
+      const { docs: tags = [] } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'tags',
+            depth: 5,
+            draft: false,
+            limit: 1000,
+          }),
+        ['list', 'tags'],
+        { tags: ['list-tags'] },
+      )()
 
-      const tagsWithCount = tags.map(tag => ({
-        ...tag,
-        count: allBlogs.filter(blog => {
+      const { docs: blogs } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'blogs',
+            limit: 1000,
+            select: {
+              tags: true,
+            },
+            populate: {
+              tags: {
+                slug: true,
+              },
+            },
+          }),
+        ['list', 'tags', 'with-blog-count'],
+        { tags: ['list-tags-with-blog-count'] },
+      )()
+
+      const tagsWithCount = tags.map(tag => {
+        const count = blogs.filter(blog => {
           const blogTags = blog.tags
-          return blogTags?.find(blogTag => (blogTag.value as Tag).id === tag.id)
-        }).length,
-      }))
 
-      return (
-        <TagsList tags={tagsWithCount as TagWithCountProps[]} block={block} />
-      )
+          if (blogTags) {
+            return blogTags.find(({ value }) => {
+              if (typeof value === 'number') {
+                return value === tag.id
+              } else {
+                return value.id === tag.id
+              }
+            })
+          }
+        }).length
+
+        return { ...tag, count }
+      })
+
+      return <TagsList tags={tagsWithCount} block={block} />
     }
 
     case 'users': {
-      const { docs: authors = [] } = await payload.find({
-        collection: 'users',
-        where: {
-          role: {
-            equals: 'author',
-          },
-        },
-        limit: 1000,
-      })
-
-      const authorBlogCounts = await Promise.all(
-        authors.map(async author => {
-          const count = await payload.count({
-            collection: 'blogs',
+      const { docs: authors = [] } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'users',
             where: {
-              'author.value': {
-                equals: author.id,
+              role: {
+                equals: 'author',
               },
             },
-          })
-          return { ...author, ...count }
-        }),
-      )
+            limit: 1000,
+          }),
+        ['list', 'authors'],
+        { tags: ['list-authors'] },
+      )()
 
-      return (
-        <AuthorsList
-          authors={authorBlogCounts as AuthorsWithCountProps[]}
-          block={block}
-        />
-      )
+      const { docs: blogs } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'blogs',
+            limit: 1000,
+            select: {
+              author: true,
+            },
+            populate: {
+              users: {
+                username: true,
+              },
+            },
+          }),
+        ['list', 'authors', 'with-blog-count'],
+        { tags: ['list-authors-with-blog-count'] },
+      )()
+
+      const authorsWithCount = authors.map(author => {
+        const count = blogs.filter(blog => {
+          const authorBlogs = blog.author
+
+          if (authorBlogs) {
+            return authorBlogs.find(({ value }) => {
+              if (typeof value === 'number') {
+                return value === author.id
+              } else {
+                return value.id === author.id
+              }
+            })
+          }
+        }).length
+
+        return { ...author, totalDocs: count }
+      })
+
+      return <AuthorsList authors={authorsWithCount} block={block} />
     }
   }
 }

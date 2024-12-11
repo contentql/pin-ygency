@@ -33,7 +33,6 @@ const Blogs = ({ blogsData }: { blogsData: Blog[] }) => {
                   <li>
                     {blog?.author?.slice(0, 4)?.map((author, index) => (
                       <Link
-                        prefetch
                         className='blog-authors-li'
                         key={index}
                         href={`${getSlugs({ redirectionLinks })?.author}${(author?.value as User)?.username}`}>

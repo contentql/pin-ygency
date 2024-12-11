@@ -8,6 +8,27 @@ import { publicProcedure, router } from '@/trpc'
 const payload = await getPayload({ config: configPromise })
 
 export const authorRouter = router({
+  getAllAuthors: publicProcedure.query(async () => {
+    try {
+      const { docs } = await payload.find({
+        collection: 'users',
+        depth: 5,
+        draft: false,
+        limit: 1000,
+        where: {
+          role: {
+            equals: 'author',
+          },
+        },
+      })
+
+      return docs
+    } catch (error: any) {
+      console.log(error)
+      throw new Error(error.message)
+    }
+  }),
+
   getAllAuthorsWithCount: publicProcedure.query(async () => {
     try {
       const { docs: authors } = await payload.find({
@@ -19,10 +40,6 @@ export const authorRouter = router({
           },
         },
       })
-
-      //   const { docs: blogs } = await payload.find({
-      //     collection: 'blogs',
-      //   })
 
       const authorBlogCounts = await Promise.all(
         authors.map(async author => {

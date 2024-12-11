@@ -1,11 +1,11 @@
 'use client'
 
-import { SiteSetting, User } from '@payload-types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
 import { generateMenuLinks } from '@/utils/generateMenuLinks'
+import { useMetadata } from '@/utils/metadataContext'
 import { sidebarClick, sidebarSignUpClick, stickyNav } from '@/utils/nav'
 
 import UserDropdown from './Dropdown'
@@ -15,14 +15,12 @@ import NavSearch from './NavSearch'
 const DefaultHeader = ({
   singleMenu,
   dark,
-  headerData,
-  user,
 }: {
   singleMenu: boolean
   dark: boolean
-  headerData: SiteSetting
-  user: User
 }) => {
+  const headerData = useMetadata()
+
   useEffect(() => {
     stickyNav()
     // animation()
@@ -71,7 +69,7 @@ const DefaultHeader = ({
           <div className='header-inner rpy-10 rel d-flex align-items-center'>
             <div className='logo-outer'>
               <div className='logo'>
-                <Link href='/' prefetch>
+                <Link href='/'>
                   <>
                     {logoDetails.url && (
                       <Image
@@ -91,23 +89,9 @@ const DefaultHeader = ({
               <Nav singleMenu={singleMenu} headerData={headerData?.navbar} />
               {/* Main Menu End*/}
             </div>
+
             <NavSearch />
-            {user ? (
-              <UserDropdown user={user} />
-            ) : (
-              <>
-                <div className='menu-btns'>
-                  <div className='menu-sidebar'>
-                    <button>LogIn</button>
-                  </div>
-                </div>
-                <div className='menu-btns'>
-                  <div className='menu-sidebar-signup'>
-                    <button>SignUp</button>
-                  </div>
-                </div>
-              </>
-            )}
+            <UserDropdown />
           </div>
         </div>
       </div>

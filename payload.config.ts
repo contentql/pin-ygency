@@ -1,16 +1,18 @@
-import { collectionSlug, cqlConfig } from '@contentql/core';
-import { env } from '@env';
-import { sqliteAdapter } from '@payloadcms/db-sqlite';
-import { slateEditor } from '@payloadcms/richtext-slate';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { collectionSlug, cqlConfig } from '@contentql/core'
+import { env } from '@env'
+import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { slateEditor } from '@payloadcms/richtext-slate'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-
-
-import { ResetPassword } from '@/emails/reset-password';
-import { UserAccountVerification } from '@/emails/verify-email';
-import { blocksConfig } from '@/payload/blocks/index';
-
+import { ResetPassword } from '@/emails/reset-password'
+import { UserAccountVerification } from '@/emails/verify-email'
+import { blocksConfig } from '@/payload/blocks/index'
+import { revalidateAuthors } from '@/payload/hooks/revalidateAuthors'
+import { revalidateBlogs } from '@/payload/hooks/revalidateBlogs'
+import { revalidatePages } from '@/payload/hooks/revalidatePages'
+import { revalidateSiteSettings } from '@/payload/hooks/revalidateSiteSettings'
+import { revalidateTags } from '@/payload/hooks/revalidateTags'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -49,6 +51,39 @@ export default cqlConfig({
           },
         },
       },
+      hooks: {
+        afterChange: [revalidateAuthors],
+      },
+    },
+    {
+      slug: collectionSlug.pages,
+      fields: [],
+      hooks: {
+        afterChange: [revalidatePages],
+      },
+    },
+    {
+      slug: collectionSlug.blogs,
+      fields: [],
+      hooks: {
+        afterChange: [revalidateBlogs],
+      },
+    },
+    {
+      slug: collectionSlug.tags,
+      fields: [],
+      hooks: {
+        afterChange: [revalidateTags],
+      },
+    },
+  ],
+  globals: [
+    {
+      slug: collectionSlug['site-settings'],
+      fields: [],
+      hooks: {
+        afterChange: [revalidateSiteSettings],
+      },
     },
   ],
   cors: [env.PAYLOAD_URL],
@@ -82,7 +117,7 @@ export default cqlConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
 
-  blocks:blocksConfig,
+  blocks: blocksConfig,
   editor: slateEditor({
     admin: {
       leaves: [

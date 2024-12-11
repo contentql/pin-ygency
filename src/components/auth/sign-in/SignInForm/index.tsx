@@ -7,11 +7,13 @@ import { Fragment, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import { useUser } from '@/context/UserContext'
 import { trpc } from '@/trpc/client'
 import { SignInSchema } from '@/trpc/routers/auth/validator'
 
 const SignInForm: React.FC = () => {
   const router = useRouter()
+  const { setUser } = useUser()
 
   const [isPending, startTransition] = useTransition()
 
@@ -42,6 +44,9 @@ const SignInForm: React.FC = () => {
       document.querySelector('body')!.classList.remove('side-content-visible')
       router.push('/profile')
       const isAdmin = result?.user?.role?.includes('admin')
+
+      setUser(result.user)
+
       if (isAdmin) {
         router.push('/admin')
       } else {

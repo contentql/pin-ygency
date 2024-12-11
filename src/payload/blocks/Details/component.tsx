@@ -1,6 +1,7 @@
 import { Params } from '../types'
 import configPromise from '@payload-config'
-import { Blog, DetailsType, User } from '@payload-types'
+import { DetailsType } from '@payload-types'
+import { unstable_cache } from 'next/cache'
 import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
 
@@ -18,25 +19,42 @@ const Details: React.FC<DetailsProps> = async ({ params, ...block }) => {
   const payload = await getPayload({
     config: configPromise,
   })
+
   switch (block?.collectionSlug) {
     case 'blogs': {
       const slug = params?.route?.at(-1) ?? ''
-      const { docs } = await payload.find({
-        collection: 'blogs',
-        draft: false,
-        where: {
-          slug: {
-            equals: slug,
-          },
-        },
-      })
-      const { docs: blogs } = await payload.find({
-        collection: 'blogs',
-        draft: false,
-      })
-      const blog = docs.at(0)
+
+      const { docs: individualBlogDocs } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'blogs',
+            draft: false,
+            where: {
+              slug: {
+                equals: slug,
+              },
+            },
+          }),
+        ['details', 'blogs', slug],
+        { tags: [`details-blogs-${slug}`] },
+      )()
+
+      const { docs: blogs = [] } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'blogs',
+            depth: 5,
+            draft: false,
+            limit: 1000,
+          }),
+        ['list', 'blogs'],
+        { tags: ['list-blogs'] },
+      )()
+
+      const blog = individualBlogDocs.at(0)
+
       return !!blog ? (
-        <BlogDetails blogData={blog as Blog} blogsData={blogs as Blog[]} />
+        <BlogDetails blogData={blog} blogsData={blogs} />
       ) : (
         <NotFound />
       )
@@ -44,66 +62,84 @@ const Details: React.FC<DetailsProps> = async ({ params, ...block }) => {
 
     case 'tags': {
       const slug = params?.route?.at(-1) ?? ''
-      const { docs: tagData } = await payload.find({
-        collection: 'tags',
-        where: {
-          slug: {
-            equals: slug,
-          },
-        },
-      })
-      const { docs: blogsData } = await payload.find({
-        collection: 'blogs',
-        where: {
-          'tags.value': {
-            contains: tagData?.at(0)?.id,
-          },
-        },
-      })
-      const tagDetails = (tagData || [])?.at(0)
+
+      const { docs: tagDocs } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'tags',
+            where: {
+              slug: {
+                equals: slug,
+              },
+            },
+          }),
+        ['details', 'tags', slug],
+        { tags: [`details-tags-${slug}`] },
+      )()
+
+      const tag = tagDocs?.[0]
+
       // if tag not found showing 404
-      if (!tagDetails) {
+      if (!tag) {
         return notFound()
       }
-      if (tagDetails) {
-        return (
-          <TagDetails
-            params={params}
-            blogs={blogsData}
-            tagDetails={tagDetails}
-          />
-        )
-      }
+
+      const { docs: blogsData } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'blogs',
+            where: {
+              'tags.value': {
+                contains: tag.id,
+              },
+            },
+          }),
+        ['details', 'blogs-by-tags', slug],
+        { tags: [`details-blogs-by-tags-${slug}`] },
+      )()
+
+      return <TagDetails params={params} blogs={blogsData} tagDetails={tag} />
     }
 
     case 'users': {
       const authorName = params?.route?.at(-1) ?? ''
-      const { docs: blogs } = await payload.find({
-        collection: 'blogs',
-        draft: false, // Optionally set draft filter
-      })
-      const blogsRelatedWithAuthor = blogs.filter(blog => {
-        return blog.author?.find(
-          blogAuthor => (blogAuthor.value as User).username === authorName,
-        )
-      })
 
-      const author = Array.isArray(blogsRelatedWithAuthor?.[0]?.author)
-        ? blogsRelatedWithAuthor?.[0]?.author.filter(({ value }) => {
-            return (
-              typeof value === 'object' &&
-              value.username === params?.route?.at(-1)!
-            )
-          })[0]?.value
-        : undefined
+      const { docs: authorDocs } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'users',
+            where: {
+              username: {
+                equals: authorName,
+              },
+            },
+          }),
+        ['details', 'author', authorName],
+        { tags: [`details-author-${authorName}`] },
+      )()
 
-      return (
-        <AuthorDetails
-          author={author as any}
-          blogsData={blogsRelatedWithAuthor as any}
-          params={params}
-        />
-      )
+      const author = authorDocs?.[0]
+
+      if (!author) {
+        return notFound()
+      }
+
+      const { docs: blogs } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'blogs',
+            draft: false,
+            where: {
+              'author.value': {
+                equals: author.id,
+              },
+            },
+          }),
+        ['details', 'blogs-by-author', authorName],
+        { tags: [`details-blogs-by-author-${authorName}`] },
+      )()
+
+      return <AuthorDetails author={author} blogsData={blogs} params={params} />
     }
   }
 }

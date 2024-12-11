@@ -39,7 +39,7 @@ const Nav = ({
       <Accordion>
         <div className='navbar-header py-10'>
           <div className='mobile-logo'>
-            <Link prefetch legacyBehavior href='/'>
+            <Link legacyBehavior href='/'>
               {logoDetails.url && (
                 <Image
                   style={{ objectFit: 'contain' }}

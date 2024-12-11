@@ -1,14 +1,14 @@
-import type { Page, SiteSetting } from '@payload-types'
+'use client'
+
+import type { Page } from '@payload-types'
 import Link from 'next/link'
 
 import { logoMapping } from '@/utils/logoMapping'
+import { useMetadata } from '@/utils/metadataContext'
 
-type SocialLinksType = NonNullable<
-  Pick<SiteSetting, 'footer'>['footer']['socialLinks']
->[0]
+const Footer = () => {
+  const { footer, ...metadata } = useMetadata()
 
-const Footer = ({ metadata }: { metadata: SiteSetting }) => {
-  const { footer } = metadata
   const { logo, socialLinks, footerLinks } = footer
 
   let logoDetails = {
