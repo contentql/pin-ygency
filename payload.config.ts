@@ -94,8 +94,9 @@ export default cqlConfig({
   secret: env.PAYLOAD_SECRET,
   db: sqliteAdapter({
     client: {
-      url: env.DATABASE_URI,
-      authToken: env.DATABASE_SECRET,
+      // url: env.DATABASE_URI,
+      url: 'file:payload-lite.db',
+      // authToken: env.DATABASE_SECRET,
     },
   }),
 
@@ -164,4 +165,10 @@ export default cqlConfig({
       ],
     },
   }),
+
+  membershipPluginOptions: {
+    secretKey: env.STRIPE_SECRET_KEY,
+    webhookSecretKey: env.STRIPE_WEBHOOK_SECRET,
+    publicURI: env.NEXT_PUBLIC_PUBLIC_URL,
+  },
 })

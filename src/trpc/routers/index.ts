@@ -3,6 +3,7 @@ import { authRouter } from '@/trpc/routers/auth'
 import { authorRouter } from '@/trpc/routers/author'
 import { blogRouter } from '@/trpc/routers/blog'
 import { pageRouter } from '@/trpc/routers/page'
+import { productRouter } from '@/trpc/routers/product'
 import { searchRouter } from '@/trpc/routers/search'
 import { seedRouter } from '@/trpc/routers/seed'
 import { siteSettingsRouter } from '@/trpc/routers/site-settings'
@@ -22,6 +23,7 @@ export const appRouter = router({
   seed: seedRouter,
   search: searchRouter,
   form: formRouter,
+  product: productRouter,
 })
 
 export type AppRouter = typeof appRouter

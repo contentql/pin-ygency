@@ -19,6 +19,9 @@ export interface Config {
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
+    orders: Order;
+    products: Product;
+    subscriptionPlans: SubscriptionPlan;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -33,6 +36,9 @@ export interface Config {
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
+    orders: OrdersSelect<false> | OrdersSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
+    subscriptionPlans: SubscriptionPlansSelect<false> | SubscriptionPlansSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -498,7 +504,7 @@ export interface VideoAreaType {
 export interface ListType {
   title?: string | null;
   description?: string | null;
-  collectionSlug?: ('blogs' | 'tags' | 'users') | null;
+  collectionSlug?: ('blogs' | 'tags' | 'users' | 'products') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'List';
@@ -833,6 +839,14 @@ export interface User {
         id?: string | null;
       }[]
     | null;
+  stripe_customer_code?: string | null;
+  stripe_user_id?: string | null;
+  stripe_express_dashboard_url?: string | null;
+  user_plan?: ('free' | 'premium') | null;
+  stripe_subscription_id?: string | null;
+  last_billed_date?: string | null;
+  plan_end_date?: string | null;
+  subscription_status?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -889,6 +903,71 @@ export interface Search {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders".
+ */
+export interface Order {
+  id: number;
+  user?: (number | null) | User;
+  amount?: number | null;
+  currency?: string | null;
+  status?: string | null;
+  invoiceId?: string | null;
+  invoiceUrl?: string | null;
+  invoicePdf?: string | null;
+  products?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  userEmail?: string | null;
+  paymentError?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: number;
+  name: string;
+  price: number;
+  productImage: number | Media;
+  description?: string | null;
+  features?:
+    | {
+        feature?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "subscriptionPlans".
+ */
+export interface SubscriptionPlan {
+  id: number;
+  name: string;
+  price: number;
+  description?: string | null;
+  features?:
+    | {
+        feature?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -925,6 +1004,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'search';
         value: number | Search;
+      } | null)
+    | ({
+        relationTo: 'orders';
+        value: number | Order;
+      } | null)
+    | ({
+        relationTo: 'products';
+        value: number | Product;
+      } | null)
+    | ({
+        relationTo: 'subscriptionPlans';
+        value: number | SubscriptionPlan;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1462,6 +1553,14 @@ export interface UsersSelect<T extends boolean = true> {
         value?: T;
         id?: T;
       };
+  stripe_customer_code?: T;
+  stripe_user_id?: T;
+  stripe_express_dashboard_url?: T;
+  user_plan?: T;
+  stripe_subscription_id?: T;
+  last_billed_date?: T;
+  plan_end_date?: T;
+  subscription_status?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1625,6 +1724,60 @@ export interface SearchSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders_select".
+ */
+export interface OrdersSelect<T extends boolean = true> {
+  user?: T;
+  amount?: T;
+  currency?: T;
+  status?: T;
+  invoiceId?: T;
+  invoiceUrl?: T;
+  invoicePdf?: T;
+  products?: T;
+  userEmail?: T;
+  paymentError?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  name?: T;
+  price?: T;
+  productImage?: T;
+  description?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "subscriptionPlans_select".
+ */
+export interface SubscriptionPlansSelect<T extends boolean = true> {
+  name?: T;
+  price?: T;
+  description?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -1770,6 +1923,10 @@ export interface SiteSetting {
       relationTo: 'pages';
       value: number | Page;
     } | null;
+    productLink?: {
+      relationTo: 'pages';
+      value: number | Page;
+    } | null;
     authorLink?: {
       relationTo: 'pages';
       value: number | Page;
@@ -1782,6 +1939,156 @@ export interface SiteSetting {
   monetization?: {
     adSenseId?: string | null;
     measurementId?: string | null;
+  };
+  stripeConnect?: {
+    country?:
+      | (
+          | 'AL'
+          | 'DZ'
+          | 'AO'
+          | 'AG'
+          | 'AR'
+          | 'AM'
+          | 'AU'
+          | 'AT'
+          | 'AZ'
+          | 'BS'
+          | 'BH'
+          | 'BD'
+          | 'BE'
+          | 'BJ'
+          | 'BT'
+          | 'BO'
+          | 'BA'
+          | 'BW'
+          | 'BN'
+          | 'BG'
+          | 'KH'
+          | 'CA'
+          | 'CL'
+          | 'CO'
+          | 'CR'
+          | 'CI'
+          | 'HR'
+          | 'CY'
+          | 'CZ'
+          | 'DK'
+          | 'DO'
+          | 'EC'
+          | 'EG'
+          | 'SV'
+          | 'EE'
+          | 'ET'
+          | 'FI'
+          | 'FR'
+          | 'GA'
+          | 'GM'
+          | 'DE'
+          | 'GH'
+          | 'GR'
+          | 'GT'
+          | 'GY'
+          | 'HK'
+          | 'HU'
+          | 'IS'
+          | 'IN'
+          | 'ID'
+          | 'IE'
+          | 'IL'
+          | 'IT'
+          | 'JM'
+          | 'JP'
+          | 'JO'
+          | 'KZ'
+          | 'KE'
+          | 'KW'
+          | 'LA'
+          | 'LV'
+          | 'LI'
+          | 'LT'
+          | 'LU'
+          | 'MO'
+          | 'MG'
+          | 'MY'
+          | 'MT'
+          | 'MU'
+          | 'MX'
+          | 'MD'
+          | 'MC'
+          | 'MN'
+          | 'MA'
+          | 'MZ'
+          | 'NA'
+          | 'NL'
+          | 'NZ'
+          | 'NE'
+          | 'NG'
+          | 'MK'
+          | 'NO'
+          | 'OM'
+          | 'PK'
+          | 'PA'
+          | 'PY'
+          | 'PE'
+          | 'PH'
+          | 'PL'
+          | 'PT'
+          | 'QA'
+          | 'RO'
+          | 'RW'
+          | 'SM'
+          | 'SA'
+          | 'SN'
+          | 'RS'
+          | 'SG'
+          | 'SK'
+          | 'SI'
+          | 'ZA'
+          | 'KR'
+          | 'ES'
+          | 'LK'
+          | 'LC'
+          | 'SE'
+          | 'CH'
+          | 'TW'
+          | 'TZ'
+          | 'TH'
+          | 'TT'
+          | 'TN'
+          | 'TR'
+          | 'AE'
+          | 'GB'
+          | 'UY'
+          | 'UZ'
+          | 'VN'
+        )
+      | null;
+    currency?:
+      | (
+          | 'usd'
+          | 'eur'
+          | 'inr'
+          | 'gbp'
+          | 'jpy'
+          | 'cad'
+          | 'aud'
+          | 'chf'
+          | 'cny'
+          | 'hkd'
+          | 'sgd'
+          | 'mxn'
+          | 'brl'
+          | 'rub'
+          | 'krw'
+          | 'zar'
+          | 'try'
+          | 'sar'
+          | 'aed'
+          | 'pln'
+        )
+      | null;
+    stripeUserId?: string | null;
+    stripeAdminDashboard?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1907,6 +2214,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | T
     | {
         blogLink?: T;
+        productLink?: T;
         authorLink?: T;
         tagLink?: T;
       };
@@ -1915,6 +2223,14 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | {
         adSenseId?: T;
         measurementId?: T;
+      };
+  stripeConnect?:
+    | T
+    | {
+        country?: T;
+        currency?: T;
+        stripeUserId?: T;
+        stripeAdminDashboard?: T;
       };
   updatedAt?: T;
   createdAt?: T;

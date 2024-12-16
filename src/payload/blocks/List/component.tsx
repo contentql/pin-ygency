@@ -7,6 +7,7 @@ import React from 'react'
 
 import AuthorsList from './components/AuthorsList'
 import BlogsList from './components/BlogsList'
+import ProductsList from './components/ProductsList'
 import TagsList from './components/TagsList'
 
 interface ListProps extends ListType {
@@ -140,6 +141,19 @@ const List: React.FC<ListProps> = async ({ params, ...block }) => {
       })
 
       return <AuthorsList authors={authorsWithCount} block={block} />
+    }
+
+    case 'products': {
+      const { docs: products = [] } = await unstable_cache(
+        async () =>
+          await payload.find({
+            collection: 'products',
+            limit: 1000,
+          }),
+        ['product'],
+      )()
+
+      return <ProductsList products={products} block={block} />
     }
   }
 }

@@ -216,6 +216,10 @@ export const siteSettingsData: siteSettingsDataType = {
       relationTo: 'pages',
       value: 0,
     },
+    productLink: {
+      relationTo: 'pages',
+      value: 0,
+    },
   },
 }
 

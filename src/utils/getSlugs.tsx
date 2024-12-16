@@ -8,6 +8,7 @@ const getSlugs = ({
   const authorLink = redirectionLinks?.authorLink?.value as Page
   const blogLink = redirectionLinks?.blogLink?.value as Page
   const tagLink = redirectionLinks?.tagLink?.value as Page
+  const productLink = redirectionLinks?.productLink?.value as Page
   const blogSlug =
     blogLink && typeof blogLink !== 'string' ? blogLink.path! : ''
   const slicedBlogSlug = blogSlug ? blogSlug.split('[')[0] : ''
@@ -16,6 +17,14 @@ const getSlugs = ({
   const slicedAuthorSlug = authorSlug ? authorSlug.split('[')[0] : ''
   const tagSlug = tagLink && typeof tagLink !== 'string' ? tagLink.path! : ''
   const slicedTagSlug = tagSlug ? tagSlug.split('[')[0] : ''
-  return { blog: slicedBlogSlug, author: slicedAuthorSlug, tag: slicedTagSlug }
+  const productSlug =
+    productLink && typeof productLink !== 'string' ? productLink.path! : ''
+  const slicedProductSlug = productSlug ? productSlug.split('[')[0] : ''
+  return {
+    blog: slicedBlogSlug,
+    author: slicedAuthorSlug,
+    tag: slicedTagSlug,
+    product: slicedProductSlug,
+  }
 }
 export default getSlugs

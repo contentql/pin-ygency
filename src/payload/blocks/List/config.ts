@@ -36,6 +36,10 @@ const ListConfig: Block = {
           label: 'Authors',
           value: 'users',
         },
+        {
+          label: 'Products',
+          value: 'products',
+        },
       ],
     },
   ],
