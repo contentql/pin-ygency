@@ -12,7 +12,8 @@ const changeBasedOnENV = (env: any) => {
 
 export const env = createEnv({
   server: {
-    DATABASE_URI: z.string().min(1),
+    DATABASE_URI: z.string().optional(),
+    DATABASE_SECRET: z.string().optional(),
     PAYLOAD_SECRET: z.string().min(1),
     PAYLOAD_URL: z.string().url(),
     S3_ENDPOINT: z.string().min(1),
@@ -24,7 +25,6 @@ export const env = createEnv({
     RESEND_SENDER_EMAIL: z.string().email(),
     RESEND_SENDER_NAME: z.string().min(1),
     SUBSCRIPTION_PLAN: z.string(),
-    DATABASE_SECRET: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_PUBLIC_URL: z.string().url(),
