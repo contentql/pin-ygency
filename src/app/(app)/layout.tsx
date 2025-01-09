@@ -1,6 +1,5 @@
 import '../../../public/assets/css/animate.min.css'
 import '../../../public/assets/css/bootstrap.min.css'
-import '../../../public/assets/css/custom.css'
 import '../../../public/assets/css/flaticon.min.css'
 import '../../../public/assets/css/flaticon_ygency.css'
 import '../../../public/assets/css/fontawesome-5.14.0.min.css'
@@ -120,6 +119,7 @@ export default async function RootLayout({
     <html lang='en' className='dark'>
       {/* added a explicit link tag because favicon is coming from site-settings */}
       <link rel='icon' type='image/x-icon' href={`${faviconUrl}`} />
+
       <head>
         <GoogleAnalytics metadata={metadata} />
         <GoogleAdsense metadata={metadata} />
