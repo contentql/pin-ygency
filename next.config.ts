@@ -1,5 +1,6 @@
 import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from 'next'
+
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   async redirects() {
@@ -21,13 +22,22 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     reactCompiler: false,
+    serverActions: {
+      // Allow Server Actions to be called from these domains
+      allowedOrigins: [
+        'contentql.io',
+        '*.contentql.io',
+        'up.railway.app',
+        '*.up.railway.app',
+      ],
+    },
   },
   output: 'standalone',
   reactStrictMode: true,
   compiler: {
     // removeConsole: process.env.NODE_ENV !== 'development', // Remove console.log in production
   },
-    logging: {
+  logging: {
     fetches: {
       fullUrl: true,
     },
