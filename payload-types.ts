@@ -112,11 +112,17 @@ export interface Page {
   meta?: {
     title?: string | null;
     description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
     image?: (number | null) | Media;
   };
   isHome?: boolean | null;
   isDynamic?: boolean | null;
   slugMode?: ('generate' | 'custom') | null;
+  /**
+   * Contains only lowercase letters, numbers, and dashes.
+   */
   slug?: string | null;
   pathMode?: ('generate' | 'custom') | null;
   path?: string | null;
@@ -138,16 +144,34 @@ export interface Page {
  * via the `definition` "AboutType".
  */
 export interface AboutType {
+  /**
+   * Enter a short badge title to highlight key information.
+   */
   badge_title?: string | null;
+  /**
+   * Enter the main title for the About section.
+   */
   title?: string | null;
+  /**
+   * Provide a detailed description about this section.
+   */
   description?: string | null;
   percentages?:
     | {
+        /**
+         * Enter a percentage value (0-100).
+         */
         percentage?: number | null;
+        /**
+         * Enter a title corresponding to the percentage value.
+         */
         title?: string | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Upload an image that represents the About section.
+   */
   about_image?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
@@ -203,17 +227,38 @@ export interface Media {
  * via the `definition` "AdvertiseType".
  */
 export interface AdvertiseType {
+  /**
+   * Enter the main title for the advertisement.
+   */
   title: string;
+  /**
+   * Upload an image for the advertisement banner.
+   */
   banner_image: number | Media;
+  /**
+   * Enter the number of completed projects.
+   */
   project_completion_count?: string | null;
+  /**
+   * Enter the current status of the projects.
+   */
   completion_status?: string | null;
+  /**
+   * Provide a detailed description for the advertisement.
+   */
   description?: string | null;
   clients?:
     | {
+        /**
+         * Upload the client’s logo or image.
+         */
         image: number | Media;
         id?: string | null;
       }[]
     | null;
+  /**
+   * A brief description about the clients featured in the advertisement.
+   */
   client_description?: string | null;
   id?: string | null;
   blockName?: string | null;
@@ -224,16 +269,34 @@ export interface AdvertiseType {
  * via the `definition` "HeroType".
  */
 export interface HeroType {
+  /**
+   * Enter the main title for the hero section.
+   */
   title: string;
+  /**
+   * Provide a brief description to accompany the title.
+   */
   description?: string | null;
   clients?:
     | {
+        /**
+         * Upload the client’s logo or image.
+         */
         image: number | Media;
         id?: string | null;
       }[]
     | null;
+  /**
+   * A brief description about the clients featured in the hero section.
+   */
   client_description?: string | null;
+  /**
+   * Upload the main background image for the hero section.
+   */
   hero_image: number | Media;
+  /**
+   * Enter a badge title if applicable.
+   */
   badge_title?: string | null;
   id?: string | null;
   blockName?: string | null;
@@ -244,10 +307,19 @@ export interface HeroType {
  * via the `definition` "SkillsType".
  */
 export interface SkillsType {
+  /**
+   * Enter the title for the skills section.
+   */
   title: string;
   skills?:
     | {
+        /**
+         * Upload an image representing the skill.
+         */
         skill_image: number | Media;
+        /**
+         * Enter the name of the skill.
+         */
         skill_title: string;
         id?: string | null;
       }[]
@@ -261,10 +333,19 @@ export interface SkillsType {
  * via the `definition` "ServiceType".
  */
 export interface ServiceType {
+  /**
+   * Enter a short title to highlight the service category.
+   */
   badge_title?: string | null;
+  /**
+   * Main title for the services section.
+   */
   title?: string | null;
   services?:
     | {
+        /**
+         * Select an icon that represents the service.
+         */
         service_icon?:
           | (
               | 'flaticon-development'
@@ -276,7 +357,13 @@ export interface ServiceType {
               | 'flaticon-goal'
             )
           | null;
+        /**
+         * Enter the name of the service.
+         */
         title?: string | null;
+        /**
+         * Upload an image that represents the service.
+         */
         image?: (number | null) | Media;
         id?: string | null;
       }[]
@@ -290,8 +377,14 @@ export interface ServiceType {
  * via the `definition` "HeadlineType".
  */
 export interface HeadlineType {
+  /**
+   * Add multiple headlines to display in this block.
+   */
   headlines?:
     | {
+        /**
+         * The headline text to display.
+         */
         title?: string | null;
         id?: string | null;
       }[]
@@ -305,12 +398,27 @@ export interface HeadlineType {
  * via the `definition` "RecentWorkType".
  */
 export interface RecentWorkType {
+  /**
+   * A short title to highlight the section of recent works.
+   */
   badge_title?: string | null;
+  /**
+   * Main title for the Recent Works section.
+   */
   title?: string | null;
   recent_works?:
     | {
+        /**
+         * Enter the title of the recent work.
+         */
         title?: string | null;
+        /**
+         * Enter Your website url here.
+         */
         url?: string | null;
+        /**
+         * Upload an image representing the recent work.
+         */
         image?: (number | null) | Media;
         id?: string | null;
       }[]
@@ -324,13 +432,34 @@ export interface RecentWorkType {
  * via the `definition` "TestimonialType".
  */
 export interface TestimonialType {
+  /**
+   * Upload an image to represent the testimonial block.
+   */
   image?: (number | null) | Media;
+  /**
+   * Add individual testimonials from reviewers.
+   */
   testimonials?:
     | {
+        /**
+         * Enter the name of the reviewer.
+         */
         reviewer_name?: string | null;
+        /**
+         * Write the testimonial review here.
+         */
         review?: string | null;
+        /**
+         * Upload an image of the reviewer.
+         */
         reviewer_image?: (number | null) | Media;
+        /**
+         * Specify the role or position of the reviewer.
+         */
         reviewer_role?: string | null;
+        /**
+         * Rate the testimonial between 1 and 5.
+         */
         rating?: number | null;
         id?: string | null;
       }[]
@@ -344,13 +473,34 @@ export interface TestimonialType {
  * via the `definition` "TeamType".
  */
 export interface TeamType {
+  /**
+   * Title displayed on the team block badge.
+   */
   badge_title?: string | null;
+  /**
+   * Main title for the team section.
+   */
   title?: string | null;
+  /**
+   * Add team members to display in this block.
+   */
   team_members?:
     | {
+        /**
+         * Upload the team member’s photo.
+         */
         image?: (number | null) | Media;
+        /**
+         * Enter the team member’s name.
+         */
         name?: string | null;
+        /**
+         * Specify the team member’s role or position.
+         */
         role?: string | null;
+        /**
+         * Add social media links for the team member.
+         */
         social_media?:
           | {
               icon?:
@@ -362,6 +512,9 @@ export interface TeamType {
                     | 'fab fa-linkedin-in'
                   )
                 | null;
+              /**
+               * Enter the URL of the social media profile.
+               */
               url: string;
               id?: string | null;
             }[]
@@ -378,6 +531,9 @@ export interface TeamType {
  * via the `definition` "ServiceBannerType".
  */
 export interface ServiceBannerType {
+  /**
+   * Enter the title for the service banner.
+   */
   title: string;
   id?: string | null;
   blockName?: string | null;
@@ -390,8 +546,17 @@ export interface ServiceBannerType {
 export interface ServiceFeaturesType {
   features?:
     | {
+        /**
+         * Enter the feature title.
+         */
         title?: string | null;
+        /**
+         * Enter url.
+         */
         url?: string | null;
+        /**
+         * Provide a detailed description of the feature.
+         */
         description?: string | null;
         id?: string | null;
       }[]
@@ -407,7 +572,13 @@ export interface ServiceFeaturesType {
 export interface WorkProcessType {
   steps?:
     | {
+        /**
+         * Enter the title of the step.
+         */
         title?: string | null;
+        /**
+         * Provide a detailed description of this step.
+         */
         description?: string | null;
         id?: string | null;
       }[]
@@ -421,8 +592,17 @@ export interface WorkProcessType {
  * via the `definition` "BannerType".
  */
 export interface BannerType {
+  /**
+   * Enter the main title for the banner section.
+   */
   title?: string | null;
+  /**
+   * Upload the first banner image. Recommended dimensions: [insert dimensions].
+   */
   banner_image1?: (number | null) | Media;
+  /**
+   * Upload the second banner image. Recommended dimensions: [insert dimensions].
+   */
   banner_image2?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
@@ -433,9 +613,18 @@ export interface BannerType {
  * via the `definition` "OurClientsType".
  */
 export interface OurClientsType {
+  /**
+   * Enter a title for the clients section.
+   */
   title?: string | null;
+  /**
+   * Add logos of the clients. You can upload multiple logos.
+   */
   clients?:
     | {
+        /**
+         * Upload the logo of the client.
+         */
         client_logo?: (number | null) | Media;
         id?: string | null;
       }[]
@@ -449,9 +638,18 @@ export interface OurClientsType {
  * via the `definition` "StatisticsType".
  */
 export interface StatisticsType {
+  /**
+   * Add individual statistics with a number and title.
+   */
   statistics?:
     | {
+        /**
+         * Enter the numerical value for the statistic.
+         */
         number?: number | null;
+        /**
+         * Provide a title for the statistic.
+         */
         title?: string | null;
         id?: string | null;
       }[]
@@ -465,12 +663,27 @@ export interface StatisticsType {
  * via the `definition` "TeamInfoType".
  */
 export interface TeamInfoType {
+  /**
+   * A short caption that introduces the team section.
+   */
   caption?: string | null;
+  /**
+   * The main title for the team section.
+   */
   title?: string | null;
   features?:
     | {
+        /**
+         * The title of the feature.
+         */
         title?: string | null;
+        /**
+         * A detailed description of the feature.
+         */
         description?: string | null;
+        /**
+         * Select an icon that represents the feature.
+         */
         icon?: ('flaticon-creativity' | 'flaticon-mobile-banking' | 'flaticon-optimization-1') | null;
         id?: string | null;
       }[]
@@ -484,8 +697,17 @@ export interface TeamInfoType {
  * via the `definition` "VideoAreaType".
  */
 export interface VideoAreaType {
+  /**
+   * Upload an image to represent the video. Recommended dimensions: [insert dimensions].
+   */
   video_image?: (number | null) | Media;
+  /**
+   * Enter the URL for the video. Supported platforms: YouTube, Vimeo, etc.
+   */
   video_link?: string | null;
+  /**
+   * Provide a brief description of the video content.
+   */
   description?: string | null;
   id?: string | null;
   blockName?: string | null;
@@ -518,10 +740,25 @@ export interface DetailsType {
  * via the `definition` "ContactType".
  */
 export interface ContactType {
+  /**
+   * Enter a brief subtitle for the contact section.
+   */
   sub_title?: string | null;
+  /**
+   * Enter the main title for the contact section.
+   */
   title?: string | null;
+  /**
+   * Enter any background text to display behind the contact form or section.
+   */
   background_text?: string | null;
+  /**
+   * Enter the text for the button in the contact section.
+   */
   button_text?: string | null;
+  /**
+   * Enter the URL that the button should link to.
+   */
   button_url?: string | null;
   id?: string | null;
   blockName?: string | null;
@@ -532,6 +769,9 @@ export interface ContactType {
  * via the `definition` "PageBannerType".
  */
 export interface PageBannerType {
+  /**
+   * Enter the name of the page to display on the banner.
+   */
   page_name: string;
   id?: string | null;
   blockName?: string | null;
@@ -542,21 +782,54 @@ export interface PageBannerType {
  * via the `definition` "PricingFeaturesType".
  */
 export interface PricingFeaturesType {
+  /**
+   * Enter a subtitle for the pricing features section.
+   */
   sub_title?: string | null;
+  /**
+   * Enter the main title for the pricing features section.
+   */
   title?: string | null;
+  /**
+   * Add details related to the pricing features.
+   */
   datails?:
     | {
+        /**
+         * Enter the heading for this detail.
+         */
         heading?: string | null;
+        /**
+         * Provide a description for this detail.
+         */
         description?: string | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Enter the text for the button in the pricing features section.
+   */
   button_text?: string | null;
+  /**
+   * Enter the URL or path for the button to link to.
+   */
   button_path?: string | null;
+  /**
+   * List the features associated with the pricing plans.
+   */
   features?:
     | {
+        /**
+         * Select an icon to represent the feature.
+         */
         icons?: ('fa-bezier-curve' | 'fa-cogs' | 'fa-chart-pie' | 'fa-shield-cross') | null;
+        /**
+         * Enter the title of the feature.
+         */
         title?: string | null;
+        /**
+         * Provide a description of the feature.
+         */
         description?: string | null;
         id?: string | null;
       }[]
@@ -570,21 +843,54 @@ export interface PricingFeaturesType {
  * via the `definition` "PricingSectionType".
  */
 export interface PricingSectionType {
+  /**
+   * Enter the main title for the pricing section.
+   */
   title?: string | null;
+  /**
+   * Enter a subtitle for the pricing section.
+   */
   sub_title?: string | null;
+  /**
+   * Add pricing packages with details.
+   */
   pricing?:
     | {
+        /**
+         * Select an icon to represent this pricing package.
+         */
         icons?: ('flaticon-abstract' | 'flaticon-liquid' | 'flaticon-petals') | null;
+        /**
+         * Enter the title for this pricing package.
+         */
         package_title?: string | null;
+        /**
+         * Enter the price for this package.
+         */
         price?: number | null;
+        /**
+         * Add any additional text related to the price, e.g., "per month".
+         */
         price_text?: string | null;
+        /**
+         * List the features available in this pricing package.
+         */
         available_features?:
           | {
+              /**
+               * Enter a feature of this pricing package.
+               */
               feature?: string | null;
               id?: string | null;
             }[]
           | null;
+        /**
+         * Enter the text for the button associated with this package.
+         */
         button_text?: string | null;
+        /**
+         * Enter the URL for the button action.
+         */
         button_url?: string | null;
         id?: string | null;
       }[]
@@ -704,6 +1010,9 @@ export interface Form {
       )[]
     | null;
   submitButtonLabel?: string | null;
+  /**
+   * Choose whether to display an on-page message or redirect to a different page after they submit the form.
+   */
   confirmationType?: ('message' | 'redirect') | null;
   confirmationMessage?:
     | {
@@ -713,6 +1022,9 @@ export interface Form {
   redirect?: {
     url: string;
   };
+  /**
+   * Send custom emails when the form submits. Use comma separated lists to send the same email to multiple recipients. To reference a value from this form, wrap that field's name with double curly brackets, i.e. {{firstName}}. You can use a wildcard {{*}} to output all data and {{*:table}} to format it as an HTML table in the email.
+   */
   emails?:
     | {
         emailTo?: string | null;
@@ -721,6 +1033,9 @@ export interface Form {
         replyTo?: string | null;
         emailFrom?: string | null;
         subject: string;
+        /**
+         * Enter the message that should be sent in this email.
+         */
         message?:
           | {
               [k: string]: unknown;
@@ -738,6 +1053,9 @@ export interface Form {
  */
 export interface DisqusCommentsType {
   title?: string | null;
+  /**
+   * To find your Disqus shortname, log into Disqus, access the Admin panel, and check the URL or General Site Settings.
+   */
   shortName: string;
   id?: string | null;
   blockName?: string | null;
@@ -749,8 +1067,14 @@ export interface DisqusCommentsType {
  */
 export interface Blog {
   id: number;
+  /**
+   * Upload blog image
+   */
   blogImage: number | Media;
   title: string;
+  /**
+   * Add the summary of the blog post
+   */
   description: string;
   tags?:
     | {
@@ -764,15 +1088,27 @@ export interface Blog {
         value: number | User;
       }[]
     | null;
+  /**
+   * Main content of the blog post. Use the rich text editor for formatting.
+   */
   content: {
     [k: string]: unknown;
   }[];
   meta?: {
     title?: string | null;
     description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
     image?: (number | null) | Media;
   };
+  /**
+   * Contains only lowercase letters, numbers, and dashes.
+   */
   slug?: string | null;
+  /**
+   * Save it as draft to schedule.
+   */
   publishOn?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -784,6 +1120,9 @@ export interface Blog {
  */
 export interface Tag {
   id: number;
+  /**
+   * Upload tag image
+   */
   tagImage: number | Media;
   title: string;
   description: string;
@@ -791,8 +1130,14 @@ export interface Tag {
   meta?: {
     title?: string | null;
     description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
     image?: (number | null) | Media;
   };
+  /**
+   * Contains only lowercase letters, numbers, and dashes.
+   */
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -805,6 +1150,9 @@ export interface Tag {
 export interface User {
   id: number;
   displayName?: string | null;
+  /**
+   * Contains only lowercase letters, numbers, and dashes.
+   */
   username: string;
   imageUrl?: (number | null) | Media;
   role: ('admin' | 'author' | 'user')[];
@@ -864,6 +1212,8 @@ export interface FormSubmission {
   createdAt: string;
 }
 /**
+ * This is a collection of automatically created search results. These results are used by the global site search and will be updated automatically as documents in the CMS are created or updated.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "search".
  */
@@ -977,350 +1327,31 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        About?:
-          | T
-          | {
-              badge_title?: T;
-              title?: T;
-              description?: T;
-              percentages?:
-                | T
-                | {
-                    percentage?: T;
-                    title?: T;
-                    id?: T;
-                  };
-              about_image?: T;
-              id?: T;
-              blockName?: T;
-            };
-        Advertise?:
-          | T
-          | {
-              title?: T;
-              banner_image?: T;
-              project_completion_count?: T;
-              completion_status?: T;
-              description?: T;
-              clients?:
-                | T
-                | {
-                    image?: T;
-                    id?: T;
-                  };
-              client_description?: T;
-              id?: T;
-              blockName?: T;
-            };
-        Hero?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              clients?:
-                | T
-                | {
-                    image?: T;
-                    id?: T;
-                  };
-              client_description?: T;
-              hero_image?: T;
-              badge_title?: T;
-              id?: T;
-              blockName?: T;
-            };
-        Skills?:
-          | T
-          | {
-              title?: T;
-              skills?:
-                | T
-                | {
-                    skill_image?: T;
-                    skill_title?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        Service?:
-          | T
-          | {
-              badge_title?: T;
-              title?: T;
-              services?:
-                | T
-                | {
-                    service_icon?: T;
-                    title?: T;
-                    image?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        Headline?:
-          | T
-          | {
-              headlines?:
-                | T
-                | {
-                    title?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        RecentWork?:
-          | T
-          | {
-              badge_title?: T;
-              title?: T;
-              recent_works?:
-                | T
-                | {
-                    title?: T;
-                    url?: T;
-                    image?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        Testimonial?:
-          | T
-          | {
-              image?: T;
-              testimonials?:
-                | T
-                | {
-                    reviewer_name?: T;
-                    review?: T;
-                    reviewer_image?: T;
-                    reviewer_role?: T;
-                    rating?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        Team?:
-          | T
-          | {
-              badge_title?: T;
-              title?: T;
-              team_members?:
-                | T
-                | {
-                    image?: T;
-                    name?: T;
-                    role?: T;
-                    social_media?:
-                      | T
-                      | {
-                          icon?: T;
-                          url?: T;
-                          id?: T;
-                        };
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        ServiceBanner?:
-          | T
-          | {
-              title?: T;
-              id?: T;
-              blockName?: T;
-            };
-        ServiceFeatures?:
-          | T
-          | {
-              features?:
-                | T
-                | {
-                    title?: T;
-                    url?: T;
-                    description?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        WorkProcess?:
-          | T
-          | {
-              steps?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        Banner?:
-          | T
-          | {
-              title?: T;
-              banner_image1?: T;
-              banner_image2?: T;
-              id?: T;
-              blockName?: T;
-            };
-        OurClients?:
-          | T
-          | {
-              title?: T;
-              clients?:
-                | T
-                | {
-                    client_logo?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        Statistics?:
-          | T
-          | {
-              statistics?:
-                | T
-                | {
-                    number?: T;
-                    title?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        TeamInfo?:
-          | T
-          | {
-              caption?: T;
-              title?: T;
-              features?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    icon?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        VideoArea?:
-          | T
-          | {
-              video_image?: T;
-              video_link?: T;
-              description?: T;
-              id?: T;
-              blockName?: T;
-            };
-        List?:
-          | T
-          | {
-              title?: T;
-              description?: T;
-              collectionSlug?: T;
-              id?: T;
-              blockName?: T;
-            };
-        Details?:
-          | T
-          | {
-              collectionSlug?: T;
-              id?: T;
-              blockName?: T;
-            };
-        Contact?:
-          | T
-          | {
-              sub_title?: T;
-              title?: T;
-              background_text?: T;
-              button_text?: T;
-              button_url?: T;
-              id?: T;
-              blockName?: T;
-            };
-        PageBanner?:
-          | T
-          | {
-              page_name?: T;
-              id?: T;
-              blockName?: T;
-            };
-        PricingFeatures?:
-          | T
-          | {
-              sub_title?: T;
-              title?: T;
-              datails?:
-                | T
-                | {
-                    heading?: T;
-                    description?: T;
-                    id?: T;
-                  };
-              button_text?: T;
-              button_path?: T;
-              features?:
-                | T
-                | {
-                    icons?: T;
-                    title?: T;
-                    description?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        PricingSection?:
-          | T
-          | {
-              title?: T;
-              sub_title?: T;
-              pricing?:
-                | T
-                | {
-                    icons?: T;
-                    package_title?: T;
-                    price?: T;
-                    price_text?: T;
-                    available_features?:
-                      | T
-                      | {
-                          feature?: T;
-                          id?: T;
-                        };
-                    button_text?: T;
-                    button_url?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        FormBlock?:
-          | T
-          | {
-              title?: T;
-              form?: T;
-              id?: T;
-              blockName?: T;
-            };
-        DisqusComments?:
-          | T
-          | {
-              title?: T;
-              shortName?: T;
-              id?: T;
-              blockName?: T;
-            };
+        About?: T | AboutTypeSelect<T>;
+        Advertise?: T | AdvertiseTypeSelect<T>;
+        Hero?: T | HeroTypeSelect<T>;
+        Skills?: T | SkillsTypeSelect<T>;
+        Service?: T | ServiceTypeSelect<T>;
+        Headline?: T | HeadlineTypeSelect<T>;
+        RecentWork?: T | RecentWorkTypeSelect<T>;
+        Testimonial?: T | TestimonialTypeSelect<T>;
+        Team?: T | TeamTypeSelect<T>;
+        ServiceBanner?: T | ServiceBannerTypeSelect<T>;
+        ServiceFeatures?: T | ServiceFeaturesTypeSelect<T>;
+        WorkProcess?: T | WorkProcessTypeSelect<T>;
+        Banner?: T | BannerTypeSelect<T>;
+        OurClients?: T | OurClientsTypeSelect<T>;
+        Statistics?: T | StatisticsTypeSelect<T>;
+        TeamInfo?: T | TeamInfoTypeSelect<T>;
+        VideoArea?: T | VideoAreaTypeSelect<T>;
+        List?: T | ListTypeSelect<T>;
+        Details?: T | DetailsTypeSelect<T>;
+        Contact?: T | ContactTypeSelect<T>;
+        PageBanner?: T | PageBannerTypeSelect<T>;
+        PricingFeatures?: T | PricingFeaturesTypeSelect<T>;
+        PricingSection?: T | PricingSectionTypeSelect<T>;
+        FormBlock?: T | FormTypeSelect<T>;
+        DisqusComments?: T | DisqusCommentsTypeSelect<T>;
       };
   meta?:
     | T
@@ -1347,6 +1378,400 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AboutType_select".
+ */
+export interface AboutTypeSelect<T extends boolean = true> {
+  badge_title?: T;
+  title?: T;
+  description?: T;
+  percentages?:
+    | T
+    | {
+        percentage?: T;
+        title?: T;
+        id?: T;
+      };
+  about_image?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AdvertiseType_select".
+ */
+export interface AdvertiseTypeSelect<T extends boolean = true> {
+  title?: T;
+  banner_image?: T;
+  project_completion_count?: T;
+  completion_status?: T;
+  description?: T;
+  clients?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  client_description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroType_select".
+ */
+export interface HeroTypeSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  clients?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  client_description?: T;
+  hero_image?: T;
+  badge_title?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SkillsType_select".
+ */
+export interface SkillsTypeSelect<T extends boolean = true> {
+  title?: T;
+  skills?:
+    | T
+    | {
+        skill_image?: T;
+        skill_title?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceType_select".
+ */
+export interface ServiceTypeSelect<T extends boolean = true> {
+  badge_title?: T;
+  title?: T;
+  services?:
+    | T
+    | {
+        service_icon?: T;
+        title?: T;
+        image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeadlineType_select".
+ */
+export interface HeadlineTypeSelect<T extends boolean = true> {
+  headlines?:
+    | T
+    | {
+        title?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RecentWorkType_select".
+ */
+export interface RecentWorkTypeSelect<T extends boolean = true> {
+  badge_title?: T;
+  title?: T;
+  recent_works?:
+    | T
+    | {
+        title?: T;
+        url?: T;
+        image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialType_select".
+ */
+export interface TestimonialTypeSelect<T extends boolean = true> {
+  image?: T;
+  testimonials?:
+    | T
+    | {
+        reviewer_name?: T;
+        review?: T;
+        reviewer_image?: T;
+        reviewer_role?: T;
+        rating?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamType_select".
+ */
+export interface TeamTypeSelect<T extends boolean = true> {
+  badge_title?: T;
+  title?: T;
+  team_members?:
+    | T
+    | {
+        image?: T;
+        name?: T;
+        role?: T;
+        social_media?:
+          | T
+          | {
+              icon?: T;
+              url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceBannerType_select".
+ */
+export interface ServiceBannerTypeSelect<T extends boolean = true> {
+  title?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServiceFeaturesType_select".
+ */
+export interface ServiceFeaturesTypeSelect<T extends boolean = true> {
+  features?:
+    | T
+    | {
+        title?: T;
+        url?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "WorkProcessType_select".
+ */
+export interface WorkProcessTypeSelect<T extends boolean = true> {
+  steps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BannerType_select".
+ */
+export interface BannerTypeSelect<T extends boolean = true> {
+  title?: T;
+  banner_image1?: T;
+  banner_image2?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "OurClientsType_select".
+ */
+export interface OurClientsTypeSelect<T extends boolean = true> {
+  title?: T;
+  clients?:
+    | T
+    | {
+        client_logo?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatisticsType_select".
+ */
+export interface StatisticsTypeSelect<T extends boolean = true> {
+  statistics?:
+    | T
+    | {
+        number?: T;
+        title?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamInfoType_select".
+ */
+export interface TeamInfoTypeSelect<T extends boolean = true> {
+  caption?: T;
+  title?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        icon?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "VideoAreaType_select".
+ */
+export interface VideoAreaTypeSelect<T extends boolean = true> {
+  video_image?: T;
+  video_link?: T;
+  description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ListType_select".
+ */
+export interface ListTypeSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  collectionSlug?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DetailsType_select".
+ */
+export interface DetailsTypeSelect<T extends boolean = true> {
+  collectionSlug?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactType_select".
+ */
+export interface ContactTypeSelect<T extends boolean = true> {
+  sub_title?: T;
+  title?: T;
+  background_text?: T;
+  button_text?: T;
+  button_url?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageBannerType_select".
+ */
+export interface PageBannerTypeSelect<T extends boolean = true> {
+  page_name?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingFeaturesType_select".
+ */
+export interface PricingFeaturesTypeSelect<T extends boolean = true> {
+  sub_title?: T;
+  title?: T;
+  datails?:
+    | T
+    | {
+        heading?: T;
+        description?: T;
+        id?: T;
+      };
+  button_text?: T;
+  button_path?: T;
+  features?:
+    | T
+    | {
+        icons?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingSectionType_select".
+ */
+export interface PricingSectionTypeSelect<T extends boolean = true> {
+  title?: T;
+  sub_title?: T;
+  pricing?:
+    | T
+    | {
+        icons?: T;
+        package_title?: T;
+        price?: T;
+        price_text?: T;
+        available_features?:
+          | T
+          | {
+              feature?: T;
+              id?: T;
+            };
+        button_text?: T;
+        button_url?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FormType_select".
+ */
+export interface FormTypeSelect<T extends boolean = true> {
+  title?: T;
+  form?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DisqusCommentsType_select".
+ */
+export interface DisqusCommentsTypeSelect<T extends boolean = true> {
+  title?: T;
+  shortName?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1664,7 +2089,13 @@ export interface SiteSetting {
   general: {
     title: string;
     description: string;
+    /**
+     * We recommend a maximum size of 256 * 256 pixels
+     */
     faviconUrl: number | Media;
+    /**
+     * We recommend a maximum size of 1200 * 630 pixels
+     */
     ogImageUrl: number | Media;
     keywords?: string[] | null;
   };
@@ -1672,10 +2103,17 @@ export interface SiteSetting {
     logo: BrandLogo;
     menuLinks?:
       | {
+          /**
+           * Check to create group of links
+           */
           group?: boolean | null;
           menuLink?: {
             type?: ('reference' | 'custom') | null;
             newTab?: boolean | null;
+            /**
+             * Upload an svg or logo to be displayed with link
+             */
+            icon?: (number | null) | Media;
             label: string;
             page?: {
               relationTo: 'pages';
@@ -1690,6 +2128,10 @@ export interface SiteSetting {
               | {
                   type?: ('reference' | 'custom') | null;
                   newTab?: boolean | null;
+                  /**
+                   * Upload an svg or logo to be displayed with link
+                   */
+                  icon?: (number | null) | Media;
                   label: string;
                   page?: {
                     relationTo: 'pages';
@@ -1708,10 +2150,17 @@ export interface SiteSetting {
     logo: BrandLogo;
     footerLinks?:
       | {
+          /**
+           * Check to create group of links
+           */
           group?: boolean | null;
           menuLink?: {
             type?: ('reference' | 'custom') | null;
             newTab?: boolean | null;
+            /**
+             * Upload an svg or logo to be displayed with link
+             */
+            icon?: (number | null) | Media;
             label: string;
             page?: {
               relationTo: 'pages';
@@ -1726,6 +2175,10 @@ export interface SiteSetting {
               | {
                   type?: ('reference' | 'custom') | null;
                   newTab?: boolean | null;
+                  /**
+                   * Upload an svg or logo to be displayed with link
+                   */
+                  icon?: (number | null) | Media;
                   label: string;
                   page?: {
                     relationTo: 'pages';
@@ -1766,22 +2219,200 @@ export interface SiteSetting {
     copyright?: string | null;
   };
   redirectionLinks?: {
+    /**
+     * This redirects to a blog details page
+     */
     blogLink?: {
       relationTo: 'pages';
       value: number | Page;
     } | null;
+    /**
+     * This redirect to a product details page
+     */
+    productLink?: {
+      relationTo: 'pages';
+      value: number | Page;
+    } | null;
+    /**
+     * This redirects to a author details page
+     */
     authorLink?: {
       relationTo: 'pages';
       value: number | Page;
     } | null;
+    /**
+     * This redirects to a tag details page
+     */
     tagLink?: {
       relationTo: 'pages';
       value: number | Page;
     } | null;
   };
   monetization?: {
+    /**
+     * Add the publisher-id from Google AdSense Console
+     */
     adSenseId?: string | null;
+    /**
+     * Add the measurement id from Google Analytics dashboard
+     */
     measurementId?: string | null;
+  };
+  stripeConnect?: {
+    country?:
+      | (
+          | 'AL'
+          | 'DZ'
+          | 'AO'
+          | 'AG'
+          | 'AR'
+          | 'AM'
+          | 'AU'
+          | 'AT'
+          | 'AZ'
+          | 'BS'
+          | 'BH'
+          | 'BD'
+          | 'BE'
+          | 'BJ'
+          | 'BT'
+          | 'BO'
+          | 'BA'
+          | 'BW'
+          | 'BN'
+          | 'BG'
+          | 'KH'
+          | 'CA'
+          | 'CL'
+          | 'CO'
+          | 'CR'
+          | 'CI'
+          | 'HR'
+          | 'CY'
+          | 'CZ'
+          | 'DK'
+          | 'DO'
+          | 'EC'
+          | 'EG'
+          | 'SV'
+          | 'EE'
+          | 'ET'
+          | 'FI'
+          | 'FR'
+          | 'GA'
+          | 'GM'
+          | 'DE'
+          | 'GH'
+          | 'GR'
+          | 'GT'
+          | 'GY'
+          | 'HK'
+          | 'HU'
+          | 'IS'
+          | 'IN'
+          | 'ID'
+          | 'IE'
+          | 'IL'
+          | 'IT'
+          | 'JM'
+          | 'JP'
+          | 'JO'
+          | 'KZ'
+          | 'KE'
+          | 'KW'
+          | 'LA'
+          | 'LV'
+          | 'LI'
+          | 'LT'
+          | 'LU'
+          | 'MO'
+          | 'MG'
+          | 'MY'
+          | 'MT'
+          | 'MU'
+          | 'MX'
+          | 'MD'
+          | 'MC'
+          | 'MN'
+          | 'MA'
+          | 'MZ'
+          | 'NA'
+          | 'NL'
+          | 'NZ'
+          | 'NE'
+          | 'NG'
+          | 'MK'
+          | 'NO'
+          | 'OM'
+          | 'PK'
+          | 'PA'
+          | 'PY'
+          | 'PE'
+          | 'PH'
+          | 'PL'
+          | 'PT'
+          | 'QA'
+          | 'RO'
+          | 'RW'
+          | 'SM'
+          | 'SA'
+          | 'SN'
+          | 'RS'
+          | 'SG'
+          | 'SK'
+          | 'SI'
+          | 'ZA'
+          | 'KR'
+          | 'ES'
+          | 'LK'
+          | 'LC'
+          | 'SE'
+          | 'CH'
+          | 'TW'
+          | 'TZ'
+          | 'TH'
+          | 'TT'
+          | 'TN'
+          | 'TR'
+          | 'AE'
+          | 'GB'
+          | 'UY'
+          | 'UZ'
+          | 'VN'
+        )
+      | null;
+    currency?:
+      | (
+          | 'usd'
+          | 'eur'
+          | 'inr'
+          | 'gbp'
+          | 'jpy'
+          | 'cad'
+          | 'aud'
+          | 'chf'
+          | 'cny'
+          | 'hkd'
+          | 'sgd'
+          | 'mxn'
+          | 'brl'
+          | 'rub'
+          | 'krw'
+          | 'zar'
+          | 'try'
+          | 'sar'
+          | 'aed'
+          | 'pln'
+        )
+      | null;
+    /**
+     * Auto generated by stripe after successful stripe connect
+     */
+    stripeUserId?: string | null;
+    /**
+     * Auto generated by stripe after successful stripe connect
+     */
+    stripeAdminDashboard?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1792,8 +2423,17 @@ export interface SiteSetting {
  */
 export interface BrandLogo {
   imageUrl: number | Media;
+  /**
+   * Adjust to the height of the logo
+   */
   height?: number | null;
+  /**
+   * Adjust to the width of the logo
+   */
   width?: number | null;
+  /**
+   * This text appears below the footer image
+   */
   description?: string | null;
 }
 /**
@@ -1813,13 +2453,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   navbar?:
     | T
     | {
-        logo?:
-          | T
-          | {
-              imageUrl?: T;
-              height?: T;
-              width?: T;
-            };
+        logo?: T | BrandLogoSelect<T>;
         menuLinks?:
           | T
           | {
@@ -1829,6 +2463,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
                 | {
                     type?: T;
                     newTab?: T;
+                    icon?: T;
                     label?: T;
                     page?: T;
                     url?: T;
@@ -1843,6 +2478,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
                       | {
                           type?: T;
                           newTab?: T;
+                          icon?: T;
                           label?: T;
                           page?: T;
                           url?: T;
@@ -1855,14 +2491,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   footer?:
     | T
     | {
-        logo?:
-          | T
-          | {
-              imageUrl?: T;
-              height?: T;
-              width?: T;
-              description?: T;
-            };
+        logo?: T | BrandLogoSelect<T>;
         footerLinks?:
           | T
           | {
@@ -1872,6 +2501,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
                 | {
                     type?: T;
                     newTab?: T;
+                    icon?: T;
                     label?: T;
                     page?: T;
                     url?: T;
@@ -1886,6 +2516,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
                       | {
                           type?: T;
                           newTab?: T;
+                          icon?: T;
                           label?: T;
                           page?: T;
                           url?: T;
@@ -1907,6 +2538,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | T
     | {
         blogLink?: T;
+        productLink?: T;
         authorLink?: T;
         tagLink?: T;
       };
@@ -1916,9 +2548,27 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         adSenseId?: T;
         measurementId?: T;
       };
+  stripeConnect?:
+    | T
+    | {
+        country?: T;
+        currency?: T;
+        stripeUserId?: T;
+        stripeAdminDashboard?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BrandLogo_select".
+ */
+export interface BrandLogoSelect<T extends boolean = true> {
+  imageUrl?: T;
+  height?: T;
+  width?: T;
+  description?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
