@@ -2,7 +2,7 @@
 
 import { Media } from '@payload-types'
 import Image from 'next/image'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import toast from 'react-hot-toast'
 import { CiUser } from 'react-icons/ci'
@@ -14,7 +14,7 @@ import uploadMedia from '@/utils/uploadMedia'
 
 const Profile = () => {
   const [uploadedImage, setUploadedImage] = useState(null)
-  const [userImage, setUserImage] = useState(null)
+  const [userImage, setUserImage] = useState<File | null>(null)
   // this is state to track uploading image, updating user profile
   const [uploadingImage, setUploadingImage] = useState(false)
   const [show, setShow] = useState(false)
@@ -59,6 +59,11 @@ const Profile = () => {
   })
 
   const handleUpdateUserProfile = async () => {
+    // Showing toast if image is not added
+    if (!userImage) {
+      return toast.error(`please select a file to upload`)
+    }
+
     try {
       // setting true on uploading to media collection
       setUploadingImage(true)
@@ -77,9 +82,9 @@ const Profile = () => {
     }
   }
 
-  const handleUpload = (event: any) => {
-    setUserImage(event.target.files)
-    const file = event.target.files[0]
+  const handleUpload = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target?.files?.[0]
+    setUserImage(file ?? null)
 
     if (file) {
       const reader = new FileReader()

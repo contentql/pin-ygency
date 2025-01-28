@@ -3,20 +3,20 @@ import type { NextConfig } from 'next'
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: '/admin/login',
-        destination: '/',
-        permanent: false,
-      },
-      {
-        source: '/admin/create-first-user',
-        destination: '/',
-        permanent: false,
-      },
-    ]
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/admin/login',
+  //       destination: '/',
+  //       permanent: false,
+  //     },
+  //     {
+  //       source: '/admin/create-first-user',
+  //       destination: '/',
+  //       permanent: false,
+  //     },
+  //   ]
+  // },
   outputFileTracingIncludes: {
     '/public': ['./public/**/*'],
   },

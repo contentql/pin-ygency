@@ -1,20 +1,18 @@
 import { Media } from '@payload-types'
-import toast from 'react-hot-toast'
 
-async function uploadMedia(files: FileList | null): Promise<Media | undefined> {
+async function uploadMedia(file: File): Promise<Media> {
   const formData = new FormData()
-  if (!files) {
-    toast.error(`please select a file to upload`)
-    return undefined
+  if (!file) {
+    throw new Error(`Failed to upload file`)
   }
-  formData.append('file', files[0])
+
+  formData.append('file', file)
 
   try {
     const response = await fetch(window.location.origin + '/api/media', {
       method: 'POST',
       body: formData,
     })
-    console.log('response', response)
 
     if (!response.ok) {
       throw new Error(`Error: ${response.statusText}`)
@@ -27,6 +25,8 @@ async function uploadMedia(files: FileList | null): Promise<Media | undefined> {
     if (error instanceof Error) {
       console.error('Upload failed', error.message)
     }
+
+    throw new Error(`Failed to upload file`)
   }
 }
 

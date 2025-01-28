@@ -1,7 +1,16 @@
-import { collectionSlug, cqlConfig } from '@contentql/core'
+import { cqlConfig } from '@contentql/core'
+import {
+  BlogsCollection,
+  MediaCollection,
+  PagesCollection,
+  SiteSettingsGlobal,
+  TagsCollection,
+  UsersCollection,
+} from '@contentql/core/blog'
 import { env } from '@env'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
+import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { ResetPassword } from '@/emails/reset-password'
@@ -17,18 +26,7 @@ import { revalidateTags } from '@/payload/hooks/revalidateTags'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-const convertRailwayURL = (url: string) => {
-  const railwayDomain = '.up.railway.app'
-  const contentqlDomain = '.contentql.io'
-
-  // Check if the URL ends with .up.railway.app or contains it
-  if (url.includes(railwayDomain)) {
-    return url.replace(railwayDomain, contentqlDomain)
-  }
-
-  // Return the original URL if it doesn't match
-  return url
-}
+const Pages = PagesCollection({ blocks: blocksConfig })
 
 export default cqlConfig({
   admin: {
@@ -41,8 +39,7 @@ export default cqlConfig({
   },
   collections: [
     {
-      slug: collectionSlug['users'],
-      fields: [],
+      ...UsersCollection,
       auth: {
         verify: {
           generateEmailHTML: ({ token, user }) => {
@@ -69,41 +66,36 @@ export default cqlConfig({
       },
     },
     {
-      slug: collectionSlug.pages,
-      fields: [],
+      ...Pages,
       hooks: {
         afterChange: [revalidatePages],
       },
     },
     {
-      slug: collectionSlug.blogs,
-      fields: [],
+      ...BlogsCollection,
       hooks: {
         afterChange: [revalidateBlogs],
       },
     },
     {
-      slug: collectionSlug.tags,
-      fields: [],
+      ...TagsCollection,
       hooks: {
         afterChange: [revalidateTags],
       },
     },
+    MediaCollection,
   ],
   globals: [
     {
-      slug: collectionSlug['site-settings'],
-      fields: [],
+      ...SiteSettingsGlobal,
       hooks: {
         afterChange: [revalidateSiteSettings],
       },
     },
   ],
-  cors: [env.PAYLOAD_URL, convertRailwayURL(env.PAYLOAD_URL)],
-  csrf: [env.PAYLOAD_URL, convertRailwayURL(env.PAYLOAD_URL)],
-
+  cors: [env.PAYLOAD_URL],
+  csrf: [env.PAYLOAD_URL],
   baseURL: env.PAYLOAD_URL,
-
   secret: env.PAYLOAD_SECRET,
 
   dbURI: env.DATABASE_URI,
@@ -112,11 +104,18 @@ export default cqlConfig({
   prodMigrations: migrations,
 
   s3: {
-    accessKeyId: env.S3_ACCESS_KEY_ID,
+    collections: {
+      media: true,
+    },
     bucket: env.S3_BUCKET,
-    endpoint: env.S3_ENDPOINT,
-    region: env.S3_REGION,
-    secretAccessKey: env.S3_SECRET_ACCESS_KEY,
+    config: {
+      credentials: {
+        accessKeyId: env.S3_ACCESS_KEY_ID,
+        secretAccessKey: env.S3_SECRET_ACCESS_KEY,
+      },
+      endpoint: env.S3_ENDPOINT,
+      region: env.S3_REGION,
+    },
   },
 
   resend: {
@@ -129,7 +128,6 @@ export default cqlConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
 
-  blocks: blocksConfig,
   editor: slateEditor({
     admin: {
       leaves: [
@@ -176,4 +174,6 @@ export default cqlConfig({
       ],
     },
   }),
+
+  sharp: sharp,
 })

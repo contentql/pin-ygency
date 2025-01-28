@@ -11,11 +11,11 @@ export interface Config {
     users: UserAuthOperations;
   };
   collections: {
+    users: User;
     pages: Page;
     blogs: Blog;
     tags: Tag;
     media: Media;
-    users: User;
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
@@ -25,11 +25,11 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    users: UsersSelect<false> | UsersSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     blogs: BlogsSelect<false> | BlogsSelect<true>;
     tags: TagsSelect<false> | TagsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    users: UsersSelect<false> | UsersSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
@@ -71,6 +71,102 @@ export interface UserAuthOperations {
   unlock: {
     email: string;
     password: string;
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  displayName?: string | null;
+  /**
+   * Contains only lowercase letters, numbers, and dashes.
+   */
+  username: string;
+  imageUrl?: (number | null) | Media;
+  role: ('admin' | 'author' | 'user')[];
+  emailVerified?: string | null;
+  socialLinks?:
+    | {
+        platform:
+          | 'website'
+          | 'facebook'
+          | 'instagram'
+          | 'twitter'
+          | 'linkedin'
+          | 'youtube'
+          | 'tiktok'
+          | 'pinterest'
+          | 'snapchat'
+          | 'reddit'
+          | 'tumblr'
+          | 'whatsapp'
+          | 'telegram'
+          | 'github'
+          | 'medium'
+          | 'quora'
+          | 'discord';
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  _verified?: boolean | null;
+  _verificationToken?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    blogImageSize2?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    blogImageSize3?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
@@ -117,13 +213,25 @@ export interface Page {
      */
     image?: (number | null) | Media;
   };
+  /**
+   * Check to covert page as Home Page
+   */
   isHome?: boolean | null;
+  /**
+   * Check to covert page as Dynamic
+   */
   isDynamic?: boolean | null;
+  /**
+   * Choose Generate to create a slug automatically or Custom to set your own slug
+   */
   slugMode?: ('generate' | 'custom') | null;
   /**
    * Contains only lowercase letters, numbers, and dashes.
    */
   slug?: string | null;
+  /**
+   * Choose Generate to create a page-path automatically or Custom to set your own page-path
+   */
   pathMode?: ('generate' | 'custom') | null;
   path?: string | null;
   parent?: (number | null) | Page;
@@ -176,51 +284,6 @@ export interface AboutType {
   id?: string | null;
   blockName?: string | null;
   blockType: 'About';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    blogImageSize2?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    blogImageSize3?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1007,6 +1070,23 @@ export interface Form {
             blockName?: string | null;
             blockType: 'textarea';
           }
+        | {
+            name: string;
+            label?: string | null;
+            /**
+             * Enter the maximum size of each file in MB
+             */
+            size: number;
+            width?: number | null;
+            /**
+             * Check this box if you want to allow multiple attachments
+             */
+            multiple: boolean;
+            required?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'upload';
+          }
       )[]
     | null;
   submitButtonLabel?: string | null;
@@ -1145,57 +1225,6 @@ export interface Tag {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  displayName?: string | null;
-  /**
-   * Contains only lowercase letters, numbers, and dashes.
-   */
-  username: string;
-  imageUrl?: (number | null) | Media;
-  role: ('admin' | 'author' | 'user')[];
-  emailVerified?: string | null;
-  socialLinks?:
-    | {
-        platform:
-          | 'website'
-          | 'facebook'
-          | 'instagram'
-          | 'twitter'
-          | 'linkedin'
-          | 'youtube'
-          | 'tiktok'
-          | 'pinterest'
-          | 'snapchat'
-          | 'reddit'
-          | 'tumblr'
-          | 'whatsapp'
-          | 'telegram'
-          | 'github'
-          | 'medium'
-          | 'quora'
-          | 'discord';
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  _verified?: boolean | null;
-  _verificationToken?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "form-submissions".
  */
 export interface FormSubmission {
@@ -1205,6 +1234,7 @@ export interface FormSubmission {
     | {
         field: string;
         value: string;
+        file?: (number | Media)[] | null;
         id?: string | null;
       }[]
     | null;
@@ -1245,6 +1275,10 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
         relationTo: 'pages';
         value: number | Page;
       } | null)
@@ -1259,10 +1293,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
-      } | null)
-    | ({
-        relationTo: 'users';
-        value: number | User;
       } | null)
     | ({
         relationTo: 'forms';
@@ -1317,6 +1347,35 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  displayName?: T;
+  username?: T;
+  imageUrl?: T;
+  role?: T;
+  emailVerified?: T;
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        value?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  _verified?: T;
+  _verificationToken?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1872,35 +1931,6 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
- */
-export interface UsersSelect<T extends boolean = true> {
-  displayName?: T;
-  username?: T;
-  imageUrl?: T;
-  role?: T;
-  emailVerified?: T;
-  socialLinks?:
-    | T
-    | {
-        platform?: T;
-        value?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  _verified?: T;
-  _verificationToken?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "forms_select".
  */
 export interface FormsSelect<T extends boolean = true> {
@@ -1997,6 +2027,18 @@ export interface FormsSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        upload?:
+          | T
+          | {
+              name?: T;
+              label?: T;
+              size?: T;
+              width?: T;
+              multiple?: T;
+              required?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   submitButtonLabel?: T;
   confirmationType?: T;
@@ -2032,6 +2074,7 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
     | {
         field?: T;
         value?: T;
+        file?: T;
         id?: T;
       };
   updatedAt?: T;
