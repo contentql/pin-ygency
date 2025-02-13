@@ -166,7 +166,7 @@ const NavSearch = () => {
       />
       <KBarPortal>
         <KBarPositioner className='kbar-pos'>
-          <KBarAnimator className='kbar-animator '>
+          <KBarAnimator className='kbar-animator pt-25'>
             <div
               style={{
                 margin: 'auto',
