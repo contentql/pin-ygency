@@ -74,9 +74,18 @@ const Footer = () => {
                         <Link
                           legacyBehavior
                           href={
-                            (footerLink?.menuLink?.page?.value as Page)?.path!
+                            footerLink?.menuLink?.type === 'reference'
+                              ? (footerLink?.menuLink?.page?.value as Page)
+                                  ?.path!
+                              : footerLink?.menuLink?.url!
                           }>
-                          {(footerLink?.menuLink?.page?.value as Page)?.title}
+                          <a
+                            target={
+                              footerLink?.menuLink?.newTab ? '_blank' : '_self'
+                            }
+                            rel='noopener noreferrer'>
+                            {(footerLink?.menuLink?.page?.value as Page)?.title}
+                          </a>
                         </Link>
                       </li>
                     ))}
@@ -86,10 +95,20 @@ const Footer = () => {
                     {footer?.footerLinks?.slice(4)?.map((footerLink, index) => (
                       <li key={index}>
                         <Link
+                          legacyBehavior
                           href={
-                            (footerLink?.menuLink?.page?.value as Page)?.path!
+                            footerLink?.menuLink?.type === 'reference'
+                              ? (footerLink?.menuLink?.page?.value as Page)
+                                  ?.path!
+                              : footerLink?.menuLink?.url!
                           }>
-                          {(footerLink?.menuLink?.page?.value as Page)?.title}
+                          <a
+                            target={
+                              footerLink?.menuLink?.newTab ? '_blank' : '_self'
+                            }
+                            rel='noopener noreferrer'>
+                            {(footerLink?.menuLink?.page?.value as Page)?.title}
+                          </a>
                         </Link>
                       </li>
                     ))}

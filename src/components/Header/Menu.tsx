@@ -48,33 +48,42 @@ const SingleMenu = ({
                 </Link>
               </li>
             </Dropdown.Toggle>
-            <Dropdown.Menu className='custom-dropdown-menu  fullwidth-toggle'>
+            <Dropdown.Menu className='custom-dropdown-menu fullwidth-toggle'>
               {link?.menuLinkGroup?.groupLinks?.map((nestedLink, index) => (
-                <Dropdown.Item className='custom-dropdown-item' key={index}>
-                  <Link
-                    style={{ width: '100%', display: 'inline-block' }}
-                    href={
-                      nestedLink?.type === 'custom'
-                        ? nestedLink?.url!
-                        : (nestedLink?.page?.value as Page)?.path!
-                    }
-                    target={nestedLink?.newTab ? '_blank' : '_self'}>
+                <Link
+                  key={index}
+                  legacyBehavior
+                  passHref
+                  href={
+                    nestedLink?.type === 'reference'
+                      ? (nestedLink?.page?.value as Page)?.path!
+                      : nestedLink?.url!
+                  }>
+                  <Dropdown.Item
+                    className='custom-dropdown-item'
+                    as='a' // Ensures it's rendered as an <a> tag
+                    target={nestedLink?.newTab ? '_blank' : '_self'}
+                    rel='noopener noreferrer'>
                     {nestedLink?.label}
-                  </Link>
-                </Dropdown.Item>
+                  </Dropdown.Item>
+                </Link>
               ))}
             </Dropdown.Menu>
           </Dropdown>
         ) : (
           <li key={index}>
             <Link
-              target={link?.menuLink?.newTab ? '_blank' : '_self'}
+              legacyBehavior
               href={
                 link?.menuLink?.type === 'custom'
                   ? link?.menuLink?.url!
                   : (link?.menuLink?.page?.value as Page)?.path!
               }>
-              {link?.menuLink?.label}
+              <a
+                target={link?.menuLink?.newTab ? '_blank' : '_self'}
+                rel='noopener noreferrer'>
+                {link?.menuLink?.label}
+              </a>
             </Link>
           </li>
         ),
