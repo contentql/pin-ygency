@@ -13,7 +13,7 @@ import { matchNextJsPath } from '@/utils/matchNextJsPath'
 
 type StaticRoute = { route: string | string[] | null }
 
-export const dynamic = 'force-static'
+// export const dynamic = 'force-static'
 // revalidates every 10mins
 export const revalidate = 600
 // allows dynamic params static generation

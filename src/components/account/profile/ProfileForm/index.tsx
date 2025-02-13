@@ -48,7 +48,6 @@ const ProfileForm = () => {
     const sanitizedData = Object.fromEntries(
       Object.entries(formData).filter(([key, value]) => Boolean(value)),
     )
-    console.log('user data', sanitizedData)
 
     if (
       sanitizedData.password &&
