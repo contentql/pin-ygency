@@ -182,7 +182,7 @@ const NavSearch = () => {
                 className='kbar-search '
               />
               {results && results.length > 0 ? (
-                <div className='kbar-list mx-4 mt-2'>
+                <div className='kbar-list mx-4 mb-20 mt-20'>
                   <KBarResults
                     items={results}
                     onRender={({ item, active }) => {
